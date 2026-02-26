@@ -15,9 +15,7 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
 # 配置
-TRANSLATION_API_URL = os.environ.get(
-    "TRANSLATION_API_URL", "http://127.0.0.1:5003/translate"
-)
+
 DATABASE_URL = os.environ.get("DATABASE_URL", "data/news.db")
 
 # 新闻源配置
@@ -73,16 +71,7 @@ def init_db():
 
 
 def translate_text(text: str) -> str:
-    """翻译文本到中文"""
-    if not text:
-        return ""
-    try:
-        resp = requests.post(TRANSLATION_API_URL, json={"text": text}, timeout=30)
-        if resp.status_code == 200:
-            data = resp.json()
-            return data.get("translated_text", text)
-    except Exception as e:
-        print(f"Translation error: {e}")
+    """翻译文本到中文（已禁用）"""
     return text
 
 
