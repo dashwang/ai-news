@@ -1,0 +1,7 @@
+python:
+  version: "3.11"
+  packageManager: pip
+
+app:
+  name: ai-news
+  startCommand: gunicorn --bind 0.0.0.0:${PORT:-8000} app:app

@@ -29,6 +29,16 @@ npm i -g vercel
 vercel
 ```
 
+## Railpack Deployment
+
+```bash
+# Install Railpack CLI
+npm i -g @railpack/cli
+
+# Deploy
+railpack deploy
+```
+
 ## Environment Variables
 
 Configure the following environment variables:
