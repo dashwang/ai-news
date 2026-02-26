@@ -212,7 +212,6 @@ def health():
 def trigger():
     """触发新闻抓取和发布 - 用于 OpenClaw/webhook"""
     from fetch_news import main as fetch_main
-    from publish_wechat import main as publish_main
 
     print("🚀 Triggered AI News Bot")
 
@@ -221,14 +220,11 @@ def trigger():
         fetch_main()
     except Exception as e:
         print(f"Fetch error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-    print("[2/2] Publishing to WeChat...")
-    try:
-        publish_main()
-    except Exception as e:
-        print(f"Publish error: {e}")
+    print("[2/2] Skipping WeChat publish (not configured)")
 
-    return jsonify({"status": "ok", "message": "AI News Bot triggered"})
+    return jsonify({"status": "ok", "message": "AI News fetched successfully"})
 
 
 if __name__ == "__main__":
