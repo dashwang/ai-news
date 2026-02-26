@@ -9,7 +9,7 @@
     "restartPolicyMaxRetries": 10,
     "startCommand": "gunicorn --bind 0.0.0.0:${PORT:-8000} app:app",
     "cron": {
-      "command": "python main.py",
+      "command": "python -c \"from fetch_news import main; main()\"",
       "schedule": "0 8 * * *"
     }
   }

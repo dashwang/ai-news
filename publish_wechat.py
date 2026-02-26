@@ -2,6 +2,7 @@
 """
 微信公众号发布脚本
 用于 Railway 部署
+支持接收已翻译的中文内容并发布到公众号草稿箱
 """
 
 import os
@@ -14,7 +15,6 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 import tempfile
 
-# 配置
 DATABASE_URL = os.environ.get("DATABASE_URL", "data/news.db")
 WECHAT_APP_ID = os.environ.get("WECHAT_APP_ID", "")
 WECHAT_APP_SECRET = os.environ.get("WECHAT_APP_SECRET", "")
@@ -28,6 +28,9 @@ def get_db():
 
 def get_access_token():
     """获取微信 access_token"""
+    if not WECHAT_APP_ID or not WECHAT_APP_SECRET:
+        raise Exception("WeChat APP_ID or APP_SECRET not configured")
+
     url = f"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={WECHAT_APP_ID}&secret={WECHAT_APP_SECRET}"
     resp = requests.get(url)
     data = resp.json()
@@ -90,7 +93,110 @@ def create_draft(token, articles):
     result = resp.json()
     if "errcode" in result and result["errcode"] != 0:
         raise Exception(f"创建草稿失败: {result}")
-    return result["media_id"]
+    return result.get("media_id", "")
+
+
+def publish_with_content(articles):
+    """
+    发布已翻译的中文内容到公众号草稿箱
+    articles: [
+        {
+            "title": "标题",
+            "content": "HTML内容",
+            "digest": "摘要",
+            "source_url": "原文链接"
+        },
+        ...
+    ]
+    """
+    print("=" * 50)
+    print("📝 WeChat Publisher Started")
+    print(f"Time: {datetime.now()}")
+    print(f"Articles: {len(articles)}")
+    print("=" * 50)
+
+    if not WECHAT_APP_ID or not WECHAT_APP_SECRET:
+        raise Exception("WeChat not configured")
+
+    print("\n🔑 Getting access token...")
+    token = get_access_token()
+
+    print("📤 Uploading cover...")
+    thumb_id = upload_cover_image(token)
+
+    print("📝 Creating draft...")
+    wechat_articles = []
+    for i, article in enumerate(articles):
+        wechat_article = {
+            "title": article.get("title", ""),
+            "author": "Veray AI",
+            "content": article.get("content", ""),
+            "digest": article.get("digest", article.get("title", "")),
+            "thumb_media_id": thumb_id,
+            "content_source_url": article.get("source_url", "https://veray.ai"),
+        }
+        wechat_articles.append(wechat_article)
+
+    media_id = create_draft(token, wechat_articles)
+
+    print(f"✅ Draft created: {media_id}")
+    return {"media_id": media_id, "article_count": len(articles)}
+
+
+def publish():
+    """从数据库读取并发布（兼容旧版本）"""
+    print("=" * 50)
+    print("📝 WeChat Publisher Started")
+    print(f"Time: {datetime.now()}")
+    print("=" * 50)
+
+    if not WECHAT_APP_ID or not WECHAT_APP_SECRET:
+        print("❌ WeChat not configured")
+        return False
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT * FROM news WHERE date LIKE ? ORDER BY score DESC", (today + "%",)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+
+    if not rows:
+        print("❌ No news found for today")
+        return False
+
+    news_data = {}
+    for row in rows:
+        source = dict(row)["source"]
+        if source not in news_data:
+            news_data[source] = []
+        news_data[source].append(dict(row))
+
+    content = generate_article_content(news_data)
+    date_str = datetime.now().strftime("%Y.%m.%d")
+    title = f"{date_str} 全球AI科技早报"
+
+    print("\n🔑 Getting access token...")
+    token = get_access_token()
+
+    print("📤 Uploading cover...")
+    thumb_id = upload_cover_image(token)
+
+    print("📝 Creating draft...")
+    article = {
+        "title": title,
+        "author": "Veray AI",
+        "content": content,
+        "digest": title,
+        "thumb_media_id": thumb_id,
+        "content_source_url": "https://veray.ai",
+    }
+    media_id = create_draft(token, [article])
+
+    print(f"✅ Draft created: {media_id}")
+    return True
 
 
 def generate_article_content(news_data):
@@ -106,7 +212,6 @@ def generate_article_content(news_data):
         6: "星期日",
     }
     weekday = weekday_map[datetime.now().weekday()]
-
     total_count = sum(len(items) for items in news_data.values())
 
     html = f"""
@@ -127,7 +232,6 @@ def generate_article_content(news_data):
         "HackerNews": "Hacker News 热门",
         "OpenAI": "OpenAI 最新动态",
         "TechCrunch": "TechCrunch 科技资讯",
-        "SubStack": "The Sequence AI",
     }
 
     for source, items in news_data.items():
@@ -147,68 +251,6 @@ def generate_article_content(news_data):
     html += '<p style="background:#f5f5f5;padding:12px;border-radius:8px;margin:20px 0;">📌 关注我们，每日获取 AI 科技前沿资讯！</p>'
 
     return html
-
-
-def publish():
-    """主函数：发布到微信公众号"""
-    print("=" * 50)
-    print("📝 WeChat Publisher Started")
-    print(f"Time: {datetime.now()}")
-    print("=" * 50)
-
-    if not WECHAT_APP_ID or not WECHAT_APP_SECRET:
-        print("❌ WeChat not configured")
-        return False
-
-    # 获取新闻
-    today = datetime.now().strftime("%Y-%m-%d")
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM news WHERE date LIKE ? ORDER BY score DESC", (today + "%",)
-    )
-    rows = cursor.fetchall()
-    conn.close()
-
-    if not rows:
-        print("❌ No news found for today")
-        return False
-
-    # 按来源分组
-    news_data = {}
-    for row in rows:
-        source = dict(row)["source"]
-        if source not in news_data:
-            news_data[source] = []
-        news_data[source].append(dict(row))
-
-    # 生成文章
-    content = generate_article_content(news_data)
-    date_str = datetime.now().strftime("%Y.%m.%d")
-    title = f"{date_str} 全球AI科技早报"
-
-    # 获取 token
-    print("\n🔑 Getting access token...")
-    token = get_access_token()
-
-    # 上传封面
-    print("📤 Uploading cover...")
-    thumb_id = upload_cover_image(token)
-
-    # 创建草稿
-    print("📝 Creating draft...")
-    article = {
-        "title": title,
-        "author": "Veray AI",
-        "content": content,
-        "digest": title,
-        "thumb_media_id": thumb_id,
-        "content_source_url": "https://veray.ai",
-    }
-    media_id = create_draft(token, [article])
-
-    print(f"✅ Draft created: {media_id}")
-    return True
 
 
 if __name__ == "__main__":

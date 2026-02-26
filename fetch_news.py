@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 """
-AI News 自动抓取和发布脚本
+AI News 自动抓取脚本
 用于 Railway 部署
+只抓取英文新闻，翻译和编辑由 OpenClaw 负责
 """
 
 import os
 import sys
 import json
 import sqlite3
-import time
+import argparse
 import feedparser
-import requests
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor
-
-# 配置
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "data/news.db")
 
-# 新闻源配置
 SOURCES = {
     "TechCrunch": {
         "url": "https://techcrunch.com/feed/",
@@ -39,14 +35,12 @@ SOURCES = {
 
 
 def get_db():
-    """获取数据库连接"""
     conn = sqlite3.connect(DATABASE_URL)
     conn.row_factory = sqlite3.Row
     return conn
 
 
 def init_db():
-    """初始化数据库"""
     os.makedirs(os.path.dirname(DATABASE_URL) or ".", exist_ok=True)
     conn = sqlite3.connect(DATABASE_URL)
     cursor = conn.cursor()
@@ -70,20 +64,17 @@ def init_db():
     conn.close()
 
 
-def translate_text(text: str) -> str:
-    """翻译文本到中文（已禁用）"""
-    return text
-
-
 def fetch_rss_source(source_name: str, config: dict) -> list:
-    """从 RSS 源抓取新闻"""
     items = []
     try:
         feed = feedparser.parse(config["url"])
         for entry in feed.entries[: config.get("top_n", 5)]:
             score = 0
             if hasattr(entry, "likes"):
-                score = int(entry.likes) if entry.likes else 0
+                try:
+                    score = int(entry.likes) if entry.likes else 0
+                except:
+                    pass
 
             url = entry.link if hasattr(entry, "link") else ""
             title = entry.title if hasattr(entry, "title") else ""
@@ -110,7 +101,6 @@ def fetch_rss_source(source_name: str, config: dict) -> list:
 
 
 def fetch_hackernews() -> list:
-    """抓取 Hacker News"""
     items = []
     try:
         feed = feedparser.parse("https://news.ycombinator.com/rss")
@@ -144,32 +134,20 @@ def fetch_hackernews() -> list:
 
 
 def fetch_all_news() -> list:
-    """抓取所有源的新闻"""
     all_news = []
-
-    # 抓取 RSS 源
     for source_name, config in SOURCES.items():
         items = fetch_rss_source(source_name, config)
         all_news.extend(items)
-
-    # 抓取 HackerNews
     all_news.extend(fetch_hackernews())
-
     return all_news
 
 
 def save_news(news_items: list, date: str):
-    """保存新闻到数据库"""
     conn = get_db()
     cursor = conn.cursor()
-
-    # 删除当天该来源的新闻
     cursor.execute("DELETE FROM news WHERE date LIKE ?", (date + "%",))
 
     for item in news_items:
-        title_zh = translate_text(item["title"])
-        summary_zh = translate_text(item.get("summary", "")[:300])
-
         cursor.execute(
             """
             INSERT INTO news (source, title, url, content, summary, score, date, title_zh, summary_zh, icon)
@@ -183,8 +161,8 @@ def save_news(news_items: list, date: str):
                 item.get("summary", ""),
                 item.get("score", 0),
                 date,
-                title_zh,
-                summary_zh,
+                "",
+                "",
                 item.get("icon", ""),
             ),
         )
@@ -194,29 +172,66 @@ def save_news(news_items: list, date: str):
     print(f"✅ Saved {len(news_items)} news items")
 
 
-def main():
+def get_news_json(date: str = None) -> dict:
+    if date is None:
+        date = datetime.now().strftime("%Y-%m-%d")
+
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT source, title, url, summary, score, icon FROM news WHERE date LIKE ? ORDER BY score DESC",
+        (date + "%",),
+    )
+    rows = cursor.fetchall()
+    conn.close()
+
+    news_data = {}
+    for row in rows:
+        source = row["source"]
+        if source not in news_data:
+            news_data[source] = []
+        news_data[source].append(
+            {
+                "source": row["source"],
+                "title": row["title"],
+                "url": row["url"],
+                "summary": row["summary"],
+                "score": row["score"],
+                "icon": row["icon"],
+            }
+        )
+
+    return {"date": date, "news": news_data}
+
+
+def main(date: str = None):
     print("=" * 50)
-    print("🤖 AI News Bot Started")
+    print("🤖 AI News Fetcher Started")
     print(f"Time: {datetime.now()}")
+    if date:
+        print(f"Date: {date}")
     print("=" * 50)
 
-    # 初始化数据库
     init_db()
 
-    # 抓取新闻
     print("\n📥 Fetching news...")
     news = fetch_all_news()
     print(f"Fetched {len(news)} items")
 
-    # 保存新闻
-    today = datetime.now().strftime("%Y-%m-%d")
-    print(f"\n💾 Saving to database...")
-    save_news(news, today)
+    if date is None:
+        date = datetime.now().strftime("%Y-%m-%d")
 
-    print("\n✅ AI News Bot Completed!")
+    print(f"\n💾 Saving to database...")
+    save_news(news, date)
+
+    print("\n✅ AI News Fetcher Completed!")
     return True
 
 
 if __name__ == "__main__":
-    success = main()
+    parser = argparse.ArgumentParser(description="AI News Fetcher")
+    parser.add_argument("--date", type=str, help="Date in YYYY-MM-DD format")
+    args = parser.parse_args()
+
+    success = main(args.date)
     sys.exit(0 if success else 1)

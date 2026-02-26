@@ -7,7 +7,6 @@ import requests
 
 app = Flask(__name__)
 
-# Database path
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "news.db")
 
 
@@ -18,7 +17,7 @@ def get_db():
 
 
 def init_db():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    os.makedirs(os.path.dirname(DB_PATH) or ".", exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
@@ -43,7 +42,6 @@ def init_db():
 
 init_db()
 
-# HTML Template
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -153,9 +151,7 @@ def index():
     source_names = {
         "HackerNews": "Hacker News 热门",
         "OpenAI": "OpenAI 最新动态",
-        "ProductHunt": "Product Hunt 新品",
         "TechCrunch": "TechCrunch 科技资讯",
-        "SubStack": "The Sequence AI",
     }
 
     total = sum(len(items) for items in news_data.values())
@@ -193,6 +189,46 @@ def api_news():
     return jsonify({"date": date, "news": news_data})
 
 
+@app.route("/api/fetch", methods=["GET"])
+def api_fetch():
+    """抓取当天AI新闻，返回英文JSON"""
+    from fetch_news import main as fetch_main, get_news_json
+
+    date = request.args.get("date") or datetime.now().strftime("%Y-%m-%d")
+
+    print(f"🚀 Fetching AI News for {date}")
+
+    try:
+        fetch_main(date)
+    except Exception as e:
+        print(f"Fetch error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+    news_json = get_news_json(date)
+
+    return jsonify({"status": "ok", **news_json})
+
+
+@app.route("/api/publish_wechat", methods=["POST"])
+def api_publish_wechat():
+    """接收已翻译的中文内容，发布到微信公众号草稿箱"""
+    from publish_wechat import publish_with_content
+
+    try:
+        data = request.get_json()
+        articles = data.get("articles", [])
+
+        if not articles:
+            return jsonify({"status": "error", "message": "No articles provided"}), 400
+
+        result = publish_with_content(articles)
+        return jsonify({"status": "ok", **result})
+
+    except Exception as e:
+        print(f"Publish error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 @app.route("/api/news/dates")
 def api_dates():
     conn = get_db()
@@ -206,25 +242,6 @@ def api_dates():
 @app.route("/health")
 def health():
     return jsonify({"status": "ok", "service": "ai-news"})
-
-
-@app.route("/api/trigger", methods=["POST", "GET"])
-def trigger():
-    """触发新闻抓取和发布 - 用于 OpenClaw/webhook"""
-    from fetch_news import main as fetch_main
-
-    print("🚀 Triggered AI News Bot")
-
-    print("[1/2] Fetching news...")
-    try:
-        fetch_main()
-    except Exception as e:
-        print(f"Fetch error: {e}")
-        return jsonify({"status": "error", "message": str(e)}), 500
-
-    print("[2/2] Skipping WeChat publish (not configured)")
-
-    return jsonify({"status": "ok", "message": "AI News fetched successfully"})
 
 
 if __name__ == "__main__":
