@@ -1,40 +1,43 @@
-# AI News - 每日 AI 科技早报
+# AI News - Daily AI Tech Briefing
 
-每日自动抓取全球 AI 科技资讯，翻译、排版，推送到微信公众号。
+Automatically fetch global AI tech news daily, translate, format, and push to WeChat official account.
 
-## 功能
+## Features
 
-- 🤖 自动抓取 TechCrunch、Hacker News、Product Hunt、SubStack、OpenAI 等源
-- 🌐 调用本地 DeepSeek (r1:7b) 自动翻译
-- 📱 微信公众号自动发布
-- ⏰ 每天 8:00 自动执行
+- 🤖 Automatically fetch sources from TechCrunch, Hacker News, Product Hunt, SubStack, OpenAI, etc.
+- 🌐 Call local DeepSeek (r1:7b) for automatic translation
+- 📱 Automatically publish to WeChat official account
+- ⏰ Automatically execute at 8:00 AM daily
 
-## 本地开发
+## Local Development
 
 ```bash
-# 安装依赖
+# Install dependencies
 pip install -r requirements.txt
 
-# 运行服务
+# Run service
 python app.py
 ```
 
-## Vercel 部署
+## Vercel Deployment
 
 ```bash
-# 安装 Vercel CLI
+# Install Vercel CLI
 npm i -g vercel
 
-# 部署
+# Deploy
 vercel
 ```
 
-## 环境变量
+## Environment Variables
 
-需要配置以下环境变量：
-- `WECHAT_APP_ID` - 微信公众号 AppID
-- `WECHAT_APP_SECRET` - 微信公众号 AppSecret
-- `TRANSLATION_API_URL` - 翻译服务地址（可选，默认 http://127.0.0.1:5003/translate）
-# ai-news
+Configure the following environment variables:
+- `WECHAT_APP_ID` - WeChat official account AppID
+- `WECHAT_APP_SECRET` - WeChat official account AppSecret
+- `TRANSLATION_API_URL` - Translation service URL (optional, default http://127.0.0.1:5003/translate)
+
+# AI News
+# AI News
+# AI News
 # ai-news
 # ai-news
