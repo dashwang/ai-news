@@ -36,3 +36,4 @@ vercel
 - `WECHAT_APP_SECRET` - 微信公众号 AppSecret
 - `TRANSLATION_API_URL` - 翻译服务地址（可选，默认 http://127.0.0.1:5003/translate）
 # ai-news
+# ai-news
