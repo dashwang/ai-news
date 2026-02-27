@@ -1,0 +1,16 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "pythonVersion": "3.11"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10,
+    "startCommand": "gunicorn --bind 0.0.0.0:${PORT:-8000} app:app",
+    "cron": {
+      "command": "python -c \"from fetch_news import main; main()\"",
+      "schedule": "0 8 * * *"
+    }
+  }
+}
