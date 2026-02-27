@@ -14,25 +14,26 @@ packageManager: pip
 env:
   RAILPACK_PYTHON_VERSION: "3.11"
   PORT: "8000"
+  # 微信公众号凭证 (需要在 Railway 环境变量中设置)
+  WECHAT_APP_ID: "${WECHAT_APP_ID}"
+  WECHAT_APP_SECRET: "${WECHAT_APP_SECRET}"
 
 # 构建配置
 build:
   pip:
     requirements: requirements.txt
-  systemPackages:
-    - libcairo2-dev
-    - poppler-utils
-    - ffmpeg
 
 # 运行配置
 run:
   command: gunicorn --bind 0.0.0.0:${PORT:-8000} app:app
   
-  # 定时任务：每天早上7:30 UTC (北京时间15:30)
+  # 定时任务：每天早上7:30 UTC
   cron:
     enabled: true
     schedule: "30 7 * * *"
     timezone: "UTC"
+    # 定时任务执行的命令
+    command: "python auto_publish.py"
 
 # 缓存配置
 cache:
