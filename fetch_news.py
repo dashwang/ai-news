@@ -26,10 +26,16 @@ SOURCES = {
         "top_n": 5,
         "icon": "https://news.ycombinator.com/favicon.ico",
     },
-    "OpenAI": {
-        "url": "https://openai.com/blog/rss.xml",
+    # Substack
+    "LexFridman": {
+        "url": "https://lexfridman.com/feed/",
         "top_n": 5,
-        "icon": "https://openai.com/favicon.ico",
+        "icon": "https://lexfridman.com/favicon.ico",
+    },
+    "LennysNewsletter": {
+        "url": "https://www.lennysnewsletter.com/feed",
+        "top_n": 5,
+        "icon": "https://www.lennysnewsletter.com/favicon.ico",
     },
 }
 
