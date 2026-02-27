@@ -1,0 +1,44 @@
+# Railpack 配置文件
+# AI News 自动发布系统
+
+language: python
+
+# Python 版本 (可选，默认 3.13.2)
+python:
+  version: "3.11"
+
+# 依赖管理工具
+# 可选: pip, poetry, pdm, uv, pipenv
+packageManager: pip
+
+# 环境变量
+env:
+  RAILPACK_PYTHON_VERSION: "3.11"
+  PORT: "8000"
+
+# 构建配置
+build:
+  # Python 包管理器命令
+  pip:
+    requirements: requirements.txt
+  
+  # 系统依赖
+  systemPackages:
+    - libcairo2-dev
+    - poppler-utils
+    - ffmpeg
+
+# 运行配置
+run:
+  # 启动命令
+  command: python ai-news-publisher.py
+  
+  # 定时任务 (Railpack 支持 cron)
+  cron:
+    enabled: true
+    schedule: "0 8 * * *"  # 每天早上8点
+    timezone: "UTC"
+
+# 缓存配置
+cache:
+  pip: /opt/pip-cache

@@ -1,0 +1,33 @@
+name: SleepReminder
+options:
+  bundleIdPrefix: com.veray
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1,2"
+
+targets:
+  SleepReminder:
+    type: application
+    platform: iOS
+    sources:
+      - path: .
+        excludes:
+          - "*.yml"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.veray.sleepreminder
+        INFOPLIST_FILE: Info.plist
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+    entitlements:
+      path: SleepReminder.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+        com.apple.developer.healthkit.access: []
