@@ -1,7 +1,39 @@
+# Railpack 配置文件
+# AI News 自动发布系统
+
+language: python
+
+# Python 版本
 python:
   version: "3.11"
-  packageManager: pip
 
-app:
-  name: ai-news
-  startCommand: gunicorn --bind 0.0.0.0:${PORT:-8000} app:app
+# 依赖管理工具
+packageManager: pip
+
+# 环境变量
+env:
+  RAILPACK_PYTHON_VERSION: "3.11"
+  PORT: "8000"
+
+# 构建配置
+build:
+  pip:
+    requirements: requirements.txt
+  systemPackages:
+    - libcairo2-dev
+    - poppler-utils
+    - ffmpeg
+
+# 运行配置
+run:
+  command: gunicorn --bind 0.0.0.0:${PORT:-8000} app:app
+  
+  # 定时任务：每天早上7:30 UTC (北京时间15:30)
+  cron:
+    enabled: true
+    schedule: "30 7 * * *"
+    timezone: "UTC"
+
+# 缓存配置
+cache:
+  pip: /opt/pip-cache
