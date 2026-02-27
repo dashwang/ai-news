@@ -11,51 +11,20 @@
 3. **TechCrunch** - `https://techcrunch.com/feed/`
 4. **Product Hunt** - `https://www.producthunt.com/feed`
 
-## Logo 资源
-
- logos保存在: `skills/ai-news-publisher/logos/`
-
-- `logo-hackernews.png` - Hacker News logo
-- `logo-techcrunch.png` - TechCrunch logo
-- `logo-producthunt.png` - Product Hunt logo
-- `logo-lexfridman.png` - Lex Fridman logo
-- `logo-lenny.png` - Lenny's Newsletter logo
-
-## 抓取 API
-
-```bash
-curl "https://ai-news-production-2735.up.railway.app/api/fetch"
-```
-
-## 发布 API
-
-```bash
-curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "articles": [{
-      "title": "标题",
-      "content": "HTML内容",
-      "digest": "摘要",
-      "source_url": "https://veray.ai"
-    }]
-  }'
-```
-
 ## 微信公众号排版标准
 
-### 顶级科技新闻开头模板
+### 封面区域 - Hacker News 橙黑风格
 
 ```html
-<!-- 开头：制造紧迫感 + 话题性 -->
-<p style="text-align: center; font-size: 20px; font-weight: bold; color: #e74c3c; margin-bottom: 10px;">
-  📢 刚刚，AI行业又发生了一件大事！
+<!-- 封面：橙黑科技风 -->
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
 </p>
-<p style="text-align: center; font-size: 24px; font-weight: bold; color: #1a1a1a; margin-bottom: 8px;">
-  🔥 2026.02.27 科技圈炸了
+<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
+  💰 1100亿美元！AI史上最大融资诞生
 </p>
-<p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">
-  OpenAI刷新融资纪录，Anthropic硬刚五角大楼，AI格局巨变！
+<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
+  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
 </p>
 ```
 
@@ -77,44 +46,36 @@ curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat"
 | TechCrunch | #0a9900 | 📱 |
 | Product Hunt | #da552f | 🚀 |
 
-### 单条新闻样式（140字左右）
+### 结尾模板 - 温暖科技风（不要AI感）
 
 ```html
-<p style="margin: 15px 0 5px 0;">
-  <strong style="font-size: 15px; color: #1a1a1a;">1. 新闻标题</strong>
+<!-- 结尾：温暖、真人感、科技感 -->
+<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
+  <span style="font-size: 16px; color: #333; font-weight: 500;">
+    👍 觉得有用？不妨分享给朋友 👏
+  </span>
 </p>
-<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">
-  新闻内容...（140字左右）
+<p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
+  📱 <strong>每天早上8点</strong>整理送达 | 点个关注不迷路<br>
+  💬 欢迎评论交流，说说你的看法
 </p>
-<p style="margin: 5px 0 15px 0; border-bottom: 1px dashed #eee;"></p>
-```
-
-### 顶级科技新闻结尾模板
-
-```html
-<!-- 结尾：互动引导 + 紧迫感 -->
-<p style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
-  <span style="font-size: 18px; color: #fff; font-weight: bold;">🚀 觉得有用？分享给朋友一起看！</span>
-</p>
-<p style="text-align: center; margin-top: 15px; font-size: 14px; color: #999;">
-  📱 每天8点准时更新 | 点关注不迷路
-</p>
-<p style="text-align: center; margin-top: 10px; font-size: 12px; color: #ccc;">
-  © 2026 科技日报 | 侵权必究
+<p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
+  © 2026 科技日报 | 认真做内容
 </p>
 ```
 
 ## 完整示例
 
 ```html
-<p style="text-align: center; font-size: 20px; font-weight: bold; color: #e74c3c; margin-bottom: 10px;">
-  📢 刚刚，AI行业又发生了一件大事！
+<!-- 封面 -->
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
 </p>
-<p style="text-align: center; font-size: 24px; font-weight: bold; color: #1a1a1a; margin-bottom: 8px;">
-  🔥 2026.02.27 科技圈炸了
+<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
+  💰 1100亿美元！AI史上最大融资诞生
 </p>
-<p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">
-  OpenAI刷新融资纪录，Anthropic硬刚五角大楼，AI格局巨变！
+<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
+  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
 </p>
 
 <!-- Hacker News -->
@@ -126,67 +87,117 @@ curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat"
   <strong style="font-size: 15px; color: #1a1a1a;">1. Anthropic CEO硬刚五角大楼：拒绝向军方开放AI</strong>
 </p>
 <p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">
-  Dario Amodei明确表示问心无愧地拒绝五角大楼要求，向军方无条件开放AI系统的要求，与OpenAI此前的类似争议形成呼应，引发关于AI伦理与国家安全边界的大讨论。
+  Dario Amodei明确表示问心无愧地拒绝五角大楼要求...
 </p>
 <p style="margin: 5px 0 15px 0; border-bottom: 1px dashed #eee;"></p>
 
 <!-- 其他平台... -->
 
 <!-- 结尾 -->
-<p style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
-  <span style="font-size: 18px; color: #fff; font-weight: bold;">🚀 觉得有用？分享给朋友一起看！</span>
+<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
+  <span style="font-size: 16px; color: #333; font-weight: 500;">
+    👍 觉得有用？不妨分享给朋友 👏
+  </span>
 </p>
-<p style="text-align: center; margin-top: 15px; font-size: 14px; color: #999;">
-  📱 每天8点准时更新 | 点关注不迷路
+<p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
+  📱 <strong>每天早上8点</strong>整理送达 | 点个关注不迷路<br>
+  💬 欢迎评论交流，说说你的看法
 </p>
-```
-
-## 开头模板库
-
-### 模板1：震惊体
-```html
-<p style="text-align: center; font-size: 20px; font-weight: bold; color: #e74c3c; margin-bottom: 10px;">
-  📢 刚刚，AI行业又发生了一件大事！
+<p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
+  © 2026 科技日报 | 认真做内容
 </p>
 ```
 
-### 模板2：数字体
+## 开头模板库（温暖科技风）
+
+### 模板1：数字吸睛
 ```html
-<p style="text-align: center; font-size: 20px; font-weight: bold; color: #e74c3c; margin-bottom: 10px;">
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
+</p>
+<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
   💰 1100亿美元！AI史上最大融资诞生
 </p>
-```
-
-### 模板3：提问体
-```html
-<p style="text-align: center; font-size: 20px; font-weight: bold; color: #e74c3c; margin-bottom: 10px;">
-  ❓ 当AI巨头遇上五角大楼，会发生什么？
+<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
+  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
 </p>
 ```
 
-## 结尾模板库
+### 模板2：话题吸睛
+```html
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
+</p>
+<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
+  ❓ 当AI巨头遇上五角大楼，会发生什么？
+</p>
+<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
+  Dario Amodei硬刚五角大楼，AI行业迎来关键时刻
+</p>
+```
+
+### 模板3：新闻联播风
+```html
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
+</p>
+<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
+  🔥 2026.02.27 科技圈发生了什么？
+</p>
+<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
+  这一周的科技圈，信息量有点大
+</p>
+```
+
+## 结尾模板库（温暖真人感）
 
 ### 模板1：互动引导
 ```html
-<p style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
-  <span style="font-size: 18px; color: #fff; font-weight: bold;">🚀 觉得有用？分享给朋友一起看！</span>
+<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
+  <span style="font-size: 16px; color: #333; font-weight: 500;">
+    👍 觉得有用？不妨分享给朋友 👏
+  </span>
 </p>
 ```
 
 ### 模板2：关注引导
 ```html
-<p style="text-align: center; margin-top: 30px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
-  <span style="font-size: 16px;">📱 点关注，不错过每天科技热点！</span>
+<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
+  <span style="font-size: 15px; color: #666;">
+    📱 每天8点 | 点关注不迷路<br>
+    💬 评论区聊聊，你最关注哪条？
+  </span>
 </p>
 ```
 
-### 模板3：行动号召
+### 模板3：简洁有力
 ```html
-<p style="text-align: center; margin-top: 30px;">
-  <span style="display: inline-block; padding: 12px 30px; background: #07c160; color: #fff; font-size: 16px; font-weight: bold; border-radius: 25px;">
-    👍 点赞 + 📤 分享 + ❤️ 关注
+<p style="text-align: center; margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 8px;">
+  <span style="font-size: 15px; color: #555;">
+    👍 认同就分享 | 💬 评论区见
   </span>
 </p>
+```
+
+## 抓取 API
+
+```bash
+curl "https://ai-news-production-2735.up.railway.app/api/fetch"
+```
+
+## 发布 API
+
+```bash
+curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "articles": [{
+      "title": "标题",
+      "content": "HTML内容",
+      "digest": "摘要",
+      "source_url": "https://veray.ai"
+    }]
+  }'
 ```
 
 ## 常见问题
