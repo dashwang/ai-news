@@ -49,14 +49,25 @@
 ### 结尾模板 - 温暖科技风（不要AI感）
 
 ```html
-<!-- 结尾：温暖、真人感、科技感 -->
+<!-- 结尾：温暖、真人感、科技感 + 公众号二维码 -->
 <p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
   <span style="font-size: 16px; color: #333; font-weight: 500;">
     👍 觉得有用？不妨分享给朋友 👏
   </span>
 </p>
+
+<!-- 公众号二维码 -->
+<p style="text-align: center; margin-top: 20px;">
+  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+       style="width: 120px; height: 120px; border-radius: 8px;" 
+       alt="科技日报公众号">
+</p>
+<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
+  📱 扫码关注「科技日报」<br>
+  每天早上8点自动送达
+</p>
+
 <p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
-  📱 <strong>每天早上8点</strong>整理送达 | 点个关注不迷路<br>
   💬 欢迎评论交流，说说你的看法
 </p>
 <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
@@ -99,8 +110,19 @@
     👍 觉得有用？不妨分享给朋友 👏
   </span>
 </p>
+
+<!-- 公众号二维码 -->
+<p style="text-align: center; margin-top: 20px;">
+  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+       style="width: 120px; height: 120px; border-radius: 8px;" 
+       alt="科技日报公众号">
+</p>
+<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
+  📱 扫码关注「科技日报」<br>
+  每天早上8点自动送达
+</p>
+
 <p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
-  📱 <strong>每天早上8点</strong>整理送达 | 点个关注不迷路<br>
   💬 欢迎评论交流，说说你的看法
 </p>
 <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
@@ -151,12 +173,22 @@
 
 ## 结尾模板库（温暖真人感）
 
-### 模板1：互动引导
+### 模板1：互动引导 + 公众号二维码
 ```html
 <p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
   <span style="font-size: 16px; color: #333; font-weight: 500;">
     👍 觉得有用？不妨分享给朋友 👏
   </span>
+</p>
+
+<p style="text-align: center; margin-top: 20px;">
+  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+       style="width: 120px; height: 120px; border-radius: 8px;" 
+       alt="科技日报公众号">
+</p>
+<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
+  📱 扫码关注「科技日报」<br>
+  每天早上8点自动送达
 </p>
 ```
 
