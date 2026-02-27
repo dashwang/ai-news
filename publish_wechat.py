@@ -39,6 +39,24 @@ def get_access_token():
     raise Exception(f"获取token失败: {data}")
 
 
+def upload_qrcode_image(token):
+    """上传二维码图片到微信素材库"""
+    qrcode_path = os.path.join(os.path.dirname(__file__), "grepAI_qrcode.png")
+    if not os.path.exists(qrcode_path):
+        print(f"QR code not found: {qrcode_path}")
+        return None
+
+    url = f"https://api.weixin.qq.com/cgi-bin/material/add_material?access_token={token}&type=image"
+    with open(qrcode_path, "rb") as f:
+        files = {"media": f}
+        resp = requests.post(url, files=files, timeout=30)
+        result = resp.json()
+        if "media_id" in result:
+            return result["media_id"]
+        print(f"上传二维码失败: {result}")
+        return None
+
+
 def upload_cover_image(token):
     """创建并上传封面图片"""
     img = Image.new("RGB", (900, 383), color="#1a1a3e")
@@ -124,13 +142,31 @@ def publish_with_content(articles):
     print("📤 Uploading cover...")
     thumb_id = upload_cover_image(token)
 
+    print("📤 Uploading QR code...")
+    qrcode_media_id = upload_qrcode_image(token)
+
     print("📝 Creating draft...")
     wechat_articles = []
     for i, article in enumerate(articles):
+        content = article.get("content", "")
+        if qrcode_media_id:
+            qrcode_html = f"""
+<p style="text-align: center; margin-top: 30px;">
+    <img data-src="{qrcode_media_id}" 
+         style="width: 200px; height: auto; border-radius: 8px;" 
+         alt="扫码关注">
+</p>
+<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
+    📱 扫码搜索「grepAI」<br>
+    每天早上8点自动送达
+</p>
+"""
+            content += qrcode_html
+
         wechat_article = {
             "title": article.get("title", ""),
             "author": "Veray AI",
-            "content": article.get("content", ""),
+            "content": content,
             "digest": article.get("digest", article.get("title", "")),
             "thumb_media_id": thumb_id,
             "content_source_url": article.get("source_url", "https://veray.ai"),
@@ -140,66 +176,10 @@ def publish_with_content(articles):
     media_id = create_draft(token, wechat_articles)
 
     print(f"✅ Draft created: {media_id}")
-    return {"media_id": media_id, "article_count": len(articles)}
-
-
-def publish():
-    """从数据库读取并发布（兼容旧版本）"""
-    print("=" * 50)
-    print("📝 WeChat Publisher Started")
-    print(f"Time: {datetime.now()}")
-    print("=" * 50)
-
-    if not WECHAT_APP_ID or not WECHAT_APP_SECRET:
-        print("❌ WeChat not configured")
-        return False
-
-    today = datetime.now().strftime("%Y-%m-%d")
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM news WHERE date LIKE ? ORDER BY score DESC", (today + "%",)
-    )
-    rows = cursor.fetchall()
-    conn.close()
-
-    if not rows:
-        print("❌ No news found for today")
-        return False
-
-    news_data = {}
-    for row in rows:
-        source = dict(row)["source"]
-        if source not in news_data:
-            news_data[source] = []
-        news_data[source].append(dict(row))
-
-    content = generate_article_content(news_data)
-    date_str = datetime.now().strftime("%Y.%m.%d")
-    title = f"{date_str} 全球AI科技早报"
-
-    print("\n🔑 Getting access token...")
-    token = get_access_token()
-
-    print("📤 Uploading cover...")
-    thumb_id = upload_cover_image(token)
-
-    print("📝 Creating draft...")
-    article = {
-        "title": title,
-        "author": "Veray AI",
-        "content": content,
-        "digest": title,
-        "thumb_media_id": thumb_id,
-        "content_source_url": "https://veray.ai",
-    }
-    media_id = create_draft(token, [article])
-
-    print(f"✅ Draft created: {media_id}")
     return True
 
 
-def generate_article_content(news_data):
+def generate_article_content(news_data, qrcode_media_id=None):
     """生成文章 HTML 内容"""
     date_str = datetime.now().strftime("%Y.%m.%d")
     weekday_map = {
@@ -249,6 +229,23 @@ def generate_article_content(news_data):
             html += f'<p style="color:#1976d2;font-size:11px;">🔗 {url}</p>'
 
     html += '<p style="background:#f5f5f5;padding:12px;border-radius:8px;margin:20px 0;">📌 关注我们，每日获取 AI 科技前沿资讯！</p>'
+
+    qrcode_html = ""
+    if qrcode_media_id:
+        qrcode_html = f"""
+<p style="text-align: center; margin-top: 30px;">
+    <img data-src="{qrcode_media_id}" 
+         style="width: 200px; height: auto; border-radius: 8px;" 
+         alt="扫码关注">
+</p>
+"""
+    qrcode_html += """
+<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
+    📱 扫码搜索「grepAI」<br>
+    每天早上8点自动送达
+</p>
+"""
+    html += qrcode_html
 
     return html
 
