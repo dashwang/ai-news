@@ -234,30 +234,52 @@ def get_news_json(date: str = None) -> dict:
 
     conn = get_db()
     cursor = conn.cursor()
+    
+    # 按自然顺序获取所有数据
     cursor.execute(
-        "SELECT source, title, url, summary, score, icon FROM news WHERE date LIKE ? ORDER BY score DESC",
+        "SELECT source, title, url, summary, score, icon FROM news WHERE date LIKE ?",
         (date + "%",),
     )
     rows = cursor.fetchall()
     conn.close()
 
-    news_data = {}
+    # 按要求的格式组织
+    news_data = {
+        "HackerNews": [],
+        "ProductHunt": [],
+        "TechCrunch": [],
+        "SubStack": []
+    }
+    
+    # 先收集所有 SubStack 文章用于排序
+    all_substack = []
+    
     for row in rows:
         source = row["source"]
-        if source not in news_data:
-            news_data[source] = []
-        news_data[source].append(
-            {
-                "source": row["source"],
-                "title": row["title"],
-                "url": row["url"],
-                "summary": row["summary"],
-                "score": row["score"],
-                "icon": row["icon"],
-            }
-        )
+        item = {
+            "source": row["source"],
+            "title": row["title"],
+            "url": row["url"],
+            "summary": row["summary"],
+            "score": row["score"],
+            "icon": row["icon"],
+        }
+        
+        if source == "HackerNews":
+            news_data["HackerNews"].append(item)
+        elif source == "ProductHunt":
+            news_data["ProductHunt"].append(item)
+        elif source == "TechCrunch":
+            news_data["TechCrunch"].append(item)
+        else:
+            # 其他来源归入 SubStack
+            all_substack.append(item)
+    
+    # SubStack 按热点分排序
+    all_substack.sort(key=lambda x: x.get("score", 0), reverse=True)
+    news_data["SubStack"] = all_substack
 
-    return {"date": date, "news": news_data}
+    return {"date": date, "news": news_data, "status": "ok"}
 
 
 def main(date: str = None):
