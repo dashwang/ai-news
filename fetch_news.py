@@ -32,21 +32,61 @@ SOURCES = {
         "top_n": 5,
         "icon": "https://www.producthunt.com/favicon.ico",
     },
-    # Substack - AI newsletters (multiple popular AI writers)
-    "LexFridman": {
-        "url": "https://lexfridman.com/feed/",
-        "top_n": 3,
-        "icon": "https://lexfridman.com/favicon.ico",
+    # SubStack Top AI Newsletters (ranked by popularity)
+    "TheSequence": {
+        "url": "https://thesequence.substack.com/feed",
+        "top_n": 2,
+        "icon": "https://thesequence.substack.com/favicon.ico",
     },
-    "LennysNewsletter": {
-        "url": "https://www.lennysnewsletter.com/feed",
-        "top_n": 3,
-        "icon": "https://www.lennysnewsletter.com/favicon.ico",
+    "AheadofAI": {
+        "url": "https://www.aheadofai.com/feed",
+        "top_n": 2,
+        "icon": "https://www.aheadofai.com/favicon.ico",
     },
-    "BenBitesAI": {
-        "url": "https://www.bensbites.ai/feed",
-        "top_n": 4,
-        "icon": "https://www.bensbites.ai/favicon.ico",
+    "LatentSpace": {
+        "url": "https://www.latent.space/feed",
+        "top_n": 2,
+        "icon": "https://www.latent.space/favicon.ico",
+    },
+    "BenEvans": {
+        "url": "https://www.benevans.com/feed",
+        "top_n": 2,
+        "icon": "https://www.benevans.com/favicon.ico",
+    },
+    "ExponentialView": {
+        "url": "https://www.exponentialview.co/feed",
+        "top_n": 2,
+        "icon": "https://www.exponentialview.co/favicon.ico",
+    },
+    "LastWeekinAI": {
+        "url": "https://lastweekinai.substack.com/feed",
+        "top_n": 2,
+        "icon": "https://lastweekinai.substack.com/favicon.ico",
+    },
+    "ImportAI": {
+        "url": "https://jack-clark.net/import-ai/feed",
+        "top_n": 2,
+        "icon": "https://jack-clark.net/favicon.ico",
+    },
+    "Superhuman": {
+        "url": "https://blog.superhuman.com/feed",
+        "top_n": 2,
+        "icon": "https://blog.superhuman.com/favicon.ico",
+    },
+    "OneUsefulThing": {
+        "url": "https://oneusefulthing.substack.com/feed",
+        "top_n": 2,
+        "icon": "https://oneusefulthing.substack.com/favicon.ico",
+    },
+    "Interconnects": {
+        "url": "https://interconnects.ai/feed",
+        "top_n": 2,
+        "icon": "https://interconnects.ai/favicon.ico",
+    },
+    "SemiAnalysis": {
+        "url": "https://www.semianalysis.com/feed",
+        "top_n": 2,
+        "icon": "https://www.semianalysis.com/favicon.ico",
     },
 }
 
