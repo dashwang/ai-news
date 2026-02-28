@@ -43,7 +43,7 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 
 ## Step 2: 翻译并编辑
 
-每条新闻需要展开140字以上的中文介绍。
+每条新闻需要展开 **140字以上**的中文介绍。
 
 ## Step 3: 微信公众号排版（重要！）
 
@@ -84,7 +84,7 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 
 <p style="text-align: center; margin-top: 20px;">
   <img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/Rv7jxicObXS3EVWAxcKy4hkx7aJof9P3lnR95L6UkOPNRbKFHxC8EDvGb7XeUibKnY8XpxaCrTm7MLibW5BDKzt56EgicicM8NK1qC62uGVb1lXg/640?wx_fmt=jpeg" 
-       style="width: 120px; height: 120px; border-radius: 8px;" 
+       style="width: 180px; height: 180px; border-radius: 8px;" 
        alt="公众号二维码">
 </p>
 <p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
