@@ -150,7 +150,6 @@ def fetch_all_news() -> list:
     for source_name, config in SOURCES.items():
         items = fetch_rss_source(source_name, config)
         all_news.extend(items)
-    all_news.extend(fetch_hackernews())
     return all_news
 
 
