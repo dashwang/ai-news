@@ -23,11 +23,23 @@ triggers:
 curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 ```
 
-返回4个站点：
-1. **Hacker News** - 技术社区热门
-2. **Product Hunt** - 产品发现平台
-3. **TechCrunch** - 科技媒体
-4. **SubStack** - 订阅通讯（包含 Lex Fridman + Lenny's Newsletter）
+返回格式（4个站点）：
+```json
+{
+  "date": "2026-02-28",
+  "news": {
+    "HackerNews": [],    // 按自然顺序
+    "ProductHunt": [],   // 按自然顺序
+    "TechCrunch": [],    // 按自然顺序
+    "SubStack": []       // 按热点分(score)降序排序
+  },
+  "status": "ok"
+}
+```
+
+**注意：**
+- HackerNews、ProductHunch、TechCrunch 按自然返回顺序
+- SubStack 按 score 热点分降序排序
 
 ## Step 2: 翻译并编辑
 
