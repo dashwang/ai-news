@@ -26,6 +26,12 @@ SOURCES = {
         "top_n": 5,
         "icon": "https://news.ycombinator.com/favicon.ico",
     },
+    # Product Hunt
+    "ProductHunt": {
+        "url": "https://www.producthunt.com/feed",
+        "top_n": 5,
+        "icon": "https://www.producthunt.com/favicon.ico",
+    },
     # Substack
     "LexFridman": {
         "url": "https://lexfridman.com/feed/",
