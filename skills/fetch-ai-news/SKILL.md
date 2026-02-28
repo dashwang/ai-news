@@ -23,7 +23,11 @@ triggers:
 curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 ```
 
-返回4个站点：HackerNews、LennysNewsletter、LexFridman、TechCrunch
+返回4个站点：
+1. **Hacker News** - 技术社区热门
+2. **Product Hunt** - 产品发现平台
+3. **TechCrunch** - 科技媒体
+4. **SubStack** - 订阅通讯（包含 Lex Fridman + Lenny's Newsletter）
 
 ## Step 2: 翻译并编辑
 
@@ -54,9 +58,9 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 | 平台 | 颜色 | emoji |
 |------|------|-------|
 | Hacker News | #ff6600 | 🔥 |
-| LennysNewsletter | #ff4400 | 💡 |
-| LexFridman | #1a1a1a | 🎙️ |
+| Product Hunt | #da552f | 🚀 |
 | TechCrunch | #0a9900 | 📱 |
+| SubStack | #ff4400 | 💡 |
 
 ### 结尾模板（导流微信二维码）
 ```html
@@ -67,12 +71,12 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 </p>
 
 <p style="text-align: center; margin-top: 20px;">
-  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+  <img src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/Rv7jxicObXS3EVWAxcKy4hkx7aJof9P3lnR95L6UkOPNRbKFHxC8EDvGb7XeUibKnY8XpxaCrTm7MLibW5BDKzt56EgicicM8NK1qC62uGVb1lXg/640?wx_fmt=jpeg" 
        style="width: 120px; height: 120px; border-radius: 8px;" 
-       alt="科技日报公众号">
+       alt="公众号二维码">
 </p>
 <p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
-  📱 扫码关注「科技日报」<br>
+  📱 扫码关注「grepAI」<br>
   每天早上8点自动送达
 </p>
 
@@ -80,7 +84,7 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
   💬 欢迎评论交流，说说你的看法
 </p>
 <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
-  © 2026 科技日报 | 认真做内容
+  © 2026 grepAI | 认真做内容
 </p>
 ```
 
@@ -108,6 +112,8 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 
 ## Step 5: 发布到微信公众号草稿箱
 
+需要确保 Railway 服务器 IP 在微信白名单中。
+
 ```bash
 curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat" \
   -H "Content-Type: application/json" \
@@ -124,8 +130,8 @@ curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat"
 ## 返回结果
 
 告诉用户：
-1. 成功抓取了 X 条新闻（来自4个站点）
+1. 成功抓取了 X 条新闻（来自4个站点：Hacker News、Product Hunt、TechCrunch、SubStack）
 2. 已翻译并编辑完成，每条140字+展开介绍
 3. ✅ 已写入飞书文档「北美AI News」
-4. ✅ 已发布到微信公众号草稿箱
+4. ✅ 已发布到微信公众号草稿箱（如果IP白名单已配置）
 5. 提醒用户去公众号后台确认发布
