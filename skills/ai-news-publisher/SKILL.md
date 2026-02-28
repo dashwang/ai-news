@@ -58,7 +58,7 @@
 
 <!-- 公众号二维码 -->
 <p style="text-align: center; margin-top: 20px;">
-  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+  <img src="images/qrcode.png" 
        style="width: 120px; height: 120px; border-radius: 8px;" 
        alt="科技日报公众号">
 </p>
@@ -113,7 +113,7 @@
 
 <!-- 公众号二维码 -->
 <p style="text-align: center; margin-top: 20px;">
-  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+  <img src="images/qrcode.png" 
        style="width: 120px; height: 120px; border-radius: 8px;" 
        alt="科技日报公众号">
 </p>
@@ -182,7 +182,7 @@
 </p>
 
 <p style="text-align: center; margin-top: 20px;">
-  <img src="https://mp.weixin.qq.com/cgi-bin/qrcode?action=download_searchlogo&token=640524074&lang=zh_CN" 
+  <img src="images/qrcode.png" 
        style="width: 120px; height: 120px; border-radius: 8px;" 
        alt="科技日报公众号">
 </p>
