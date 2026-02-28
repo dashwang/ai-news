@@ -32,16 +32,21 @@ SOURCES = {
         "top_n": 5,
         "icon": "https://www.producthunt.com/favicon.ico",
     },
-    # Substack
+    # Substack - AI newsletters (multiple popular AI writers)
     "LexFridman": {
         "url": "https://lexfridman.com/feed/",
-        "top_n": 5,
+        "top_n": 3,
         "icon": "https://lexfridman.com/favicon.ico",
     },
     "LennysNewsletter": {
         "url": "https://www.lennysnewsletter.com/feed",
-        "top_n": 5,
+        "top_n": 3,
         "icon": "https://www.lennysnewsletter.com/favicon.ico",
+    },
+    "BenBitesAI": {
+        "url": "https://www.bensbites.ai/feed",
+        "top_n": 4,
+        "icon": "https://www.bensbites.ai/favicon.ico",
     },
 }
 
