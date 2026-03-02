@@ -7,6 +7,12 @@ triggers:
   - 命令: 发布AI新闻
   - 命令: AI News
 
+# ⚠️ 重要规则
+
+1. **不要自作主张push到远程仓库**
+2. **每次push之前必须先问用户**，获得同意后再执行
+3. **更新skill后**要告知用户有哪些变更，让用户决定是否push
+
 # Checkpoint 记录
 
 ## ✅ 2026.02.28 成功发布
@@ -92,7 +98,7 @@ triggers:
 curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 ```
 
-返回格式（4个站点）：
+返回格式（多站点）：
 ```json
 {
   "date": "2026-02-28",
@@ -100,7 +106,10 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
     "HackerNews": [],
     "ProductHunt": [],
     "TechCrunch": [],
-    "SubStack": []
+    "SubStack": [],
+    "TrustMrr": [],      // 新增
+    "Twitter": [],       // 新增：AI KOLs推文
+    "OtherRSS": []       // 新增：其他AI新闻源
   },
   "status": "ok"
 }
@@ -110,11 +119,29 @@ curl "https://ai-news-production-2735.up.railway.app/api/fetch"
 
 **必须执行！**
 1. 读取历史发布记录：`published_articles.json`
-2. 对每条新闻进行比对：
+2. 对每条新闻进行比对（所有来源）：
+   - **RSS源**：HackerNews, ProductHunt, TechCrunch, SubStack, TrustMrr等
+   - **Twitter源**：50个AI KOL账号推文
    - 标题相似度 > 80% → 跳过
    - URL相同 → 跳过
 3. 只保留**未发布过**的新闻
 4. 更新历史记录
+
+**新增来源：**
+- **TrustMrr**: https://trustmrr.com/ - AI深度评论
+- **Twitter KOLs**: 50个AI影响者（karpathy, sama, ylecun等）
+- **其他RSS源**: AIWeekly, Hyperparticle等
+
+**去重规则：**
+- Twitter推文用 `tweet_id` 或推文URL去重
+- TrustMrr文章用文章URL去重
+- 与已有历史记录比对，避免重复发布
+
+**如果去重后新闻不足10条：**
+- **从SubStack源中补充**：即使已发布过的SubStack文章，如果标题/内容有新的角度，可以重新加工
+- **从Twitter补充**：选择热度高的AI KOL推文
+- **从TrustMrr补充**：选择最新发布的深度文章
+- 目标是确保最终有**至少10条**可发布内容
 
 **历史记录格式：**
 ```json

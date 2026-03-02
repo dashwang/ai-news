@@ -15,14 +15,11 @@ from datetime import datetime
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "data/news.db")
 
-# Twitter accounts to monitor for AI news
+# Twitter AI KOLs (50个头部AI影响者)
 TWITTER_ACCOUNTS = [
+    # OpenAI & AI Labs
     "sama",           # Sam Altman
     "elonmusk",       # Elon Musk
-    "AndrewYNg",      # Andrew Ng
-    "ylecun",         # Yann LeCun
-    "JeffDean",       # Jeff Dean
-    "GaryMarcus",     # Gary Marcus
     "AnthropicAI",    # Anthropic
     "GoogleAI",       # Google AI
     "MetaAI",         # Meta AI
@@ -31,6 +28,66 @@ TWITTER_ACCOUNTS = [
     "nvidia",         # NVIDIA
     "SatyaNadella",   # Satya Nadella
     "sundarpichai",   # Sundar Pichai
+    
+    # AI Researchers & Pioneers
+    "AndrewYNg",      # Andrew Ng
+    "ylecun",         # Yann LeCun
+    "JeffDean",       # Jeff Dean
+    "GaryMarcus",     # Gary Marcus
+    "hwchase17",     # Chase Lean (AI newsletter)
+    "goodfellow_ian", # Ian Goodfellow
+    " Sebastian",     # Sebastian Ruder
+    "johnjcook",     # John Cook
+    "DMArchive",      # DeepMind Archive
+    
+    # AI Influencers & Educators
+    "karpathy",       # Andrej Karpathy
+    "ylecun",         # Yann LeCun
+    "sarah_ocker",   # Sarah O'Connor
+    "wired",         # Wired
+    "MIT_CSAIL",     # MIT CSAIL
+    "ericschmidt",   # Eric Schmidt
+    "nickfloats",    # Nick Float
+    "synthforge",    # AI researcher
+    "max_tag",       # Max Tag
+    
+    # AI News & Commentary
+    "business",      # Tech Business
+    "techreview",    # Tech Review
+    "erictopol",     # Eric Topol (AI in medicine)
+    "AndrewYNg",     # DeepLearning.AI
+    "fchollet",     # François Chollet
+    "hardmaru",     # David Ha
+    "chrmor",       # Chris Manning
+    "joe一次",       # AI researcher
+    
+    # AI Builders & Founders
+    "jwz",           # Jamie Zawinski
+    "chr1sa",       # Chris Anderson (YC)
+    "paulg",        # Paul Graham
+    "austins",      # Austin Startups
+    "pmddom",       # AI founder
+    "sarah_ocker",  # AI journalist
+    "emilychangerc", # Emily Chang
+    "david__black", # David Black
+    "mmitchell_ai",  # Margaret Mitchell
+    "AIAtMeta",     # Meta AI
+    
+    # More AI Researchers
+    "rwightman",    # Ross Wightman
+    "YITechM",      # Tech
+    "jasonwei",     # Jason Wei (AI researcher)
+    "GuyP",
+    "Mikhail_S",    # Mikhail
+    "Artifexx",     # AI art
+    "hwchase17",    # Chase
+    
+    # AI Aggregators
+    "AI_Indices",   # AI Indices
+    "The_AI_Artist", # AI Art
+    "AI_News",      # AI News
+    "AltCapital",    # AltCapital
+    "粘",
 ]
 
 SOURCES = {
@@ -103,8 +160,90 @@ SOURCES = {
     },
     "SemiAnalysis": {
         "url": "https://www.semianalysis.com/feed",
-        "top_n": 2,
+        "top_n": 3,
         "icon": "https://www.semianalysis.com/favicon.ico",
+    },
+    # 更多AI新闻源
+    "MITTechReview": {
+        "url": "https://www.technologyreview/feed",
+        "top_n": 3,
+        "icon": "https://www.technologyreview.com/favicon.ico",
+    },
+    "Wired": {
+        "url": "https://www.wired.com/feed/category/artificial-intelligence/latest",
+        "top_n": 3,
+        "icon": "https://www.wired.com/favicon.ico",
+    },
+    "VentureBeat": {
+        "url": "https://venturebeat.com/ai/feed/",
+        "top_n": 3,
+        "icon": "https://venturebeat.com/favicon.ico",
+    },
+    "TechMonitor": {
+        "url": "https://techmonitor.ai/feed",
+        "top_n": 3,
+        "icon": "https://techmonitor.ai/favicon.ico",
+    },
+    "UniteAI": {
+        "url": "https://www.unite.ai/rss",
+        "top_n": 3,
+        "icon": "https://www.unite.ai/favicon.ico",
+    },
+    "MarkTechPost": {
+        "url": "https://www.marktechpost.com/feed/",
+        "top_n": 3,
+        "icon": "https://www.marktechpost.com/favicon.ico",
+    },
+    "AnalyticsVidhya": {
+        "url": "https://www.analyticsvidhya.com/feed/",
+        "top_n": 3,
+        "icon": "https://www.analyticsvidhya.com/favicon.ico",
+    },
+    "OpenAIBlog": {
+        "url": "https://openai.com/blog/rss.xml",
+        "top_n": 2,
+        "icon": "https://openai.com/favicon.ico",
+    },
+    "AnthropicBlog": {
+        "url": "https://www.anthropic.com/rss.xml",
+        "top_n": 2,
+        "icon": "https://www.anthropic.com/favicon.ico",
+    },
+    "GoogleAI": {
+        "url": "https://blog.google/technology/ai/rss",
+        "top_n": 2,
+        "icon": "https://blog.google/favicon.ico",
+    },
+    "MetaAI": {
+        "url": "https://ai.meta.com/feed/",
+        "top_n": 2,
+        "icon": "https://ai.meta.com/favicon.ico",
+    },
+    "MicrosoftAI": {
+        "url": "https://www.microsoft.com/en-us/research/feed/",
+        "top_n": 2,
+        "icon": "https://www.microsoft.com/favicon.ico",
+    },
+    "NVIDIA": {
+        "url": "https://blogs.nvidia.com/feed/",
+        "top_n": 2,
+        "icon": "https://blogs.nvidia.com/favicon.ico",
+    },
+    # 新增AI新闻源
+    "TrustMrr": {
+        "url": "https://trustmrr.com/feed/",
+        "top_n": 5,
+        "icon": "https://trustmrr.com/favicon.ico",
+    },
+    "AIWeekly": {
+        "url": "https://aiweekly.co/feed",
+        "top_n": 3,
+        "icon": "https://aiweekly.co/favicon.ico",
+    },
+    "Hyperparticle": {
+        "url": "https://hyperparticle.com/feed",
+        "top_n": 3,
+        "icon": "https://hyperparticle.com/favicon.ico",
     },
 }
 
