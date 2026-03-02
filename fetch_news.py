@@ -15,6 +15,24 @@ from datetime import datetime
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "data/news.db")
 
+# Twitter accounts to monitor for AI news
+TWITTER_ACCOUNTS = [
+    "sama",           # Sam Altman
+    "elonmusk",       # Elon Musk
+    "AndrewYNg",      # Andrew Ng
+    "ylecun",         # Yann LeCun
+    "JeffDean",       # Jeff Dean
+    "GaryMarcus",     # Gary Marcus
+    "AnthropicAI",    # Anthropic
+    "GoogleAI",       # Google AI
+    "MetaAI",         # Meta AI
+    "xAI",            # xAI
+    "MikeKrieger",    # Mike Krieger
+    "nvidia",         # NVIDIA
+    "SatyaNadella",   # Satya Nadella
+    "sundarpichai",   # Sundar Pichai
+]
+
 SOURCES = {
     "TechCrunch": {
         "url": "https://techcrunch.com/feed/",
@@ -292,9 +310,30 @@ def main(date: str = None):
 
     init_db()
 
-    print("\nFetching news...")
+    print("\nFetching news from RSS feeds...")
     news = fetch_all_news()
-    print(f"Fetched {len(news)} items")
+    print(f"Fetched {len(news)} items from RSS")
+
+    # Fetch Twitter/AI news if enabled
+    fetch_twitter = os.environ.get("FETCH_TWITTER", "false").lower() == "true"
+    if fetch_twitter:
+        print("\nFetching Twitter AI news...")
+        try:
+            from twitter_scraper import fetch_twitter_ai_news
+            import asyncio
+            tweets = asyncio.run(fetch_twitter_ai_news())
+            print(f"Fetched {len(tweets.get('accounts', []))} tweets from accounts")
+            print(f"Fetched {len(tweets.get('search', []))} tweets from search")
+            
+            # Save tweets to separate file
+            tweets_file = f"twitter_ai_{date or datetime.now().strftime('%Y%m%d')}.json"
+            with open(tweets_file, 'w', encoding='utf-8') as f:
+                json.dump(tweets, f, ensure_ascii=False, indent=2)
+            print(f"Saved tweets to {tweets_file}")
+        except Exception as e:
+            print(f"Error fetching Twitter: {e}")
+    else:
+        print("\nTwitter fetching disabled (set FETCH_TWITTER=true to enable)")
 
     if date is None:
         date = datetime.now().strftime("%Y-%m-%d")
