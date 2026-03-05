@@ -1,14 +1,184 @@
 {
   "published": [
-    {"title": "Motorola announces a partnership with GrapheneOS Foundation", "url": "https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "/e/OS is a complete deGoogled mobile ecosystem", "url": "https://e.foundation/e-os/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Making Video Games in 2025 (without an engine)", "url": "https://www.noelberry.ca/posts/making_games_in_2025/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Omni - Open-source workplace search and chat", "url": "https://github.com/getomnico/omni", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Mosaic", "url": "https://www.producthunt.com/products/mosaic-so", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "Kimi Claw", "url": "https://www.producthunt.com/products/kimi-ai-assistant", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "Aura", "url": "https://www.producthunt.com/products/aura-28", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "The Sequence Radar #816", "url": "https://thesequence.substack.com/p/the-sequence-radar-816-last-week", "date": "2026-03-02", "source": "SubStack"},
-    {"title": "Last Week in AI #336", "url": "https://lastweekin.ai/p/last-week-in-ai-336-sonnet-46-gemini", "date": "2026-03-02", "source": "SubStack"},
-    {"title": "OpenAI $1100B raise", "url": "https://www.latent.space/p/ainews-openai-closes-110b-raise-from", "date": "2026-03-02", "source": "SubStack"}
+    {
+      "title": "Motorola announces a partnership with GrapheneOS Foundation",
+      "url": "https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/",
+      "date": "2026-03-02",
+      "source": "HackerNews"
+    },
+    {
+      "title": "/e/OS is a complete deGoogled mobile ecosystem",
+      "url": "https://e.foundation/e-os/",
+      "date": "2026-03-02",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Making Video Games in 2025 (without an engine)",
+      "url": "https://www.noelberry.ca/posts/making_games_in_2025/",
+      "date": "2026-03-02",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Omni - Open-source workplace search and chat",
+      "url": "https://github.com/getomnico/omni",
+      "date": "2026-03-02",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Mosaic",
+      "url": "https://www.producthunt.com/products/mosaic-so",
+      "date": "2026-03-02",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Kimi Claw",
+      "url": "https://www.producthunt.com/products/kimi-ai-assistant",
+      "date": "2026-03-02",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Aura",
+      "url": "https://www.producthunt.com/products/aura-28",
+      "date": "2026-03-02",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "The Sequence Radar #816",
+      "url": "https://thesequence.substack.com/p/the-sequence-radar-816-last-week",
+      "date": "2026-03-02",
+      "source": "SubStack"
+    },
+    {
+      "title": "Last Week in AI #336",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-336-sonnet-46-gemini",
+      "date": "2026-03-02",
+      "source": "SubStack"
+    },
+    {
+      "title": "OpenAI $1100B raise",
+      "url": "https://www.latent.space/p/ainews-openai-closes-110b-raise-from",
+      "date": "2026-03-02",
+      "source": "SubStack"
+    },
+    {
+      "title": "Another Giant Leap: The Rubin CPX Specialized Accelerator & Rack",
+      "url": "https://semianalysis.com/2025/09/10/another-giant-leap-the-rubin-cpx-specialized-accelerator-rack/",
+      "date": "2026-03-05",
+      "source": "SemiAnalysis"
+    },
+    {
+      "title": "xAI\u2019s Colossus 2 \u2013 First Gigawatt Datacenter In The World, Unique RL Methodology, Capital Raise",
+      "url": "https://semianalysis.com/2025/09/16/xais-colossus-2-first-gigawatt-datacenter/",
+      "date": "2026-03-05",
+      "source": "SemiAnalysis"
+    },
+    {
+      "title": "Management as AI superpower",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-05",
+      "source": "OneUsefulThing"
+    },
+    {
+      "title": "A Guide to Which AI to Use in the Agentic Era",
+      "url": "https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the",
+      "date": "2026-03-05",
+      "source": "OneUsefulThing"
+    },
+    {
+      "title": "Superhuman to Acquire Rows to Strengthen Its All-in-One AI Workspace",
+      "url": "https://blog.superhuman.com/superhuman-to-acquire-rows/",
+      "date": "2026-03-05",
+      "source": "Superhuman"
+    },
+    {
+      "title": "Partner Agents Bring Specialized AI Into Your Superhuman Workflow",
+      "url": "https://blog.superhuman.com/superhuman-partner-agents/",
+      "date": "2026-03-05",
+      "source": "Superhuman"
+    },
+    {
+      "title": "LWiAI Podcast #234 - Opus 4.6, GPT-5.3-Codex, Seedance 2.0, GLM-5",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-234-opus-46-gpt-53",
+      "date": "2026-03-05",
+      "source": "LastWeekinAI"
+    },
+    {
+      "title": "Last Week in AI #336 - Sonnet 4.6, Gemini 3.1 Pro, Anthropic vs Pentagon",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-336-sonnet-46-gemini",
+      "date": "2026-03-05",
+      "source": "LastWeekinAI"
+    },
+    {
+      "title": "\ud83d\udd2e Exponential View #563: The Citrini craze; human cognition; the most aggressive AI regulation; OpenAI spikes; COBOL returns; bye\u2011bye tax filing++",
+      "url": "https://www.exponentialview.co/p/ev-563",
+      "date": "2026-03-05",
+      "source": "ExponentialView"
+    },
+    {
+      "title": "\ud83d\udcc8 Data to start your week",
+      "url": "https://www.exponentialview.co/p/data-to-start-your-week-26-03-02",
+      "date": "2026-03-05",
+      "source": "ExponentialView"
+    },
+    {
+      "title": "[AINews] Truth in the time of Artifice",
+      "url": "https://www.latent.space/p/ainews-truth-in-the-time-of-artifice",
+      "date": "2026-03-05",
+      "source": "LatentSpace"
+    },
+    {
+      "title": "[AINews] Anthropic @ $19B ARR, Qwen team leaves, Gemini and GPT bump up fast models",
+      "url": "https://www.latent.space/p/ainews-anthropic-19b-arr-qwen-team",
+      "date": "2026-03-05",
+      "source": "LatentSpace"
+    },
+    {
+      "title": "The Sequence Knowledge #817: DeepMind Genie and Interactive World Models",
+      "url": "https://thesequence.substack.com/p/the-sequence-knowledge-817-deepmind",
+      "date": "2026-03-05",
+      "source": "TheSequence"
+    },
+    {
+      "title": "The Sequence AI of the Week #818: You Cannot Miss Qwen 3.5",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-818-you",
+      "date": "2026-03-05",
+      "source": "TheSequence"
+    },
+    {
+      "title": "NOVA",
+      "url": "https://www.producthunt.com/products/nova-18",
+      "date": "2026-03-05",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "moltdj",
+      "url": "https://www.producthunt.com/products/moltdj",
+      "date": "2026-03-05",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Picsart Persona & Storyline",
+      "url": "https://www.producthunt.com/products/picsart",
+      "date": "2026-03-05",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Fix in Cursor",
+      "url": "https://www.producthunt.com/products/fix-in-cursor",
+      "date": "2026-03-05",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Gemini 3.1 Flash-Lite",
+      "url": "https://www.producthunt.com/products/gemini-6",
+      "date": "2026-03-05",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Does that use a lot of energy?",
+      "url": "https://hannahritchie.github.io/energy-use-comparisons/",
+      "date": "2026-03-05",
+      "source": "HackerNews"
+    }
   ]
 }
