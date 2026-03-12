@@ -116,3 +116,25 @@ BOOTSTRAP.md 存在但没有按照指示执行
 - Related: fetch-ai-news/SKILL.md
 
 ---
+
+## [LRN-20260312-006] correction
+
+**Logged**: 2026-03-12T13:32:00Z
+**Priority**: high
+**Status**: resolved
+**Area**: content
+
+### Summary
+公众号名称错误
+
+### Details
+生成的文章底部写的是"AI大航行"，但正确名称应该是"grepAI"。
+
+### Suggested Action
+每次生成文章前检查skill中的公众号名称配置
+
+### Metadata
+- Source: user_feedback
+- Related: fetch-ai-news/SKILL.md
+
+---

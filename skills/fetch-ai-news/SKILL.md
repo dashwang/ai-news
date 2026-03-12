@@ -41,7 +41,8 @@ triggers:
 6. 写作风格：科技、有温度、懂人性、不浮夸
 7. 🔥 只在Hacker News标题用一次
 8. 橙色头部标题无emoji
-9. 二维码URL: https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png
+9. **公众号名称：必须是「grepAI」**
+10. **二维码URL: https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png**
 10. **去重：必须比对历史发布，避免重复**
 11. **动态标题：每次根据当日热点生成**
 12. **热标题内容置顶：标题对应的内容放全文第一篇 + 各板块开头**
@@ -77,6 +78,7 @@ triggers:
 - [ ] 二维码URL正确（https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png）
 - [ ] 二维码尺寸 180px × 180px
 - [ ] 有引导语（"扫码关注"）
+- [ ] **公众号名称为「grepAI」**
 - [ ] 有版权信息
 ---
 
