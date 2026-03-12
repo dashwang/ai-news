@@ -94,3 +94,25 @@ BOOTSTRAP.md 存在但没有按照指示执行
 - Source: conversation
 
 ---
+
+## [LRN-20260312-005] auto_evolution
+
+**Logged**: 2026-03-12T12:20:00Z
+**Priority**: medium
+**Status**: resolved
+**Area**: workflow
+
+### Summary
+实现自动进化：热内容置顶功能
+
+### Details
+按照用户要求更新了skill，增加了"热标题内容置顶"功能：
+1. 动态标题对应的内容放在全文第一篇（开场白之后）
+2. 新增"热点聚焦"板块
+3. 人类学习方法：最重要的内容最先看到
+
+### Metadata
+- Source: user_instruction
+- Related: fetch-ai-news/SKILL.md
+
+---

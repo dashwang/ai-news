@@ -32,3 +32,12 @@
 ### 5. 读取文件路径错误 (2026-03-12)
 **问题**: 尝试读取transcript时路径错误
 **教训**: OpenClaw的transcript在 /root/.openclaw/agents/main/sessions/ 而不是workspace目录
+
+### 6. 热内容置顶功能 (2026-03-12)
+- 动态标题对应内容放全文第一篇
+- 新增"热点聚焦"板块
+- 模仿人类阅读习惯：最重要内容最先看到
+
+### 自动进化 (2026-03-12)
+- 每次被纠正后自动记录到 .learnings/
+- 定期推送到 GitHub feature/learnings 分支
