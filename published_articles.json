@@ -1,33 +1,677 @@
 {
   "published": [
-    {"title": "Motorola announces a partnership with GrapheneOS Foundation", "url": "https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "/e/OS is a complete deGoogled mobile ecosystem", "url": "https://e.foundation/e-os/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Making Video Games in 2025 (without an engine)", "url": "https://www.noelberry.ca/posts/making_games_in_2025/", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Omni - Open-source workplace search and chat", "url": "https://github.com/getomnico/omni", "date": "2026-03-02", "source": "HackerNews"},
-    {"title": "Mosaic", "url": "https://www.producthunt.com/products/mosaic-so", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "Kimi Claw", "url": "https://www.producthunt.com/products/kimi-ai-assistant", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "Aura", "url": "https://www.producthunt.com/products/aura-28", "date": "2026-03-02", "source": "ProductHunt"},
-    {"title": "The Sequence Radar #816", "url": "https://thesequence.substack.com/p/the-sequence-radar-816-last-week", "date": "2026-03-02", "source": "SubStack"},
-    {"title": "Last Week in AI #336", "url": "https://lastweekinai.p/last-week-in-ai-336-sonnet-46-gemina", "date": "2026-03-02", "source": "SubStack"},
-    {"title": "OpenAI $1100B raise", "url": "https://www.latent.space/p/ainews-openai-closes-110b-raise-from", "date": "2026-03-02", "source": "SubStack"},
-    {"title": "How to talk to anyone and why you should", "url": "https://www.theguardian.com/lifeandstyle/2026/feb/24/stranger-secret-how-to-talk-to-anyone-why-you-should", "date": "2026-03-02", "source": "HackerNews", "edition": "evening"},
-    {"title": "Crawler.sh", "url": "https://www.producthunt.com/products/crawler-sh", "date": "2026-03-02", "source": "ProductHunt", "edition": "evening"},
-    {"title": "Didit v3", "url": "https://www.producthunt.com/products/didit-3", "date": "2026-03-02", "source": "ProductHunt", "edition": "evening"},
-    {"title": "NothingHere", "url": "https://www.producthunt.com/products/nothinghere-one-key-press-clean-screen", "date": "2026-03-02", "source": "ProductHunt", "edition": "evening"},
-    {"title": "Expressive Mode for ElevenAgents", "url": "https://www.producthunt.com/products/expressive-mode-for-elevenagents-2", "date": "2026-03-02", "source": "ProductHunt", "edition": "evening"},
-    {"title": "Clean Clode", "url": "https://www.producthunt.com/products/clean-clode", "date": "2026-03-02", "source": "ProductHunt", "edition": "evening"},
-    {"title": "Polymarket Iran bets", "url": "https://techcrunch.com/2026/03/01/polymarket-saw-529m-traded-on-bets-tied-to-bombing-of-iran/", "date": "2026-03-02", "source": "TechCrunch", "edition": "evening"},
-    {"title": "Discord alternatives", "url": "https://techcrunch.com/2026/03/01/best-discord-alternatives-age-verification-identity-privacy/", "date": "2026-03-02", "source": "TechCrunch", "edition": "evening"},
-    {"title": "Google RCS spam India", "url": "https://techcrunch.com/2026/03/01/google-looks-to-tackle-longstanding-rcs-spam-in-india-but-not-alone", "date": "2026-03-02", "source": "TechCrunch", "edition": "evening"},
-    {"title": "VC AI SaaS survey", "url": "https://techcrunch.com/2026/03/01/investors-spill-what-they-arent-looking-for-anymore-in-ai-saas-companies/", "date": "2026-03-02", "source": "TechCrunch", "edition": "evening"},
-    {"title": "Voca AI", "url": "https://www.producthunt.com/products/voca-ai", "date": "2026-03-02", "source": "ProductHunt", "edition": "night"},
-    {"title": "GojiberryAI", "url": "https://www.producthunt.com/products/gojiberry", "date": "2026-03-02", "source": "ProductHunt", "edition": "night"},
-    {"title": "ChatWithAds", "url": "https://www.producthunt.com/products/chatwithads", "date": "2026-03-02", "source": "ProductHunt", "edition": "v2"},
-    {"title": "AI financing deep dive (reworked)", "url": "https://www.latent.space/p/ainews-openai-closes-110b-raise-from", "date": "2026-03-02", "source": "SubStack", "edition": "v2"},
-    {"title": "RLHF vs RLVR (reworked)", "url": "https://thesequence.substack.com/p/the-sequence-opinion-815-the-end", "date": "2026-03-02", "source": "SubStack", "edition": "v2"},
-    {"title": "xAI Colossus 2 (reworked)", "url": "https://semianalysis.com/2025/09/16/xais-colossus-2-first-gigawatt-datacenter/", "date": "2026-03-02", "source": "SubStack", "edition": "v2"},
-    {"title": "Management as AI superpower (reworked)", "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower", "date": "2026-03-02", "source": "SubStack", "edition": "v2"},
-    {"title": "Which AI to use (reworked)", "url": "https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the", "date": "2026-03-02", "source": "SubStack", "edition": "v2"},
-    {"title": "Superhuman Rows (reworked)", "url": "https://blog.superhuman.com/superhuman-to-acquire-rows/", "date": "2026-03-02", "source": "SubStack", "edition": "v2"}
+    {
+      "title": "OpenAI Google员工联手支持Anthropic",
+      "url": "https://techcrunch.com/2026/03/09/openai-and-google-employees-rush-to-anthropics-defense-in-dod-lawsuit/",
+      "date": "2026-03-09",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "JSLinux支持x86_64",
+      "url": "https://bellard.org/jslinux/",
+      "date": "2026-03-09",
+      "source": "HackerNews",
+      "edition": "night"
+    },
+    {
+      "title": "Anthropic代码审查工具",
+      "url": "https://techcrunch.com/2026/03/09/anthropic-launches-code-review-tool-to-check-flood-of-ai-generated-code/",
+      "date": "2026-03-09",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "电动空中出租车26州",
+      "url": "https://techcrunch.com/2026/03/09/electric-air-taxis-are-about-to-take-flight-in-26-states/",
+      "date": "2026-03-09",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "Bluesky CEO辞职",
+      "url": "https://techcrunch.com/2026/03/09/bluesky-ceo-jay-graber-steps-down/",
+      "date": "2026-03-09",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "SCRAPR网站转API",
+      "url": "https://www.producthunt.com/products/scrapr-universal-web-scraping-api",
+      "date": "2026-03-09",
+      "source": "ProductHunt",
+      "edition": "night"
+    },
+    {
+      "title": "Wideframe视频AI",
+      "url": "https://www.producthunt.com/products/wideframe",
+      "date": "2026-03-09",
+      "source": "ProductHunt",
+      "edition": "night"
+    },
+    {
+      "title": "The Sequence GPT-5.4",
+      "url": "https://thesequence.substack.com/p/the-sequence-radar-820-gpt-54-cursor",
+      "date": "2026-03-09",
+      "source": "SubStack",
+      "edition": "night"
+    },
+    {
+      "title": "GPT-5.4发布：OpenAI杀回来了",
+      "url": "https://www.latent.space/p/ainews-gpt-54-sota-knowledge-work",
+      "date": "2026-03-09",
+      "source": "SubStack"
+    },
+    {
+      "title": "AI工程师将是最后一个职业？",
+      "url": "https://www.latent.space/p/ainews-ai-engineer-will-be-the-last",
+      "date": "2026-03-09",
+      "source": "SubStack"
+    },
+    {
+      "title": "Agent Safehouse：Mac用户的AI安全盾牌",
+      "url": "https://agent-safehouse.dev/",
+      "date": "2026-03-09",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Pentagon vs Anthropic：国防承包商开始跑路",
+      "url": "https://techcrunch.com/2026/03/08/will-the-pentagons-anthropic-controversy-scare-startups-away-from-defense-work/",
+      "date": "2026-03-09",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Superhuman收购Rows",
+      "url": "https://blog.superhuman.com/superhuman-to-acquire-rows/",
+      "date": "2026-03-09",
+      "source": "SubStack"
+    },
+    {
+      "title": "法律AI公司Legora估值$55亿",
+      "url": "https://techcrunch.com/2026/03/10/legora-reaches-5-55-billion-valuation-as-ai-legaltech-boom-endures/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "Meta收购Moltbook：AIagent社交网络",
+      "url": "https://techcrunch.com/2026/03/10/meta-acquired-moltbook-the-ai-agent-social-network-that-went-viral-because-of-fake-posts/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "YouTube深伪检测扩大至政客记者",
+      "url": "https://techcrunch.com/2026/03/10/youtube-ai-deepfake-detection-politicians-government-officials-journalists/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "Adobe推出Photoshop AI助手",
+      "url": "https://techcrunch.com/2026/03/10/adobe-is-debuting-an-ai-assistant-for-photoshop/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "Zoom发布AI办公套件+AI替身",
+      "url": "https://techcrunch.com/2026/03/10/zoom-launches-an-ai-powered-office-suite-says-ai-avatars-for-meetings-are-coming-soon/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "night"
+    },
+    {
+      "title": "Superhuman推Agent写作功能",
+      "url": "https://blog.superhuman.com/authorship-launches-in-docs-with-agents/",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "night"
+    },
+    {
+      "title": "AI界迎最强时刻",
+      "url": "https://lastweekinai.p/last-week-in-ai-337-anthropic-risk",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "night"
+    },
+    {
+      "title": "Intel演示加密计算芯片",
+      "url": "https://spectrum.ieee.org/fhe-intel",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "night"
+    },
+    {
+      "title": "他把整个人生存入数据库",
+      "url": "https://howisfelix.today/",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "night"
+    },
+    {
+      "title": "NFCPlayer：敲敲NFC播放音乐",
+      "url": "https://www.producthunt.com/products/nfcplayer-play-apple-music-with-nfc",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "night"
+    },
+    {
+      "title": "Agent Skills：AI工具技能商店",
+      "url": "https://www.producthunt.com/products/agent-skills-3",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "night"
+    },
+    {
+      "title": "Tony Hoare去世",
+      "url": "https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "Amazon要求工程师签字批准AI代码",
+      "url": "https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "AI Agent后台运行",
+      "url": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "RISC-V很慢",
+      "url": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "Google Tesla电网合作",
+      "url": "https://techcrunch.com/2026/03/10/google-and-tesla-think-were-managing-the-electrical-grid-all-wrong/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "Amazon医疗AI助手",
+      "url": "https://techcrunch.com/2026/03/10/amazon-launches-its-healthcare-ai-assistant-on-its-website-and-app/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "DOGE员工偷社保数据",
+      "url": "https://techcrunch.com/2026/03/10/doge-employee-stole-social-security-data-and-put-it-on-a-thumb-drive-report-says/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "YouTube广告收入超迪士尼",
+      "url": "https://techcrunch.com/2026/03/10/youtube-surpasses-disney-paramount-wbd-in-2025-ad-revenue/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "GapHunt产品差距分析",
+      "url": "https://www.producthunt.com/products/gaphunt",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Spine Swarm管理AI Agent团队",
+      "url": "https://www.producthunt.com/products/spine-2",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Tony Hoare去世",
+      "url": "https://blog.computationalcomplexity.org/2026/03/tony-hoare-1934-2026.html",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "Amazon要求工程师签字批准AI代码",
+      "url": "https://arstechnica.com/ai/2026/03/after-outages-amazon-to-make-senior-engineers-sign-off-on-ai-assisted-changes/",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "AI Agent后台运行",
+      "url": "https://www.claudecodecamp.com/p/i-m-building-agents-that-run-while-i-sleep",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "RISC-V生态很慢",
+      "url": "https://marcin.juszkiewicz.com.pl/2026/03/10/risc-v-is-sloooow/",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "U+237C是Azimuth符号",
+      "url": "https://ionathan.ch/2026/02/16/angzarr.html",
+      "date": "2026-03-10",
+      "source": "HackerNews",
+      "edition": "evening"
+    },
+    {
+      "title": "Crikket开源Bug反馈工具",
+      "url": "https://www.producthunt.com/products/crikket",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Book Reading Habit读书习惯",
+      "url": "https://www.producthunt.com/products/book-reading-habit",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "On Demand Ads广告平台",
+      "url": "https://www.producthunt.com/products/beehiiv",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "GapHunt产品差距分析",
+      "url": "https://www.producthunt.com/products/gaphunt",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Claude Code代码审查",
+      "url": "https://www.producthunt.com/products/claude-code-review",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Spine Swarm管理AI Agent团队",
+      "url": "https://www.producthunt.com/products/spine-2",
+      "date": "2026-03-10",
+      "source": "ProductHunt",
+      "edition": "evening"
+    },
+    {
+      "title": "Google Tesla电网合作",
+      "url": "https://techcrunch.com/2026/03/10/google-and-tesla-think-were-managing-the-electrical-grid-all-wrong/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "Amazon医疗AI助手",
+      "url": "https://techcrunch.com/2026/03/10/amazon-launches-its-healthcare-ai-assistant-on-its-website-and-app/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "DOGE员工偷社保数据",
+      "url": "https://techcrunch.com/2026/03/10/doge-employee-stole-social-security-data-and-put-it-on-a-thumb-drive-report-says/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "Pokemon Pokopia游戏",
+      "url": "https://techcrunch.com/2026/03/10/pokemon-pokopia-review-animal-crossing-ditto-nintendo-switch/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "YouTube广告收入超迪士尼",
+      "url": "https://techcrunch.com/2026/03/10/youtube-surpasses-disney-paramount-wbd-in-2025-ad-revenue/",
+      "date": "2026-03-10",
+      "source": "TechCrunch",
+      "edition": "evening"
+    },
+    {
+      "title": "DeepMind D4RT 4D世界模型",
+      "url": "https://thesequence.substack.com/p/the-sequence-knowledge-821-4d-and",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "evening"
+    },
+    {
+      "title": "NVIDIA AI工程师访谈",
+      "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "evening"
+    },
+    {
+      "title": "AI自我进化研究",
+      "url": "https://www.latent.space/p/ainews-autoresearch-sparks-of-recursive",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "evening"
+    },
+    {
+      "title": "Superhuman Agent写作功能",
+      "url": "https://blog.superhuman.com/authorship-launches-in-docs-with-agents/",
+      "date": "2026-03-10",
+      "source": "SubStack",
+      "edition": "evening"
+    },
+    {
+      "title": "Yann LeCun AMI Labs $11B",
+      "url": "https://www.latent.space/p/ainews-yann-lecuns-ami-labs-launches",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Nuro东京自动驾驶测试",
+      "url": "https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Ford AI助手监控安全带",
+      "url": "https://techcrunch.com/2026/03/11/fords-new-ai-assistant-will-help-fleet-owners-know-if-seatbelts-are-being-used/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Cardboard视频编辑AI",
+      "url": "https://www.producthunt.com/products/cardboard-3",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "ScreenGeany AI屏幕问答",
+      "url": "https://www.producthunt.com/products/screengeany-ai",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "WebAssembly一等公民",
+      "url": "https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "DeepMind D4RT 4D世界模型",
+      "url": "https://thesequence.substack.com/p/the-sequence-knowledge-821-4d-and",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "管理能力AI时代超能力",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Temporal JS时间API",
+      "url": "https://bloomberg.github.io/js-blog/post/temporal/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "SWE-bench PR无法合并",
+      "url": "https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Temporal JavaScript时间API",
+      "url": "https://bloomberg.github.io/js-blog/post/temporal/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "SWE-bench PR无法合并",
+      "url": "https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "HN禁止AI评论",
+      "url": "https://news.ycombinator.com/newsguidelines.html#generated",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "WebAssembly一等公民",
+      "url": "https://hacks.mozilla.org/2026/02/making-webassembly-a-first-class-language-on-the-web/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "CNN Explainer CNN教程",
+      "url": "https://poloclub.github.io/cnn-explainer/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Fort长寿健身追踪",
+      "url": "https://www.producthunt.com/products/fort-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "ScreenGeany AI屏幕问答",
+      "url": "https://www.producthunt.com/products/screengeany-ai",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "IonRouter AI推理加速",
+      "url": "https://www.producthunt.com/products/ionrouter-by-cumulus-labs",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Teract AI声誉教练",
+      "url": "https://www.producthunt.com/products/teract",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Typinator 10文本扩展",
+      "url": "https://www.producthunt.com/products/typinator-10",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "AI演员Tilly Norwood",
+      "url": "https://techcrunch.com/2026/03/11/ai-actor-tilly-norwood-put-out-the-worst-song-ive-ever-heard/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Nuro东京自动驾驶测试",
+      "url": "https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Google Play游戏升级",
+      "url": "https://techcrunch.com/2026/03/11/google-play-is-adding-new-paid-and-pc-games-game-trials-community-posts-and-more/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Ford AI监控安全带",
+      "url": "https://techcrunch.com/2026/03/11/fords-new-ai-assistant-will-help-fleet-owners-know-if-seatbelts-are-being-used/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "inDrive收购Krave Mart",
+      "url": "https://techcrunch.com/2026/03/11/ride-hailing-indrive-acquires-pakistans-kravemart-to-bolster-grocery-delivery/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "GPT-5.4 OS系统论",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "DeepMind D4RT 4D世界模型",
+      "url": "https://thesequence.substack.com/p/the-sequence-knowledge-821-4d-and",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Yann LeCun AMI Labs $11B",
+      "url": "https://www.latent.space/p/ainews-yann-lecuns-ami-labs-launches",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "NVIDIA行星级推理",
+      "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Anthropic vs 五角大楼",
+      "url": "https://lastweekinai.p/last-week-in-ai-337-anthropic-risk",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "管理能力AI超能力",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "3D-Knitting Ultimate Guide",
+      "url": "https://www.oliver-charles.com/pages/3d-knitting",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Avoiding Trigonometry",
+      "url": "https://iquilezles.org/articles/noacos/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "s@ decentralized social",
+      "url": "http://satproto.org/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Returning to Rails 2026",
+      "url": "https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "SBCL Lisp",
+      "url": "https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Huddle01 Cloud",
+      "url": "https://www.producthunt.com/products/huddle01-cloud-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "HTML Pub",
+      "url": "https://www.producthunt.com/products/htmlpub",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Clawther",
+      "url": "https://www.producthunt.com/products/clawther",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Runner AI",
+      "url": "https://www.producthunt.com/products/runner-ai-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Prava payments",
+      "url": "https://www.producthunt.com/products/prava-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Startups family business",
+      "url": "https://techcrunch.com/2026/03/12/when-startups-become-a-family-business/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Google AI flash floods",
+      "url": "https://techcrunch.com/2026/03/12/google-is-using-old-news-reports-and-ai-to-predict-flash-floods/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Gestala brain interface $21M",
+      "url": "https://techcrunch.com/2026/03/11/bci-startup-gestala-raises-21-million-for-non-invasive-ultrasound-brain-tech/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "AI actor Tilly Norwood",
+      "url": "https://techcrunch.com/2026/03/11/ai-actor-tilly-norwood-put-out-the-worst-song-ive-ever-heard/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Nuro Tokyo",
+      "url": "https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "SaaSmagedon SaaS dead",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "GPT-5.4 OS",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Replit Agent 4",
+      "url": "https://www.latent.space/p/ainews-replit-agent-4-the-knowledge",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Management AI superpower",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    }
   ]
 }
