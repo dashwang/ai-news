@@ -46,3 +46,17 @@
 - 问题：底部写的是"AI大航海"而不是"grepAI"
 - 解决：在skill中添加"公众号名称：grepAI"检查项
 - 教训：生成前必须核对skill中的配置
+
+## TrustMRR深度文章 Skill
+- 位置: skills/trustmrr-deep-dive/
+- 功能: 抓取TrustMRR排行榜产品，写2000-3000字深度创始人故事
+- 触发词: "TrustMRR深度"、"创始人故事"、"产品背后的故事"
+- 已使用: 2026-03-12 写了Stan(年入354万美元，增长983%)的创始人Marc Lou故事
+
+## 已创建的所有Skills
+1. fetch-ai-news - AI新闻抓取发布
+2. trustmrr-deep-dive - TrustMRR深度文章
+3. notebooklm-prompts - 幻灯片提示词
+4. tiangong-notebooklm-cli - NotebookLM CLI
+5. self-improving-agent - 自我进化记录
+6. skill-vetter - 安全审查
