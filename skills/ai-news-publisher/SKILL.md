@@ -34,6 +34,7 @@ triggers:
 ### 2. 模块顺序动态调整（重要！）
 - **置顶文章对应的模块也要置顶**
 - 例如：热点是SubStack的文章 → SubStack模块放到第一个
+- **添加【置顶】标记**在模块标题后面，如：【置顶】SubStack
 - 其他模块按默认顺序：HackerNews → ProductHunt → TechCrunch
 - **示例**：Latent Space的"一切皆为CLI"是今天的热点
 
