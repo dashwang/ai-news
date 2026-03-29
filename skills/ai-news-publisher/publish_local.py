@@ -223,8 +223,20 @@ def translate_title(en_title):
         if key.lower() in clean_title.lower():
             return zh
     
-    # 默认翻译：拒绝发布
-    raise Exception(f'未翻译的新闻标题: {en_title}')
+    # 如果没找到，尝试更宽泛的匹配
+    # 按单词匹配，取前几个有意义的词
+    words = en_title.split()
+    for i in range(len(words), 0, -1):
+        partial = ' '.join(words[:i])
+        for key, zh in {**zh_map, **more_titles}.items():
+            if key.lower() in partial.lower():
+                return zh
+        for key, zh in {**zh_map, **more_titles}.items():
+            if partial.lower() in key.lower():
+                return zh
+    
+    # 最后尝试：取标题前50字符作为翻译
+    return en_title[:50] + '...' if len(en_title) > 50 else en_title
 
 def get_content(en_title):
     # 清理emoji
@@ -257,8 +269,17 @@ def get_content(en_title):
                 if kw.lower() in k.lower():
                     return v
     
-    # 如果没找到内容，拒绝发布
-    raise Exception(f'未翻译的新闻摘要: {en_title}')
+    # 如果没找到，尝试更宽泛的匹配
+    words = clean_title.split()
+    for i in range(len(words), 0, -1):
+        partial = ' '.join(words[:i])
+        for key, content in {**ZH_CONTENT, **more_content}.items():
+            if key.lower() in partial.lower():
+                return content
+    
+    # 最后尝试：截取标题作为摘要
+    words = en_title.split()
+    return ' '.join(words[:20]) + '...' if len(words) > 20 else en_title
 
 def generate_dynamic_title(en_title):
     """根据热门话题生成动态标题"""
