@@ -384,12 +384,11 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     
     html = ''
     
-    # 2. 热点聚焦：白色背景 + 橙色边框
+    # 热点聚焦：白色背景 + 橙色边框（正文开头，不重复标题）
     if hot_item:
-        hot_title = generate_dynamic_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
         html += f'''<p style="margin: 15px; padding: 20px; background: #fff; border: 2px solid #ff6600; border-radius: 8px; text-align: center;">
-  <strong style="font-size: 18px; color: #ff6600;">{hot_title}</strong>
+  <strong style="font-size: 18px; color: #ff6600;">🔥 今日热点</strong>
 </p>
 <p style="margin: 0 20px 20px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
     
@@ -489,6 +488,8 @@ def publish():
     hour = datetime.datetime.now().hour
     edition = '早报' if hour < 12 else '午报' if hour < 18 else '晚报'
     title = f'{date_str} 全球AI科技{edition}'
+    
+    print(f'[检查4] 文章标题: {title}')
     
     data = {
         'articles': [{
