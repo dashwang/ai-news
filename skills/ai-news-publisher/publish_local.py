@@ -384,13 +384,30 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     
     html = ''
     
-    # 热点聚焦：白色背景 + 橙色边框（正文开头，不重复标题）
-    if hot_item:
+    # 平台配置
+    configs = {
+        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
+        'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
+        'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
+        'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
+    }
+    
+    # 如果有置顶热点，模块标题显示【置顶】
+    if hot_item and hot_source:
+        cfg = configs.get(hot_source, {'color': '#e65100', 'bg': '#fff3e0', 'name': hot_source})
+        label = f'【置顶】{cfg["name"]}'
         hot_content = get_content(hot_item['title'])
-        html += f'''<p style="margin: 15px; padding: 20px; background: #fff; border: 2px solid #ff6600; border-radius: 8px; text-align: center;">
-  <strong style="font-size: 18px; color: #ff6600;">🔥 今日热点</strong>
+        
+        html += f'''<p style="margin: 15px 0; padding: 12px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
+  <strong style="font-size: 15px; color: {cfg['color']};">{label}</strong>
 </p>
-<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
+<p style="margin: 0 0 5px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{translate_title(hot_item['title'])}</strong></p>
+<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{hot_content}</p>
+<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+        
+        # 从列表中移除已置顶的新闻
+        if hot_source in news_data:
+            news_data[hot_source] = [n for n in news_data[hot_source] if n['title'] != hot_item['title']]
     
     # 2. 整合SubStack为一个模块
     substack_items = []
@@ -405,14 +422,6 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     if hot_source and hot_source in platforms:
         platforms.remove(hot_source)
         platforms.insert(0, hot_source)
-    
-    # 4. 平台配置
-    configs = {
-        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
-        'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
-        'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
-        'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
-    }
     
     for source in platforms:
         if source not in news_data:
@@ -476,27 +485,22 @@ def publish():
         print('没有新闻')
         return False
     
-    # 选择最热话题
+    # 选择最热话题作为文章标题
     hot_item, hot_source = select_hot_topic(news_data)
-    hot_title = generate_dynamic_title(hot_item['title']) if hot_item else ''
-    print(f'[检查4] 动态标题: {hot_title}')
+    article_title = translate_title(hot_item['title']) if hot_item else ''
+    print(f'[检查4] 文章标题（最热话题）: {article_title}')
     
     content = generate_content(news_data, hot_item, hot_source, thumb_url)
     
-    # 生成标题
-    date_str = datetime.datetime.now().strftime('%Y.%m.%d')
-    hour = datetime.datetime.now().hour
-    edition = '早报' if hour < 12 else '午报' if hour < 18 else '晚报'
-    title = f'{date_str} 全球AI科技{edition}'
-    
-    print(f'[检查4] 文章标题: {title}')
+    # 文章标题 = 最热话题的中文标题（动态生成）
+    title = article_title
     
     data = {
         'articles': [{
             'title': title,
             'author': 'grepAI',
             'content': content,
-            'digest': hot_title if hot_title else title,
+            'digest': article_title if article_title else title,
             'thumb_media_id': thumb_id,
             'content_source_url': 'https://veray.ai',
         }]
@@ -520,7 +524,7 @@ def publish():
                 titles.append(item['title'])
         save_history(titles)
         
-        return {'success': True, 'media_id': media_id, 'total': total, 'hot': hot_title}
+        return {'success': True, 'media_id': media_id, 'total': total, 'hot': article_title}
     else:
         print(f'发布失败: {result}')
         return {'success': False, 'error': result}
@@ -529,4 +533,4 @@ if __name__ == '__main__':
     result = publish()
     if result.get('success'):
         print(f'完成! {result["total"]}条新闻')
-        print(f'动态标题: {result["hot"]}')
+        print(f'最热话题: {result["hot"]}')
