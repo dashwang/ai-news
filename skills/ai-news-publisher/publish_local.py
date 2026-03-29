@@ -114,11 +114,70 @@ def save_history(titles):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def translate_title(en_title):
-    for key, zh in ZH_TITLES.items():
+    # 中文翻译表
+    zh_map = {
+        'SXSW rebounds': 'SXSW回归：顶级创业者和VC社交盛会',
+        'Elon Musk last co-founder': '马斯克最后一位联合创始人离开xAI',
+        'Overestimation of microplastics': '研究警告：实验室手套可能导致数据失准',
+        'Technology: The (nearly) perfect USB cable tester': '完美USB线缆测试器真的存在吗？',
+        'TSA lines are so out of control': '机场安检大排长龙催生"排队中介"新职业',
+        'Solving problems with the Karpathy Loop': 'Karpathy Loop：解决AI推理循环问题',
+        'LWiAI Podcast': '上周AI播客：Nemotron 3、xAI重生、Anthropic诉讼',
+        'Authorship Launches in Docs with Agents': 'Superhuman推出AI写作代理功能',
+        'Partner Agents Bring Specialized AI': 'Superhuman推出合作伙伴AI代理',
+        'A Guide to Which AI to Use in the Agentic Era': 'AI代理时代：如何选择合适的AI工具',
+        'The Shape of the Thing': 'AI产品的形态正在改变',
+        'GuideYou': 'GuideYou：AI旅行助手',
+        'Parallel Code': 'Parallel Code：并行代码生成工具',
+        'Pensieve': 'Pensieve：AI记忆管理工具',
+        'Jensen Huang': '黄仁勋对话LL COOL J：NVIDIA的AI革命',
+        'Jeff Kaplan': 'Jeff Kaplan：魔兽世界与游戏的未来',
+        'Rick Beato': 'Rick Beato：史上最伟大吉他手',
+        'Clara Vo': '从怀疑者到信徒：OpenClaw改变我的工作方式',
+        'Community Wisdom': '社区智慧：AI速度超越产品策略时该怎么办',
+        'Stripe built': 'Stripe用AI代理每周自动处理1300个PR',
+        'xAI Colossus': 'xAI Colossus 2：全球首个千兆瓦数据中心',
+        'Rubin CPX': 'NVIDIA Rubin：下一代AI加速器发布',
+        'Huawei Ascend': '华为昇腾量产：HBM成为瓶颈',
+        'JetBrains unveils': 'JetBrains推出AI编排平台',
+        'Accenture introduces Cyber.AI': 'Accenture推出网络AI平台',
+        'IBM and ElevenLabs': 'IBM与ElevenLabs扩展企业AI语音能力',
+        'Chroma Releases Context': 'Chroma推出20B参数检索模型',
+        'Google-Agent vs Googlebot': 'Google区分AI访问与搜索爬虫',
+        'nanobot Full Agent Pipeline': 'nanobot：AI代理完整pipeline指南',
+        'Excel 101': 'Excel技巧：单元格合并与组合',
+        'Building Custom Claude Skills': '为重复性AI工作流构建定制技能',
+        'Build an AI Meeting Summarizer': '用Claude Code构建会议总结助手',
+        'STADLER': 'STADLER：230年企业的知识工作革新',
+        'Inside our approach to the Model Spec': 'OpenAI模型规范的内幕',
+        'Transform your headphones': '耳机变实时翻译器',
+        'AsgardBench': 'AsgardBench：视觉交互规划基准',
+        'Bluesky leans into AI': 'Bluesky推出AI产品：用自然语言构建个性化订阅源',
+        'Mark Zuckerberg texted': '炸锅！扎克伯格主动联系马斯克',
+        'Stanford study outlines': '斯坦福研究：AI给人建议时过度"谄媚"',
+        'Miasma: A tool to trap': '突发！开源工具让AI爬虫深陷"毒坑"',
+        'Founder of GitLab': 'GitLab创始人以创业对抗癌症',
+        'Sheet Ninja': 'Sheet Ninja：让Google Sheets变身CRUD后端',
+        'SUN': 'SUN：a16z加速营AI原生应用毕业项目',
+        'The Sequence Radar': 'The Sequence：上周AI回顾压缩、语音与算力',
+        'The Sequence Opinion': 'The Sequence：NVIDIA正在构建AI操作系统',
+        'H100 prices are melting': 'GPU市场异动：H100价格逆势上涨',
+        'Everything is CLI': '一切皆为CLI的时代正在到来',
+        'Exponential View': 'Exponential View：AI如何重塑工作方式',
+        'Last Week in AI': 'Last Week in AI：上周AI重要进展回顾',
+        'Lex Fridman': 'Lex Fridman：AI领域深度对话',
+        "Lenny's Newsletter": "Lenny's Newsletter：产品与增长洞察",
+    }
+    
+    for key, zh in zh_map.items():
         if key.lower() in en_title.lower():
             return zh
-    # 默认翻译
-    return en_title[:35] + '...' if len(en_title) > 35 else en_title
+    
+    # 默认翻译：保留关键词+翻译剩余部分
+    words = en_title.split()
+    if len(en_title) > 40:
+        return en_title[:35] + '...'
+    return en_title
 
 def get_content(en_title):
     for key, content in ZH_CONTENT.items():
