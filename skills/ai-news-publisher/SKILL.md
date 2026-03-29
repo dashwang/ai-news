@@ -37,39 +37,75 @@ python3 publish_local.py
 - **内容要求**：
   - 第一行：固定文字「北美AI科技日报」，居中，大号加粗字体，白色
   - 第二行：当天的日期（如「2026年3月29日」），居中，标准字体，白色
+- **HTML示例**：
+```html
+<p style="margin: 15px; padding: 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 12px; text-align: center;">
+  <strong style="font-size: 20px; color: #fff;">北美AI科技日报</strong>
+  <br><span style="font-size: 14px; color: #fff;">2026年3月29日</span>
+</p>
+```
 
 ### 2. 核心摘要框 (Highlight Summary Box)
-- **视觉表现**：深色背景，外圈带有橙色圆角边框
+- **视觉表现**：白色背景，外圈带有橙色圆角边框
 - **内容要求**：
   - 摘要标题：提炼当日最具爆炸性的1-2个新闻组合成一句话标题，居中显示
   - 关键信息（如品牌名、重大事件）需使用橙色字体高亮
   - 摘要正文：用一段话（约100-150字）连贯地概述标题中提到的核心事件及其行业影响
   - 文字颜色为浅灰色，排版整齐
+- **HTML示例**：
+```html
+<p style="margin: 15px; padding: 20px; background: #fff; border: 3px solid #ff6600; border-radius: 12px; text-align: center;">
+  <strong style="font-size: 18px; color: #ff6600;">扎克伯格主动联系马斯克</strong>
+</p>
+<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #888; line-height: 1.8; text-align: justify;">摘要正文内容...</p>
+```
 
 ### 3. 板块标题 (Section Header)
 - **视觉表现**：浅灰色/米色矩形背景块，左侧带有粗橙色边带
 - **内容要求**：板块名称（如「HackerNews」「Product Hunt」），使用橙色字体并加粗
+- **HTML示例**：
+```html
+<p style="margin: 20px 0 10px 0; padding: 10px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #e65100; text-align: center;">
+  <strong style="font-size: 15px; color: #e65100;">HackerNews</strong>
+</p>
+```
 
 ### 4. 资讯列表 (News Items)
 - **视觉表现**：列表式排版，条目之间有虚线分隔
 - **内容要求**：
-  - 序号与标题：格式为「01. 中文标题」，使用加粗字体
+  - 标题格式：使用加粗字体，中文标题
   - 正文解读：对新闻进行中文编译和解读，140字+
   - 分割线：每条新闻结束后，插入一条细虚线作为条目分割
+- **HTML示例**：
+```html
+<p style="margin: 12px 0 3px 0;"><strong style="font-size: 14px; color: #1a1a1a;">标题</strong></p>
+<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">正文内容...</p>
+<p style="margin: 8px 0; border-top: 1px dashed #e0e0e0;"></p>
+```
 
-### 5. SubStack整合
+### 5. SubStack整合模块
 - 所有SubStack来源（TheSequence、LatentSpace、LexFridman、Lenny's Newsletter等）合并为一个「SubStack 精选」模块
+- 模块标题：金色边框，文字「SubStack 精选」
 
-### 6. 二维码
+### 6. 四平台颜色配置
+- **HackerNews**: 橙色 #e65100，背景 #fff3e0
+- **ProductHunt**: 粉色 #c2185b，背景 #fce4ec
+- **SubStack**: 金色 #f57c00，背景 #fff8e1
+- **TechCrunch**: 绿色 #2e7d32，背景 #e8f5e9
+
+### 7. 二维码
 - **必须上传到微信服务器获取media_id**
 - **不要用外链**
 - 尺寸：180px × 180px
 - 放在文章底部
 
+### 8. Emoji规范
+- **标题和正文中禁止出现任何emoji字符**
+
 ## 发布前自我检查清单（14项）
 
 - [ ] **顶部横幅**：橙色背景 + 「北美AI科技日报」+ 日期
-- [ ] **核心摘要框**：深色背景 + 橙色边框，标题高亮关键词
+- [ ] **核心摘要框**：白色背景 + 橙色边框，标题高亮关键词
 - [ ] **板块标题**：浅色背景 + 橙色左边框，平台名橙色加粗
 - [ ] **资讯列表**：序号格式 + 虚线分割
 - [ ] **中文标题**：每条新闻标题都翻译成中文
