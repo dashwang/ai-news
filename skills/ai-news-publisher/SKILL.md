@@ -59,18 +59,22 @@ triggers:
 
 ## 执行流程
 
-### Step 1: 抓取新闻
+### Step 1: 抓取新闻（本地执行）
 ```bash
-cd ~/.openclaw/workspace/ai-news-backend && python3 fetch_news.py
+cd ~/.openclaw/workspace/skills/ai-news-publisher && python3 fetch_news.py
 ```
 
 ### Step 2: 发布到公众号
 ```bash
-cd ~/.openclaw/workspace/ai-news-backend && \
+cd ~/.openclaw/workspace/skills/ai-news-publisher && \
 export WECHAT_APP_ID="wxa87b65ba78d3c822" && \
 export WECHAT_APP_SECRET="ac6a029c2b4ef7c1b89fbaeeaace3931" && \
 python3 publish_local.py
 ```
+
+## 数据存储
+- 数据库: `data/news.db`
+- 历史记录: `data/published_articles.json`
 
 ## 返回信息
 告诉用户：成功条数、平台数、media_id、热点头条

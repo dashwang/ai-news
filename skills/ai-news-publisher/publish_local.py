@@ -18,7 +18,7 @@ WECHAT_APP_ID = os.environ.get('WECHAT_APP_ID', 'wxa87b65ba78d3c822')
 WECHAT_APP_SECRET = os.environ.get('WECHAT_APP_SECRET', 'ac6a029c2b4ef7c1b89fbaeeaace3931')
 QRCODE_URL = 'https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png'
 DB_PATH = 'data/news.db'
-HISTORY_FILE = 'published_articles.json'
+HISTORY_FILE = 'data/published_articles.json'
 
 # 中文标题翻译
 ZH_TITLES = {
