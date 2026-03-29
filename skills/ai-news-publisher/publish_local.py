@@ -384,7 +384,14 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     
     html = ''
     
-    # 1. 热点聚焦：白色背景 + 橙色边框
+    # 1. 顶部引导关注模块 - 带二维码
+    html += f'''<p style="margin: 15px; padding: 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 12px; text-align: center;">
+  <strong style="font-size: 18px; color: #fff;">关注公众号「grepAI」</strong>
+  <br><span style="font-size: 13px; color: #fffde7;">北美AI科技资讯，每日自动送达</span>
+  <br><img src="{qrcode_url}" style="width: 120px; height: 120px; margin-top: 10px; border-radius: 8px;" alt="qrcode">
+</p>'''
+    
+    # 2. 热点聚焦：白色背景 + 橙色边框
     if hot_item:
         hot_title = generate_dynamic_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
