@@ -381,35 +381,38 @@ def select_hot_topic(news_data):
 
 def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     now = datetime.datetime.now()
+    date_str = now.strftime('%Y年%m月%d日')
     
     html = ''
     
+    # 1. 顶部日期横幅 (Daily Banner)
+    html += f'''<p style="margin: 15px; padding: 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 12px; text-align: center;">
+  <strong style="font-size: 20px; color: #fff;">北美AI科技日报</strong>
+  <br><span style="font-size: 14px; color: #fff;">{date_str}</span>
+</p>'''
+    
     # 平台配置
     configs = {
-        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
+        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'HackerNews'},
         'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
         'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
         'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
     }
     
-    # 如果有置顶热点，模块标题显示【置顶】
-    if hot_item and hot_source:
-        cfg = configs.get(hot_source, {'color': '#e65100', 'bg': '#fff3e0', 'name': hot_source})
-        label = f'【置顶】{cfg["name"]}'
+    # 2. 核心摘要框 (Highlight Summary Box) - 置顶热点
+    if hot_item:
+        hot_title = translate_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
-        
-        html += f'''<p style="margin: 15px 0; padding: 12px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
-  <strong style="font-size: 15px; color: {cfg['color']};">{label}</strong>
+        html += f'''<p style="margin: 15px; padding: 20px; background: #fff; border: 3px solid #ff6600; border-radius: 12px; text-align: center;">
+  <strong style="font-size: 18px; color: #ff6600;">{hot_title}</strong>
 </p>
-<p style="margin: 0 0 5px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{translate_title(hot_item['title'])}</strong></p>
-<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{hot_content}</p>
-<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #888; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
         
         # 从列表中移除已置顶的新闻
         if hot_source in news_data:
             news_data[hot_source] = [n for n in news_data[hot_source] if n['title'] != hot_item['title']]
     
-    # 2. 整合SubStack为一个模块
+    # 3. 整合SubStack为一个模块
     substack_items = []
     for s in ['TheSequence', 'LatentSpace', 'ExponentialView', 'LexFridman', 
               'LennysNewsletter', 'LastWeekinAI', 'OneUsefulThing']:
@@ -417,11 +420,8 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
             substack_items.extend(news_data[s])
             del news_data[s]
     
-    # 3. 平台顺序 - 置顶的放第一
+    # 6. 平台顺序
     platforms = list(news_data.keys())
-    if hot_source and hot_source in platforms:
-        platforms.remove(hot_source)
-        platforms.insert(0, hot_source)
     
     for source in platforms:
         if source not in news_data:
