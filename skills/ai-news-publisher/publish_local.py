@@ -385,28 +385,31 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     
     html = ''
     
-    # 1. 顶部日期横幅 (Daily Banner)
-    html += f'''<p style="margin: 15px; padding: 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 12px; text-align: center;">
-  <strong style="font-size: 20px; color: #fff;">北美AI科技日报</strong>
-  <br><span style="font-size: 14px; color: #fff;">{date_str}</span>
-</p>'''
+    # 包裹容器 - 卡片式布局
+    html += '<div style="max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 20px;">'
+    
+    # 1. 顶部日期横幅 - 优雅渐变背景
+    html += f'''<div style="background: linear-gradient(135deg, #ff8a00, #e52e71); border-radius: 12px; padding: 25px 20px; text-align: center; margin-bottom: 20px;">
+  <div style="font-size: 22px; font-weight: bold; color: #ffffff; letter-spacing: 1px;">北美AI科技日报</div>
+  <div style="font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 8px; letter-spacing: 0.5px;">{date_str}</div>
+</div>'''
     
     # 平台配置
     configs = {
-        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'HackerNews'},
-        'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
-        'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
-        'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
+        'HackerNews': {'color': '#ff6b22', 'bg': '#fff5f0', 'name': 'HackerNews'},
+        'ProductHunt': {'color': '#e52e71', 'bg': '#fef0f5', 'name': 'Product Hunt'},
+        'TechCrunch': {'color': '#00a650', 'bg': '#f0fdf4', 'name': 'TechCrunch'},
+        'SubStack': {'color': '#f5a623', 'bg': '#fffbf0', 'name': 'SubStack'},
     }
     
-    # 2. 核心摘要框 (Highlight Summary Box) - 置顶热点
+    # 2. 核心摘要框 - 白色卡片
     if hot_item:
         hot_title = translate_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
-        html += f'''<p style="margin: 15px; padding: 20px; background: #fff; border: 3px solid #ff6600; border-radius: 12px; text-align: center;">
-  <strong style="font-size: 18px; color: #ff6600;">{hot_title}</strong>
-</p>
-<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #888; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
+        html += f'''<div style="background: #ffffff; border: 3px solid #ff8a00; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px;">
+  <div style="font-size: 18px; font-weight: bold; color: #ff8a00; letter-spacing: 0.5px; line-height: 1.5;">{hot_title}</div>
+</div>
+<div style="font-size: 15px; color: #888888; line-height: 1.8; text-align: justify; letter-spacing: 0.5px; margin-bottom: 25px; padding: 0 5px;">{hot_content}</div>'''
         
         # 从列表中移除已置顶的新闻
         if hot_source in news_data:
@@ -432,36 +435,45 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
         # 标题 - 【置顶】标记
         label = f'【置顶】{cfg["name"]}' if source == hot_source else cfg['name']
         
-        html += f'''<p style="margin: 20px 0 10px 0; padding: 10px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
-  <strong style="font-size: 15px; color: {cfg['color']};">{label}</strong>
-</p>'''
+        # 板块标题 - 现代感设计
+        html += f'''<div style="background: {cfg['bg']}; border-left: 4px solid {cfg['color']}; border-radius: 4px; padding: 10px 16px; margin: 25px 0 15px 0;">
+  <span style="font-size: 15px; font-weight: bold; color: {cfg['color']}; letter-spacing: 0.5px;">{label}</span>
+</div>'''
         
         for item in items:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             
-            html += f'''<p style="margin: 12px 0 3px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{title}</strong></p>
-<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{content}</p>
-<p style="margin: 8px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+            # 新闻卡片 - 浅灰色背景
+            html += f'''<div style="background: #f9f9f9; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+  <div style="font-size: 15px; font-weight: bold; color: #3f3f3f; line-height: 1.5; margin-bottom: 10px;">{title}</div>
+  <div style="font-size: 14px; color: #555555; line-height: 1.8; letter-spacing: 0.5px;">{content}</div>
+</div>'''
     
     # 5. SubStack整合模块
     if substack_items:
-        html += '''<p style="margin: 20px 0 10px 0; padding: 10px 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
-  <strong style="font-size: 15px; color: #f57c00;">SubStack 精选</strong>
-</p>'''
+        html += '''<div style="background: #fffbf0; border-left: 4px solid #f5a623; border-radius: 4px; padding: 10px 16px; margin: 25px 0 15px 0;">
+  <span style="font-size: 15px; font-weight: bold; color: #f5a623; letter-spacing: 0.5px;">SubStack 精选</span>
+</div>'''
         
         for item in substack_items[:5]:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             
-            html += f'''<p style="margin: 12px 0 3px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{title}</strong></p>
-<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{content}</p>
-<p style="margin: 8px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+            html += f'''<div style="background: #f9f9f9; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+  <div style="font-size: 15px; font-weight: bold; color: #3f3f3f; line-height: 1.5; margin-bottom: 10px;">{title}</div>
+  <div style="font-size: 14px; color: #555555; line-height: 1.8; letter-spacing: 0.5px;">{content}</div>
+</div>'''
     
     # 6. 结尾 - 使用微信服务器上的二维码图片
-    html += f'''<p style="text-align: center; margin-top: 25px;"><img src="{qrcode_url}" style="width: 180px; height: 180px; border-radius: 8px;" alt="qrcode"></p>
-<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">扫码关注「grepAI」<br>每天早上自动送达</p>
-<p style="text-align: center; margin-top: 12px; font-size: 11px; color: #ccc;">© {now.year} grepAI | 认真做内容</p>'''
+    html += f'''<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eeeeee;">
+  <img src="{qrcode_url}" style="width: 160px; height: 160px; border-radius: 8px;" alt="qrcode">
+  <div style="font-size: 14px; color: #888888; margin-top: 12px; letter-spacing: 0.5px;">扫码关注「grepAI」<br>每天早上自动送达</div>
+  <div style="font-size: 12px; color: #cccccc; margin-top: 15px;">© {now.year} grepAI | 认真做内容</div>
+</div>'''
+    
+    # 关闭包裹容器
+    html += '</div>'
     
     return html
 
