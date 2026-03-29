@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 """
-公众号发布脚本 - 基于3月28日成功发布的版本
-格式要求：
-1. 热点聚焦模块 - 白色背景 + 橙色边框
-2. 模块动态调整 - 【置顶】标记
-3. 四平台各自不同颜色
-4. 中文标题 + 140字+摘要
-5. 黑色加粗标题
-6. 虚线分割
-7. 无开场白
-8. 无emoji
+公众号发布脚本 - 2026年3月29日更新版
+1. 热点标题作为主标题（橙色框）
+2. 二维码自动上传微信服务器
+3. SubStack整合为一个模块
+4. 所有内容翻译成中文
 """
 import requests, json, datetime, os, sqlite3, io, tempfile
 from PIL import Image
@@ -20,11 +15,12 @@ QRCODE_URL = 'https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrc
 DB_PATH = 'data/news.db'
 HISTORY_FILE = 'data/published_articles.json'
 
-# 中文标题翻译
+# 中文翻译表
 ZH_TITLES = {
     'Stanford study outlines dangers of asking AI chatbots for personal advice': '斯坦福研究：AI给人建议时过度"谄媚"',
     'Bluesky leans into AI with Attie': 'Bluesky推出AI产品Attie：用自然语言构建个性化订阅源',
     'Mark Zuckerberg texted Elon Musk': '扎克伯格主动联系马斯克：提议协助DOGE工作',
+    'Zuckerberg': '扎克伯格主动联系马斯克：提议协助DOGE工作',
     'Miasma: A tool to trap AI web scrapers': 'Miasma：一个让AI爬虫深陷"毒坑"的反抓取工具',
     'Sheet Ninja': 'Sheet Ninja：让Google Sheets变身CRUD后端',
     'Founder of GitLab battles cancer': 'GitLab创始人以创业对抗癌症',
@@ -43,29 +39,41 @@ ZH_TITLES = {
     'Agent Lattice': 'Lat.md：用Markdown构建代码知识图谱',
     'Lex Fridman': 'Lex Fridman：AI领域深度对话',
     "Lenny's Newsletter": "Lenny's Newsletter：产品与增长洞察",
+    'Last Week in AI': 'Last Week in AI：上周AI重要进展回顾',
+    'One Useful Thing': 'One Useful Thing：AI产品与增长思考',
 }
 
 # 中文摘要（140字+）
 ZH_CONTENT = {
-    'Stanford study outlines dangers': '斯坦福大学最新研究测试了Claude、ChatGPT、Gemini等主流AI模型，发现它们在提供个人建议时普遍存在"过度肯定"的问题。这项涉及1127名参与者的研究在Hacker News引发521条评论激辩，AI的"谄媚指数"远超预期。有人认为这是AI的"安全本能"，也有人担忧长期被AI夸奖会削弱用户的判断力。这个话题没有标准答案，但值得每个人思考。',
+    'Stanford': '斯坦福大学最新研究测试了Claude、ChatGPT、Gemini等主流AI模型，发现它们在提供个人建议时普遍存在"过度肯定"的问题。这项涉及1127名参与者的研究在Hacker News引发521条评论激辩，AI的"谄媚指数"远超预期。有人认为这是AI的"安全本能"，也有人担忧长期被AI夸奖会削弱用户的判断力。这个话题没有标准答案，但值得每个人思考。',
     
-    'Bluesky leans into AI': '去中心化社交平台Bluesky正式推出AI产品Attie，用户可以用自然语言描述感兴趣的内容，AI会自动抓取整合。与Meta、X等巨头全面拥抱AI聊天功能不同，Bluesky选择了"小而专"的路线——用AI解决信息过载，而非做一个万能助手。',
+    'Bluesky': '去中心化社交平台Bluesky正式推出AI产品Attie，用户可以用自然语言描述感兴趣的内容，AI会自动抓取整合。与Meta、X等巨头全面拥抱AI聊天功能不同，Bluesky选择了"小而专"的路线——用AI解决信息过载，而非做一个万能助手。',
     
-    'Mark Zuckerberg texted': '据TechCrunch报道，Meta CEO Zuckerberg曾主动给Musk发短信，提议帮助政府效率部（DOGE）的工作。这条消息在硅谷引发各种解读——有人认为这是向权力靠拢，也有人认为只是礼貌性示好。无论动机如何，AI圈大佬们正在以各种方式与权力产生交集。',
+    'Zuckerberg': '据TechCrunch报道，Meta CEO Zuckerberg曾主动给Musk发短信，提议帮助政府效率部（DOGE）的工作。这条消息在硅谷引发各种解读——有人认为这是向权力靠拢，也有人认为只是礼貌性示好。无论动机如何，AI圈大佬们正在以各种方式与权力产生交集。',
     
-    'Miasma: A tool to trap': 'GitHub上出现了一个引发热议的开源工具Miasma，它能让AI爬虫陷入无限循环的虚假内容陷阱。随着AI公司疯狂抓取网络数据训练模型，内容创作者开始反击。支持者称这是"创作者的正当防卫"，批评者担忧它会误伤正常搜索引擎。AI时代的内容战争正在悄然升级。',
+    'Miasma': 'GitHub上出现了一个引发热议的开源工具Miasma，它能让AI爬虫陷入无限循环的虚假内容陷阱。随着AI公司疯狂抓取网络数据训练模型，内容创作者开始反击。支持者称这是"创作者的正当防卫"，批评者担忧它会误伤正常搜索引擎。AI时代的内容战争正在悄然升级。',
     
     'Sheet Ninja': 'Sheet Ninja让Google Sheets直接当CRUD后端，不需要服务器和数据库，一个Google账号加一个表格就能实现完整的增删改查功能。目标用户是"vibe coder"——不关心架构只想快速出活的程序员。它反映了编程门槛正在急剧下降的趋势。',
     
-    'Founder of GitLab battles cancer': 'GitLab创始人Sytse一边与癌症抗争，一边继续经营公司。他将化疗与工作结合，在病床上参加董事会会议。Sytse说："工作让我保持清醒，让我感觉自己在做有意义的事。"这种"用工作对抗命运"的态度引发关于工作与生活平衡的思考。',
+    'GitLab': 'GitLab创始人Sytse一边与癌症抗争，一边继续经营公司。他将化疗与工作结合，在病床上参加董事会会议。Sytse说："工作让我保持清醒，让我感觉自己在做有意义的事。"这种"用工作对抗命运"的态度引发关于工作与生活平衡的思考。',
     
-    'SUN (a16z Speedrun 006)': 'a16z最新一期Speedrun加速营毕业项目SUN在Product Hunt亮相，本期主题围绕"AI Native应用"。这批项目普遍重视"隐私计算"和"本地部署"能力，似乎在回应用户对数据安全的担忧。AI创业潮正在从"通用大模型"向"垂直应用+隐私优先"快速转向。',
+    'SUN': 'a16z最新一期Speedrun加速营毕业项目SUN在Product Hunt亮相，本期主题围绕"AI Native应用"。这批项目普遍重视"隐私计算"和"本地部署"能力，似乎在回应用户对数据安全的担忧。AI创业潮正在从"通用大模型"向"垂直应用+隐私优先"快速转向。',
     
     'Everything is CLI': 'Latent Space深度分析"一切皆为CLI"的趋势。从代码生成到自动化工作流，命令行正在成为AI时代的新入口。这个变化反映了开发者对效率和控制的追求，也预示着AI工具的新方向。',
     
     'NVIDIA': 'TechCrunch报道NVIDIA正在构建AI的"操作系统"——一个统一软件层协调不同AI模型和数据源。分析师认为这是NVIDIA最具战略意义的动作，若成功将从芯片公司转型为AI平台公司。',
     
-    'The Sequence Radar': 'The Sequence回顾上周AI重要进展：压缩技术突破、语音模型进化、算力格局变化。本期涵盖技术突破、产品发布和行业洞见，帮你快速了解AI发展动态。',
+    'The Sequence': 'The Sequence回顾上周AI重要进展：压缩技术突破、语音模型进化、算力格局变化。本期涵盖技术突破、产品发布和行业洞见，帮你快速了解AI发展动态。',
+    
+    'H100': 'GPU市场出现新动向。尽管外界预期价格下跌，H100却逆势上涨。这一现象背后是AI算力需求的持续爆发，大型模型训练对高端GPU的依赖程度超出市场预期。',
+    
+    'microplastics': '密歇根大学研究发现，实验用手套可能是导致微塑料检测数据偏高的"罪魁祸首"。丁腈和乳胶手套会释放大量微塑料纤维，严重污染样本。这意味着过去十几年的相关研究可能需要重新审视。',
+    
+    'Lex Fridman': 'Lex Fridman播客持续邀请AI领域顶尖人物对话，深度探讨技术前沿与人类未来。每期节目都是一场思想盛宴，值得关注。',
+    
+    "Lenny's Newsletter": "Lenny's Newsletter专注于产品与增长领域，分享实用洞察与案例分析。对于产品经理和创业者来说是必读内容。",
+    
+    'Last Week in AI': 'Last Week in AI每周精选AI领域重要进展，涵盖技术突破、产品发布和行业动态。帮你快速掌握AI发展趋势。',
 }
 
 def get_token():
@@ -111,6 +119,7 @@ def get_content(en_title):
     return f'{en_title}。这个消息值得关注，业界正在密切关注其后续发展，建议持续关注相关动态。' * 2
 
 def upload_qrcode(token):
+    """上传二维码到微信服务器"""
     r = requests.get(QRCODE_URL, timeout=10)
     if r.status_code != 200:
         raise Exception('下载二维码失败')
@@ -130,7 +139,7 @@ def upload_qrcode(token):
             )
         result = resp.json()
         if 'media_id' in result:
-            return result['media_id']
+            return result['media_id'], result.get('url', '')
         raise Exception(f'上传失败: {result}')
     finally:
         os.unlink(path)
@@ -141,8 +150,10 @@ def get_news():
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     
+    # 所有来源
     sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'SubStack', 'TheSequence', 
-              'LatentSpace', 'ExponentialView', 'LexFridman', 'LennysNewsletter']
+              'LatentSpace', 'ExponentialView', 'LexFridman', 'LennysNewsletter', 
+              'LastWeekinAI', 'OneUsefulThing']
     
     news_data = {}
     for source in sources:
@@ -180,7 +191,7 @@ def select_hot_topic(news_data):
     
     return best, best_source
 
-def generate_content(news_data, hot_item=None, hot_source=None):
+def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     now = datetime.datetime.now()
     date_str = now.strftime('%Y.%m.%d')
     hour = now.hour
@@ -188,34 +199,35 @@ def generate_content(news_data, hot_item=None, hot_source=None):
     
     html = ''
     
-    # 热点聚焦模块 - 白色背景 + 橙色边框
+    # 1. 热点标题作为主标题（橙色框）
     if hot_item:
         hot_title = translate_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
-        html += f'''<p style="margin: 20px 15px; padding: 20px; background: #fff; border: 2px solid #ff6600; border-radius: 8px; text-align: center;">
-  <strong style="font-size: 18px; color: #ff6600;">{hot_title}</strong>
+        html += f'''<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+  <span style="font-size: 20px; color: #fff; font-weight: bold;">{hot_title}</span>
 </p>
-<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
+<p style="margin: 25px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
     
-    # 平台顺序 - 置顶的放第一
-    source_order = ['HackerNews', 'ProductHunt', 'TechCrunch', 'SubStack']
+    # 2. 整合SubStack为一个模块
+    substack_items = []
+    for s in ['TheSequence', 'LatentSpace', 'ExponentialView', 'LexFridman', 
+              'LennysNewsletter', 'LastWeekinAI', 'OneUsefulThing']:
+        if s in news_data:
+            substack_items.extend(news_data[s])
+            del news_data[s]
+    
+    # 3. 平台顺序 - 置顶的放第一
     platforms = list(news_data.keys())
-    
     if hot_source and hot_source in platforms:
         platforms.remove(hot_source)
         platforms.insert(0, hot_source)
     
-    # 平台配置
+    # 4. 平台配置
     configs = {
         'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
         'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
-        'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
         'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
-        'TheSequence': {'color': '#6a1b9a', 'bg': '#f3e5f5', 'name': 'The Sequence'},
-        'LatentSpace': {'color': '#0288d1', 'bg': '#e1f5fe', 'name': 'Latent Space'},
-        'ExponentialView': {'color': '#c62828', 'bg': '#ffebee', 'name': 'Exponential View'},
-        'LexFridman': {'color': '#ff4400', 'bg': '#fff0e0', 'name': 'Lex Fridman'},
-        'LennysNewsletter': {'color': '#ff4400', 'bg': '#fff0e0', 'name': "Lenny's Newsletter"},
+        'SubStack': {'color': '#f57c00', 'bg': '#fff8e0', 'name': 'SubStack'},
     }
     
     for source in platforms:
@@ -242,8 +254,22 @@ def generate_content(news_data, hot_item=None, hot_source=None):
 <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{content}</p>
 <p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
     
-    # 结尾
-    html += f'''<p style="text-align: center; margin-top: 20px;"><img src="{QRCODE_URL}" style="width: 180px; height: 180px; border-radius: 8px;" alt="qrcode"></p>
+    # 5. SubStack整合模块
+    if substack_items:
+        html += '''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff8e0; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
+  <strong style="font-size: 16px; color: #f57c00;">SubStack 精选</strong>
+</p>'''
+        
+        for item in substack_items:
+            title = translate_title(item['title'])
+            content = get_content(item['title'])
+            
+            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">{title}</strong></p>
+<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{content}</p>
+<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+    
+    # 6. 结尾 - 使用微信服务器上的二维码图片
+    html += f'''<p style="text-align: center; margin-top: 20px;"><img src="{qrcode_url}" style="width: 180px; height: 180px; border-radius: 8px;" alt="qrcode"></p>
 <p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">扫码关注「grepAI」<br>每天早上自动送达</p>
 <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc;">© {now.year} grepAI | 认真做内容</p>'''
     
@@ -258,7 +284,8 @@ def publish():
     token = get_token()
     print('Token获取成功')
     
-    thumb_id = upload_qrcode(token)
+    # 上传二维码
+    thumb_id, thumb_url = upload_qrcode(token)
     print('二维码上传成功')
     
     news_data = get_news()
@@ -274,7 +301,7 @@ def publish():
     hot_title = translate_title(hot_item['title']) if hot_item else ''
     print(f'热门话题: {hot_title}')
     
-    content, date_str, edition = generate_content(news_data, hot_item, hot_source)
+    content, date_str, edition = generate_content(news_data, hot_item, hot_source, thumb_url)
     title = f'{date_str} 全球AI科技{edition}'
     
     data = {
@@ -307,7 +334,7 @@ def publish():
                 titles.append(item['title'])
         save_history(titles)
         
-        return {'success': True, 'media_id': media_id, 'total': total, 'hot': hot_title, 'hot_source': hot_source}
+        return {'success': True, 'media_id': media_id, 'total': total, 'hot': hot_title}
     else:
         print(f'发布失败: {result}')
         return {'success': False, 'error': result}
