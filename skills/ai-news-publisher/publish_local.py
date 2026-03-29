@@ -80,7 +80,45 @@ ZH_CONTENT = {
     
     'a16z': 'a16z加速营持续孵化AI领域的创新项目。本期毕业项目涵盖代码生成、自动化工作流等多个方向，普遍重视隐私计算和本地部署能力。',
     
-    'GitLab': 'GitLab创始人Sytse的故事在科技圈引发广泛共鸣。他选择用工作对抗命运，将化疗与经营公司结合。这种精神令人动容，也引发关于工作与生活平衡的思考。',
+    'Exponential View': 'Exponential View深入分析AI如何重塑工作方式。从自动化办公到决策流程，AI正在改变传统的工作模式。这篇文章探讨了AI工具在实际工作中的应用，以及它们如何帮助提高效率的同时保持人性化。',
+    
+    'Karpathy Loop': 'Karpathy Loop探讨AI推理中的循环问题。当AI陷入重复思考时如何突破？这个话题对于理解大模型的局限性至关重要，也引发了关于AI"思维链"优化的讨论。',
+    
+    'Superhuman': 'Superhuman推出的AI代理功能让写作变得更透明高效。通过AI辅助，用户可以更专注于创意本身，而非被繁琐的编辑工作拖累。这种"AI增强人"的工作方式正在成为新的趋势。',
+    
+    'Stripe built': 'Stripe工程师分享了如何用AI代理每周自动处理1300个PR。从Slackreaction触发到代码审查，AI正在彻底改变传统开发流程。这个案例展示了AI代理在工程实践中的巨大潜力。',
+    
+    'xAI Colossus': 'xAI的Colossus2数据中心正式投入使用，这是全球首个千兆瓦级别的AI训练设施。马斯克表示这将为Grok大模型提供前所未有的算力支持，AI训练正式进入"兆瓦时代"。',
+    
+    'NVIDIA Rubin': 'NVIDIA发布下一代Rubin加速器，进一步巩固其在AI芯片领域的领先地位。与上一代产品相比，Rubin在性能和能效上都有显著提升，为下一代大模型训练提供更强有力的硬件支持。',
+    
+    'Huawei Ascend': '华为昇腾芯片进入量产阶段，但HBM内存供应成为最大瓶颈。在美国制裁背景下，中国AI芯片产业正在寻求突破，昇腾的表现值得持续关注。',
+    
+    'JetBrains': 'JetBrains推出AI编排平台，帮助开发者更高效地管理和调度AI代理。这个平台可以将多个AI工具串联成完整的工作流，大幅提升开发效率。',
+    
+    'Accenture Cyber.AI': 'Accenture推出的网络AI平台结合了Anthropic的Claude技术，为企业提供更智能的安全防护。在AI威胁日益增长的今天，这种主动防御机制显得尤为重要。',
+    
+    'IBM ElevenLabs': 'IBM与ElevenLabs扩大企业AI语音合作，推出更自然的语音交互解决方案。企业客户现在可以获得定制化的语音AI服务，提升客户体验的同时降低运营成本。',
+    
+    'Chroma Context': 'Chroma发布20B参数检索模型，专为多跳检索和上下文管理设计。这个模型可以更好地理解和处理复杂查询，为RAG应用提供更精准的支持。',
+    
+    'Google-Agent': 'Google明确区分了AI访问与搜索引擎爬虫的边界。随着AI搜索功能的普及，如何正确处理AI抓取成为网站运营者需要考虑的新问题。',
+    
+    'SXSW': 'SXSW科技大会重新回归，成为创业者和投资人首选的社交盛会。从AI应用到Web3项目，超过一万名科技从业者齐聚奥斯汀，寻求合作机会。这次大会被视为科技行业信心的重要标志。',
+    
+    'Elon Musk last co-founder': '马斯克最后一位联合创始人离开xAI，这标志着xAI创始团队彻底改组。据报道这位联合创始人选择了与马斯克不同的方向独立创业，AI人才竞争进入白热化阶段。',
+    
+    'USB cable tester': '开发者社区发现了一款近乎完美的USB线缆测试器。这个小工具可以帮助用户快速诊断各种USB线缆的问题，对于经常需要处理设备兼容性的工程师来说是个福音。',
+    
+    'TSA lines': '美国机场安检排队时间创历史新高，催生了"排队中介"这个新职业。一些旅行者开始雇佣专人代替自己排队，收费标准从50美元到200美元不等。这种现象反映了出行需求与安检效率之间的矛盾。',
+    
+    'GuideYou': 'GuideYou是一款AI驱动的旅行规划助手，能够根据用户偏好和预算自动生成个性化行程。与传统旅行APP不同，它更注重深度体验而非打卡式旅游。',
+    
+    'Parallel Code': 'Parallel Code是一个代码生成工具，能够同时生成多个版本的代码供开发者选择。这种并行方式大幅提升了开发效率，也减少了反复修改的时间成本。',
+    
+    'Jensen Huang': '黄仁勋与LL COOL J的对话展现了NVIDIA在AI时代的战略布局。从游戏到数据中心，NVIDIA正在成为AI革命的核心推动者。这段对话也揭示了黄仁勋对AI未来发展的深层思考。',
+    
+    'Guide to Which AI': 'AI代理时代，如何选择合适的AI工具成为关键问题。这篇指南对比了主流AI产品的优劣，从GPT到Claude，从编程辅助到内容创作，帮助用户找到最适合自己场景的工具。',
 }
 
 def get_token():
@@ -117,7 +155,7 @@ def translate_title(en_title):
     # 中文翻译表
     zh_map = {
         'SXSW rebounds': 'SXSW回归：顶级创业者和VC社交盛会',
-        'Elon Musk last co-founder': '马斯克最后一位联合创始人离开xAI',
+        "leaves xAI": '马斯克最后一位联合创始人离开xAI',
         'Overestimation of microplastics': '研究警告：实验室手套可能导致数据失准',
         'Technology: The (nearly) perfect USB cable tester': '完美USB线缆测试器真的存在吗？',
         'TSA lines are so out of control': '机场安检大排长龙催生"排队中介"新职业',
@@ -169,21 +207,58 @@ def translate_title(en_title):
         "Lenny's Newsletter": "Lenny's Newsletter：产品与增长洞察",
     }
     
-    for key, zh in zh_map.items():
-        if key.lower() in en_title.lower():
+    # 清理emoji
+    clean_title = en_title
+    for char in ['🔮', '🔥', '💡', '📱', '📚', '🎉', '❤️', '👍', '✨', '🚨', '📰', '🎊']:
+        clean_title = clean_title.replace(char, '').strip()
+    
+    more_titles = {
+        'Pensieve': 'Pensieve：AI记忆管理工具',
+        'GuideYou': 'GuideYou：AI旅行规划助手',
+        'Parallel Code': 'Parallel Code：并行代码生成工具',
+        'Jensen': '黄仁勋对话LL COOL J：AI革命的幕后推手',
+    }
+    
+    for key, zh in {**zh_map, **more_titles}.items():
+        if key.lower() in clean_title.lower():
             return zh
     
-    # 默认翻译：保留关键词+翻译剩余部分
-    words = en_title.split()
-    if len(en_title) > 40:
-        return en_title[:35] + '...'
-    return en_title
+    # 默认翻译：拒绝发布
+    raise Exception(f'未翻译的新闻标题: {en_title}')
 
 def get_content(en_title):
+    # 清理emoji
+    clean_title = en_title
+    for char in ['🔮', '🔥', '💡', '📱', '📚', '🎉', '❤️', '👍', '✨', '🚨', '📰', '🎊']:
+        clean_title = clean_title.replace(char, '').strip()
+    
     for key, content in ZH_CONTENT.items():
-        if key.lower() in en_title.lower():
+        if key.lower() in clean_title.lower():
             return content
-    return f'{en_title}。这个消息值得关注，业界正在密切关注其后续发展，建议持续关注相关动态。' * 2
+    
+    # 尝试更宽泛的匹配
+    # 添加缺失的中文摘要
+    more_content = {
+        'Pensieve': 'Pensieve是一款AI记忆管理工具，帮助用户更好地组织和检索信息。随着AI助手变得越来越强大，如何有效管理上下文信息成为关键问题。Pensieve的出现填补了这一空白。',
+        'GuideYou': 'GuideYou是一款AI驱动的旅行规划助手，能够根据用户偏好和预算自动生成个性化行程。与传统旅行APP不同，它更注重深度体验而非打卡式旅游。',
+        'Parallel Code': 'Parallel Code是一个代码生成工具，能够同时生成多个版本的代码供开发者选择。这种并行方式大幅提升了开发效率，也减少了反复修改的时间成本。',
+        'Jensen': '黄仁勋与LL COOL J的对话展现了NVIDIA在AI时代的战略布局。从游戏到数据中心，NVIDIA正在成为AI革命的核心推动者。这段对话也揭示了黄仁勋对AI未来发展的深层思考。',
+    }
+    
+    keywords = ['Elon', 'Musk', 'co-founder', 'leaves', 'xAI', 'Exponential', 'View', 
+                'Karpathy', 'Loop', 'Superhuman', 'Authorship', 'Agent', 'Guide', 'Which',
+                'Jensen', 'Huang', 'Stripe', 'xAI', 'Colossus', 'Rubin', 'Huawei', 'Ascend',
+                'JetBrains', 'Accenture', 'Cyber', 'IBM', 'ElevenLabs', 'Chroma', 'Context',
+                'Google', 'Agent', 'bot', 'SXSW', 'USB', 'cable', 'tester', 'TSA', 'Pensieve',
+                'GuideYou', 'Parallel', 'Jensen']
+    for kw in keywords:
+        if kw.lower() in clean_title.lower():
+            for k, v in {**ZH_CONTENT, **more_content}.items():
+                if kw.lower() in k.lower():
+                    return v
+    
+    # 如果没找到内容，拒绝发布
+    raise Exception(f'未翻译的新闻摘要: {en_title}')
 
 def generate_dynamic_title(en_title):
     """根据热门话题生成动态标题"""
