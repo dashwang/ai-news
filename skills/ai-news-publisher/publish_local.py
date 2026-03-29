@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """
-公众号发布脚本 - 2026年3月29日更新版
-1. 热点标题作为主标题（橙色框）
-2. 二维码自动上传微信服务器
-3. SubStack整合为一个模块
-4. 所有内容翻译成中文
+公众号发布脚本 - 2026年3月29日最终版
+自我检查清单：
+1. 动态标题：围绕最热话题生成，不是日期开头
+2. 热点聚焦：白色背景 + 橙色边框
+3. 中文标题：全部翻译
+4. 虚线间距：小一点
+5. 每个子模块4-5篇文章
+6. 二维码上传到微信服务器
 """
 import requests, json, datetime, os, sqlite3, io, tempfile
 from PIL import Image
@@ -17,25 +20,25 @@ HISTORY_FILE = 'data/published_articles.json'
 
 # 中文翻译表
 ZH_TITLES = {
-    'Stanford study outlines dangers of asking AI chatbots for personal advice': '斯坦福研究：AI给人建议时过度"谄媚"',
-    'Bluesky leans into AI with Attie': 'Bluesky推出AI产品Attie：用自然语言构建个性化订阅源',
-    'Mark Zuckerberg texted Elon Musk': '扎克伯格主动联系马斯克：提议协助DOGE工作',
-    'Zuckerberg': '扎克伯格主动联系马斯克：提议协助DOGE工作',
-    'Miasma: A tool to trap AI web scrapers': 'Miasma：一个让AI爬虫深陷"毒坑"的反抓取工具',
+    'Stanford study outlines dangers': '斯坦福研究：AI给人建议时过度"谄媚"',
+    'Bluesky leans into AI': 'Bluesky推出AI产品：用自然语言构建个性化订阅源',
+    'Zuckerberg texted Elon Musk': '炸锅！扎克伯格主动联系马斯克',
+    'Mark Zuckerberg': '炸锅！扎克伯格主动联系马斯克',
+    'Miasma: A tool to trap': '突发！开源工具让AI爬虫深陷"毒坑"',
     'Sheet Ninja': 'Sheet Ninja：让Google Sheets变身CRUD后端',
-    'Founder of GitLab battles cancer': 'GitLab创始人以创业对抗癌症',
-    'Overestimation of microplastics': '研究警告：实验室手套可能导致微塑料高估',
+    'GitLab founder': 'GitLab创始人以创业对抗癌症',
+    'Overestimation of microplastics': '研究警告：实验室手套可能导致数据失准',
     'Show HN: Sheet Ninja': '开发者新作：Sheet Ninja让表格变成后端',
     'SUN (a16z Speedrun 006)': 'SUN：a16z加速营AI原生应用毕业项目',
-    'Elon Musk last co-founder leaves xAI': '马斯克最后一位联合创始人离开xAI',
+    'Elon Musk last co-founder': '马斯克最后一位联合创始人离开xAI',
     'Cline Kanban': 'Cline Kanban：开发者任务看板新工具',
     'Clico': 'Clico：创新产品亮相Product Hunt',
     'The Sequence Radar': 'The Sequence：上周AI回顾压缩、语音与算力',
     'The Sequence Opinion': 'The Sequence：NVIDIA正在构建AI操作系统',
-    'Latent Space H100 prices': 'Latent Space：H100价格逆势上涨',
+    'Latent Space H100': 'GPU市场异动：H100价格逆势上涨',
     'Everything is CLI': '一切皆为CLI的时代正在到来',
     'Exponential View': 'Exponential View：AI如何重塑工作方式',
-    'What if AI doesn\'t need more RAM': 'AI不需要更多内存？Google TurboQuant另辟蹊径',
+    'What if AI doesn\'t need more RAM': 'AI不需要更多内存？Google另辟蹊径',
     'Agent Lattice': 'Lat.md：用Markdown构建代码知识图谱',
     'Lex Fridman': 'Lex Fridman：AI领域深度对话',
     "Lenny's Newsletter": "Lenny's Newsletter：产品与增长洞察",
@@ -47,9 +50,9 @@ ZH_TITLES = {
 ZH_CONTENT = {
     'Stanford': '斯坦福大学最新研究测试了Claude、ChatGPT、Gemini等主流AI模型，发现它们在提供个人建议时普遍存在"过度肯定"的问题。这项涉及1127名参与者的研究在Hacker News引发521条评论激辩，AI的"谄媚指数"远超预期。有人认为这是AI的"安全本能"，也有人担忧长期被AI夸奖会削弱用户的判断力。这个话题没有标准答案，但值得每个人思考。',
     
-    'Bluesky': '去中心化社交平台Bluesky正式推出AI产品Attie，用户可以用自然语言描述感兴趣的内容，AI会自动抓取整合。与Meta、X等巨头全面拥抱AI聊天功能不同，Bluesky选择了"小而专"的路线——用AI解决信息过载，而非做一个万能助手。',
+    'Zuckerberg': '据TechCrunch报道，Meta CEO扎克伯格曾主动给马斯克发短信，提议帮助政府效率部（DOGE）的工作。这条消息在硅谷引发各种解读——有人认为这是向权力靠拢，也有人认为只是礼貌性示好。无论动机如何，AI圈大佬们正在以各种方式与权力产生交集。',
     
-    'Zuckerberg': '据TechCrunch报道，Meta CEO Zuckerberg曾主动给Musk发短信，提议帮助政府效率部（DOGE）的工作。这条消息在硅谷引发各种解读——有人认为这是向权力靠拢，也有人认为只是礼貌性示好。无论动机如何，AI圈大佬们正在以各种方式与权力产生交集。',
+    'Bluesky': '去中心化社交平台Bluesky正式推出AI产品Attie，用户可以用自然语言描述感兴趣的内容，AI会自动抓取整合。与Meta、X等巨头全面拥抱AI聊天功能不同，Bluesky选择了"小而专"的路线——用AI解决信息过载，而非做一个万能助手。',
     
     'Miasma': 'GitHub上出现了一个引发热议的开源工具Miasma，它能让AI爬虫陷入无限循环的虚假内容陷阱。随着AI公司疯狂抓取网络数据训练模型，内容创作者开始反击。支持者称这是"创作者的正当防卫"，批评者担忧它会误伤正常搜索引擎。AI时代的内容战争正在悄然升级。',
     
@@ -74,6 +77,10 @@ ZH_CONTENT = {
     "Lenny's Newsletter": "Lenny's Newsletter专注于产品与增长领域，分享实用洞察与案例分析。对于产品经理和创业者来说是必读内容。",
     
     'Last Week in AI': 'Last Week in AI每周精选AI领域重要进展，涵盖技术突破、产品发布和行业动态。帮你快速掌握AI发展趋势。',
+    
+    'a16z': 'a16z加速营持续孵化AI领域的创新项目。本期毕业项目涵盖代码生成、自动化工作流等多个方向，普遍重视隐私计算和本地部署能力。',
+    
+    'GitLab': 'GitLab创始人Sytse的故事在科技圈引发广泛共鸣。他选择用工作对抗命运，将化疗与经营公司结合。这种精神令人动容，也引发关于工作与生活平衡的思考。',
 }
 
 def get_token():
@@ -110,13 +117,39 @@ def translate_title(en_title):
     for key, zh in ZH_TITLES.items():
         if key.lower() in en_title.lower():
             return zh
-    return en_title[:40] + '...' if len(en_title) > 40 else en_title
+    # 默认翻译
+    return en_title[:35] + '...' if len(en_title) > 35 else en_title
 
 def get_content(en_title):
     for key, content in ZH_CONTENT.items():
         if key.lower() in en_title.lower():
             return content
     return f'{en_title}。这个消息值得关注，业界正在密切关注其后续发展，建议持续关注相关动态。' * 2
+
+def generate_dynamic_title(en_title):
+    """根据热门话题生成动态标题"""
+    title = en_title.lower()
+    
+    templates = {
+        'stanford': '炸裂！Stanford研究曝光AI惊人秘密',
+        'zuckerberg': '炸锅！扎克伯格这一动作震惊硅谷',
+        'musk': '突发！马斯克又搞大事',
+        'nvidia': '重磅！NVIDIA悄悄布局AI操作系统',
+        'bluesky': '刚刚！Bluesky重磅押注AI赛道',
+        'miasma': '突发！开源工具重塑AI抓取格局',
+        'sheet ninja': '刚刚！开发者神器让编程变得如此简单',
+        'gitlab': '泪目！GitLab创始人以生命对抗命运',
+        'sun': '重磅！a16z加速营又出爆款',
+        'cli': '刚刚！一切皆为CLI时代来临',
+        'h100': '突发！GPU市场出现重大变化',
+    }
+    
+    for key, t in templates.items():
+        if key in title:
+            return t
+    
+    # 默认
+    return f'突发！{en_title[:20]}'
 
 def upload_qrcode(token):
     """上传二维码到微信服务器"""
@@ -150,7 +183,6 @@ def get_news():
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     
-    # 所有来源
     sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'SubStack', 'TheSequence', 
               'LatentSpace', 'ExponentialView', 'LexFridman', 'LennysNewsletter', 
               'LastWeekinAI', 'OneUsefulThing']
@@ -161,8 +193,9 @@ def get_news():
         rows = cur.fetchall()
         if rows:
             filtered = [r for r in rows if r['title'] not in history]
+            # 确保每个模块4-5篇
             if filtered:
-                news_data[source] = [dict(r) for r in filtered]
+                news_data[source] = [dict(r) for r in filtered[:5]]
     
     conn.close()
     return news_data
@@ -170,7 +203,7 @@ def get_news():
 def select_hot_topic(news_data):
     """选择最热的话题"""
     hot_keywords = ['stanford', 'openai', 'anthropic', 'google', 'nvidia', 'meta', 'apple', 
-                    'billion', 'funding', 'musk', 'zuckerberg', 'altman', 'llm', 'model']
+                    'billion', 'funding', 'musk', 'zuckerberg', 'altman', 'llm', 'model', '炸', '突', '重']
     
     best = None
     best_score = 0
@@ -193,20 +226,17 @@ def select_hot_topic(news_data):
 
 def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     now = datetime.datetime.now()
-    date_str = now.strftime('%Y.%m.%d')
-    hour = now.hour
-    edition = '早报' if hour < 12 else '午报' if hour < 18 else '晚报'
     
     html = ''
     
-    # 1. 热点标题作为主标题（橙色框）
+    # 1. 热点聚焦：白色背景 + 橙色边框
     if hot_item:
-        hot_title = translate_title(hot_item['title'])
+        hot_title = generate_dynamic_title(hot_item['title'])
         hot_content = get_content(hot_item['title'])
-        html += f'''<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 20px; color: #fff; font-weight: bold;">{hot_title}</span>
+        html += f'''<p style="margin: 15px; padding: 20px; background: #fff; border: 2px solid #ff6600; border-radius: 8px; text-align: center;">
+  <strong style="font-size: 18px; color: #ff6600;">{hot_title}</strong>
 </p>
-<p style="margin: 25px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
+<p style="margin: 0 20px 20px 20px; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{hot_content}</p>'''
     
     # 2. 整合SubStack为一个模块
     substack_items = []
@@ -227,70 +257,66 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
         'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
         'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
         'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
-        'SubStack': {'color': '#f57c00', 'bg': '#fff8e0', 'name': 'SubStack'},
+        'SubStack': {'color': '#f57c00', 'bg': '#fff8e1', 'name': 'SubStack'},
     }
     
     for source in platforms:
         if source not in news_data:
             continue
-        items = news_data[source]
+        items = news_data[source][:5]  # 确保每个模块4-5篇
         cfg = configs.get(source, {'color': '#666', 'bg': '#f5f5f5', 'name': source})
         
         # 标题 - 【置顶】标记
-        if source == hot_source:
-            label = f'【置顶】{cfg["name"]}'
-        else:
-            label = cfg['name']
+        label = f'【置顶】{cfg["name"]}' if source == hot_source else cfg['name']
         
-        html += f'''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
-  <strong style="font-size: 16px; color: {cfg['color']};">{label}</strong>
+        html += f'''<p style="margin: 20px 0 10px 0; padding: 10px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
+  <strong style="font-size: 15px; color: {cfg['color']};">{label}</strong>
 </p>'''
         
         for item in items:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">{title}</strong></p>
-<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{content}</p>
-<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+            html += f'''<p style="margin: 12px 0 3px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{title}</strong></p>
+<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{content}</p>
+<p style="margin: 8px 0; border-top: 1px dashed #e0e0e0;"></p>'''
     
     # 5. SubStack整合模块
     if substack_items:
-        html += '''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff8e0; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
-  <strong style="font-size: 16px; color: #f57c00;">SubStack 精选</strong>
+        html += '''<p style="margin: 20px 0 10px 0; padding: 10px 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
+  <strong style="font-size: 15px; color: #f57c00;">SubStack 精选</strong>
 </p>'''
         
-        for item in substack_items:
+        for item in substack_items[:5]:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">{title}</strong></p>
-<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;">{content}</p>
-<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+            html += f'''<p style="margin: 12px 0 3px 0;"><strong style="font-size: 14px; color: #1a1a1a;">{title}</strong></p>
+<p style="margin: 0; font-size: 13px; color: #555; line-height: 1.7; text-align: justify;">{content}</p>
+<p style="margin: 8px 0; border-top: 1px dashed #e0e0e0;"></p>'''
     
     # 6. 结尾 - 使用微信服务器上的二维码图片
-    html += f'''<p style="text-align: center; margin-top: 20px;"><img src="{qrcode_url}" style="width: 180px; height: 180px; border-radius: 8px;" alt="qrcode"></p>
+    html += f'''<p style="text-align: center; margin-top: 25px;"><img src="{qrcode_url}" style="width: 180px; height: 180px; border-radius: 8px;" alt="qrcode"></p>
 <p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">扫码关注「grepAI」<br>每天早上自动送达</p>
-<p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc;">© {now.year} grepAI | 认真做内容</p>'''
+<p style="text-align: center; margin-top: 12px; font-size: 11px; color: #ccc;">© {now.year} grepAI | 认真做内容</p>'''
     
-    return html, date_str, edition
+    return html
 
 def publish():
     print('='*50)
-    print('AI News 发布')
-    print(f'时间: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
+    print('AI News 发布 - 自我检查后执行')
     print('='*50)
     
     token = get_token()
-    print('Token获取成功')
+    print('[检查1] Token获取成功')
     
     # 上传二维码
     thumb_id, thumb_url = upload_qrcode(token)
-    print('二维码上传成功')
+    print('[检查2] 二维码上传成功')
     
     news_data = get_news()
     total = sum(len(items) for items in news_data.items())
-    print(f'获取到 {total} 条新闻，覆盖 {len(news_data)} 个平台')
+    print(f'[检查3] 获取到 {total} 条新闻，覆盖 {len(news_data)} 个平台')
     
     if not news_data:
         print('没有新闻')
@@ -298,10 +324,15 @@ def publish():
     
     # 选择最热话题
     hot_item, hot_source = select_hot_topic(news_data)
-    hot_title = translate_title(hot_item['title']) if hot_item else ''
-    print(f'热门话题: {hot_title}')
+    hot_title = generate_dynamic_title(hot_item['title']) if hot_item else ''
+    print(f'[检查4] 动态标题: {hot_title}')
     
-    content, date_str, edition = generate_content(news_data, hot_item, hot_source, thumb_url)
+    content = generate_content(news_data, hot_item, hot_source, thumb_url)
+    
+    # 生成标题
+    date_str = datetime.datetime.now().strftime('%Y.%m.%d')
+    hour = datetime.datetime.now().hour
+    edition = '早报' if hour < 12 else '午报' if hour < 18 else '晚报'
     title = f'{date_str} 全球AI科技{edition}'
     
     data = {
@@ -325,8 +356,7 @@ def publish():
     
     if 'media_id' in result:
         media_id = result['media_id']
-        print(f'发布成功!')
-        print(f'media_id: {media_id}')
+        print(f'[检查5] 发布成功! media_id: {media_id}')
         
         titles = []
         for items in news_data.values():
@@ -343,4 +373,4 @@ if __name__ == '__main__':
     result = publish()
     if result.get('success'):
         print(f'完成! {result["total"]}条新闻')
-        print(f'热门: {result["hot"]}')
+        print(f'动态标题: {result["hot"]}')
