@@ -1,249 +1,76 @@
-# AI News Publisher - 自动抓取翻译发布
+---
+name: ai-news-publisher
+description: 北美AI科技新闻抓取、编排与微信公众号发布完整工作流。包含去重、动态标题、热内容置顶、配图匹配等核心功能。
+triggers:
+  - 命令: fetch news
+  - 命令: 抓取AI新闻
+  - 命令: 发布AI新闻
+  - 命令: AI News
+  - 命令: 爆款文章
 
-## 概述
+# AI News Publisher - 微信公众号AI新闻发布工作流
 
-自动抓取 AI 新闻，翻译整理成公众号文章并发布。
+## 核心功能
+1. 多源抓取 - HackerNews、ProductHunt、TechCrunch、SubStack
+2. 智能去重 - 对比历史发布记录，避免重复
+3. 动态热点选择 - 根据当日热点选择最具话题性的内容置顶
+4. 热内容置顶 - 标题对应的文章放全文最前
+5. 模块动态调整 - 置顶文章对应的模块放到第一个，添加【置顶】标记
 
-## 数据源（4大平台）
+## 排版规范（2026年3月28日最新版）
 
-1. **Hacker News** - `https://news.ycombinator.com/rss`
-2. **SubStack (Lex Fridman + Lenny's Newsletter)** - `https://lexfridman.com/feed/` + `https://www.lennysnewsletter.com/feed`
-3. **TechCrunch** - `https://techcrunch.com/feed/`
-4. **Product Hunt** - `https://www.producthunt.com/feed`
+### 1. 热点聚焦模块（最重要！）
+- **白色背景 + 橙色边框**，与下方区别开
+- 标题居中 + 橙色高亮
+- 内容居中显示
 
-## 微信公众号排版标准
+### 2. 四平台子标题（每个平台独立颜色）
+- **HackerNews**: 橙色 #e65100，背景 #fff3e0
+- **ProductHunt**: 粉色 #c2185b，背景 #fce4ec
+- **SubStack**: 金色 #f57c00，背景 #fff8e1
+- **TechCrunch**: 绿色 #2e7d32，背景 #e8f5e9
 
-### 封面区域 - Hacker News 橙黑风格
+### 3. 文章标题和摘要格式
+- **标题必须是中文**
+- **标题加粗黑体（使用b标签）**
+- **每条140字+摘要**
+- 摘要用深灰色 #555
 
-```html
-<!-- 封面：橙黑科技风 -->
-<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
-</p>
-<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
-  💰 1100亿美元！AI史上最大融资诞生
-</p>
-<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
-  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
-</p>
-```
+### 4. 文章分割
+- 虚线：border-top: 1px dashed #e0e0e0
 
-### 4大部分样式（带Logo+配色）
+### 5. 公众号信息
+- 名称：grepAI
+- 二维码：https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png
+- 尺寸：180px
 
-```html
-<!-- 分区标题 -->
-<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600;">
-  <strong style="font-size: 16px; color: #ff6600;">🔥 Hacker News 热门</strong>
-</p>
-```
+## 发布检查清单
+- [ ] 热点聚焦选择当日最具话题性的内容
+- [ ] 标题无emoji
+- [ ] 无开场白
+- [ ] 每平台至少4篇新闻
+- [ ] 每条新闻标题必须是中文
+- [ ] 每条摘要140字+
+- [ ] 四平台子标题各不同色
+- [ ] 文章标题黑色加粗
+- [ ] 虚线分割
+- [ ] 公众号名称grepAI + 二维码180px
+- [ ] 置顶文章对应的模块添加【置顶】标记
 
-### 平台颜色主题
+## 执行流程
 
-| 平台 | 颜色 | emoji |
-|------|------|-------|
-| Hacker News | #ff6600 | 🔥 |
-| SubStack | #ff4400 | 💡 |
-| TechCrunch | #0a9900 | 📱 |
-| Product Hunt | #da552f | 🚀 |
-
-### 结尾模板 - 温暖科技风（不要AI感）
-
-```html
-<!-- 结尾：温暖、真人感、科技感 + 公众号二维码 -->
-<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
-  <span style="font-size: 16px; color: #333; font-weight: 500;">
-    👍 觉得有用？不妨分享给朋友 👏
-  </span>
-</p>
-
-<!-- 公众号二维码 -->
-<p style="text-align: center; margin-top: 20px;">
-  <img src="images/qrcode.png" 
-       style="width: 120px; height: 120px; border-radius: 8px;" 
-       alt="科技日报公众号">
-</p>
-<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
-  📱 扫码关注「科技日报」<br>
-  每天早上8点自动送达
-</p>
-
-<p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
-  💬 欢迎评论交流，说说你的看法
-</p>
-<p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
-  © 2026 科技日报 | 认真做内容
-</p>
-```
-
-## 完整示例
-
-```html
-<!-- 封面 -->
-<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
-</p>
-<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
-  💰 1100亿美元！AI史上最大融资诞生
-</p>
-<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
-  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
-</p>
-
-<!-- Hacker News -->
-<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600;">
-  <strong style="font-size: 16px; color: #ff6600;">🔥 Hacker News 热门</strong>
-</p>
-
-<p style="margin: 15px 0 5px 0;">
-  <strong style="font-size: 15px; color: #1a1a1a;">1. Anthropic CEO硬刚五角大楼：拒绝向军方开放AI</strong>
-</p>
-<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">
-  Dario Amodei明确表示问心无愧地拒绝五角大楼要求...
-</p>
-<p style="margin: 5px 0 15px 0; border-bottom: 1px dashed #eee;"></p>
-
-<!-- 其他平台... -->
-
-<!-- 结尾 -->
-<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
-  <span style="font-size: 16px; color: #333; font-weight: 500;">
-    👍 觉得有用？不妨分享给朋友 👏
-  </span>
-</p>
-
-<!-- 公众号二维码 -->
-<p style="text-align: center; margin-top: 20px;">
-  <img src="images/qrcode.png" 
-       style="width: 120px; height: 120px; border-radius: 8px;" 
-       alt="科技日报公众号">
-</p>
-<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
-  📱 扫码关注「科技日报」<br>
-  每天早上8点自动送达
-</p>
-
-<p style="text-align: center; margin-top: 20px; font-size: 13px; color: #999; line-height: 1.6;">
-  💬 欢迎评论交流，说说你的看法
-</p>
-<p style="text-align: center; margin-top: 15px; font-size: 11px; color: #ccc; letter-spacing: 1px;">
-  © 2026 科技日报 | 认真做内容
-</p>
-```
-
-## 开头模板库（温暖科技风）
-
-### 模板1：数字吸睛
-```html
-<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
-</p>
-<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
-  💰 1100亿美元！AI史上最大融资诞生
-</p>
-<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
-  OpenAI估值7300亿美元，Anthropic硬刚五角大楼
-</p>
-```
-
-### 模板2：话题吸睛
-```html
-<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
-</p>
-<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
-  ❓ 当AI巨头遇上五角大楼，会发生什么？
-</p>
-<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
-  Dario Amodei硬刚五角大楼，AI行业迎来关键时刻
-</p>
-```
-
-### 模板3：新闻联播风
-```html
-<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
-  <span style="font-size: 14px; color: #fff; opacity: 0.9;">📰 科技日报</span>
-</p>
-<p style="text-align: center; font-size: 26px; font-weight: bold; color: #1a1a1a; margin: 20px 15px 10px 15px; line-height: 1.4;">
-  🔥 2026.02.27 科技圈发生了什么？
-</p>
-<p style="text-align: center; color: #666; font-size: 14px; margin: 0 20px 20px 20px;">
-  这一周的科技圈，信息量有点大
-</p>
-```
-
-## 结尾模板库（温暖真人感）
-
-### 模板1：互动引导 + 公众号二维码
-```html
-<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
-  <span style="font-size: 16px; color: #333; font-weight: 500;">
-    👍 觉得有用？不妨分享给朋友 👏
-  </span>
-</p>
-
-<p style="text-align: center; margin-top: 20px;">
-  <img src="images/qrcode.png" 
-       style="width: 120px; height: 120px; border-radius: 8px;" 
-       alt="科技日报公众号">
-</p>
-<p style="text-align: center; margin-top: 10px; font-size: 13px; color: #666;">
-  📱 扫码关注「科技日报」<br>
-  每天早上8点自动送达
-</p>
-```
-
-### 模板2：关注引导
-```html
-<p style="text-align: center; margin-top: 30px; padding: 25px 20px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;">
-  <span style="font-size: 15px; color: #666;">
-    📱 每天8点 | 点关注不迷路<br>
-    💬 评论区聊聊，你最关注哪条？
-  </span>
-</p>
-```
-
-### 模板3：简洁有力
-```html
-<p style="text-align: center; margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 8px;">
-  <span style="font-size: 15px; color: #555;">
-    👍 认同就分享 | 💬 评论区见
-  </span>
-</p>
-```
-
-## 抓取 API
-
+### Step 1: 抓取新闻
 ```bash
-curl "https://ai-news-production-2735.up.railway.app/api/fetch"
+cd ~/.openclaw/workspace/ai-news-backend && python3 fetch_news.py
 ```
 
-## 发布 API
-
+### Step 2: 发布到公众号
 ```bash
-curl -X POST "https://ai-news-production-2735.up.railway.app/api/publish_wechat" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "articles": [{
-      "title": "标题",
-      "content": "HTML内容",
-      "digest": "摘要",
-      "source_url": "https://veray.ai"
-    }]
-  }'
+cd ~/.openclaw/workspace/ai-news-backend && \
+export WECHAT_APP_ID="wxa87b65ba78d3c822" && \
+export WECHAT_APP_SECRET="ac6a029c2b4ef7c1b89fbaeeaace3931" && \
+python3 publish_local.py
 ```
 
-## 常见问题
-
-1. **Railway 500 错误** - 检查 RSS 源是否有效
-2. **微信 IP 白名单** - 需要在微信开放平台添加 Railway 服务器 IP（注意：Railway IP 会动态变化）
-3. **新闻不足20条** - 需要检查各 RSS 源是否正常返回数据
-
-## 后续迭代方向
-
-- [ ] 增加更多新闻源
-- [ ] 自动翻译（接入翻译API）
-- [ ] 个性化推荐（根据用户兴趣）
-- [ ] 多平台发布（公众号、微博、Twitter）
-- [ ] 评论互动分析
-- [ ] 趋势预测
-- [ ] A/B测试不同开头/结尾效果
+## 返回信息
+告诉用户：成功条数、平台数、media_id、热点头条
