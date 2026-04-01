@@ -1,0 +1,141 @@
+{
+  "opening": "今日AI领域精彩纷呈。从HackerNews的技术讨论到ProductHunt的新产品，从TechCrunch的行业动态到SubStack的深度分析，每一则资讯都经过筛选和解读。本期午报按来源分为四类，带您全面掌握今日AI要闻。",
+  "date": "2026.04.01",
+  "time_label": "午报",
+  "categories": [
+    {
+      "title": "🔥 HackerNews",
+      "items": [
+        {
+          "title": "1-Bit Bonsai 商业化",
+          "summary": "PrismML团队发布首个商业化1-bit大语言模型，将参数精度压缩至1-bit，大幅降低推理成本同时保持竞争力性能，标志着模型量化技术进入新阶段。",
+          "comment": "1-bit推理或将成为未来大模型部署的标准配置。",
+          "source": "HackerNews"
+        },
+        {
+          "title": "TinyLoRA 13参数推理",
+          "summary": "arXiv最新论文提出TinyLoRA方法，仅用13个参数即可让小型语言模型具备推理能力，探索了大模型推理能力的最小参数量边界。",
+          "comment": "极简模型也能实现推理，模型压缩技术持续突破。",
+          "source": "HackerNews"
+        },
+        {
+          "title": "Claude Code 可视化指南",
+          "summary": "一份深入理解Claude Code架构和能力的可视化指南，帮助开发者全面了解这款AI编程工具的内部工作机制。",
+          "comment": "Claude Code的架构细节引发开发者社区广泛讨论。",
+          "source": "HackerNews"
+        },
+        {
+          "title": "TruffleRuby 高性能Ruby",
+          "summary": "使用Truffle和GraalVM技术实现高性能Ruby运行，Ruby社区迎来性能突破，为AI和数据处理提供新选择。",
+          "comment": "高性能Ruby运行时为AI开发提供新选择。",
+          "source": "HackerNews"
+        },
+        {
+          "title": "MiniStack 替代LocalStack",
+          "summary": "MiniStack作为LocalStack的替代品发布，为开发者提供本地AWS云服务模拟环境，降低云端应用测试成本。",
+          "comment": "开发者工具持续创新，降低开发门槛。",
+          "source": "HackerNews"
+        }
+      ]
+    },
+    {
+      "title": "🆕 ProductHunt",
+      "items": [
+        {
+          "title": "Prospecting by Clarify",
+          "summary": "一款整合CRM的AI获客工具，帮助用户获取潜在客户、发送外展消息、管理销售管道，全部在一个界面完成。",
+          "comment": "AI赋能销售自动化，提升获客效率。",
+          "source": "ProductHunt"
+        },
+        {
+          "title": "Wispli AI语音转文字",
+          "summary": "支持多语言的AI语音转文字生产力应用，帮助用户快速将语音内容转化为文本，提升工作效率。",
+          "comment": "语音转文字技术日益成熟，应用场景广泛。",
+          "source": "ProductHunt"
+        },
+        {
+          "title": "Radial 光标工具",
+          "summary": "一款创新的光标增强工具，在一个手势中集成所有操作，让用户的鼠标使用更加高效便捷。",
+          "comment": "创意工具提升操作效率，值得关注。",
+          "source": "ProductHunt"
+        },
+        {
+          "title": "Rent AI Key 物理按键",
+          "summary": "出租真实键盘按键，可重定向到用户指定的链接，将物理世界与数字内容巧妙连接。",
+          "comment": "有趣的硬件创新，链接物理与数字世界。",
+          "source": "ProductHunt"
+        }
+      ]
+    },
+    {
+      "title": "📰 TechCrunch",
+      "items": [
+        {
+          "title": "Mercor 遭网络攻击",
+          "summary": "AI招聘初创公司Mercor确认遭受网络攻击，与开源项目LiteLLM漏洞有关，勒索黑客团体声称已窃取数据。",
+          "comment": "开源依赖项的安全审计应引起AI企业高度重视。",
+          "source": "TechCrunch"
+        },
+        {
+          "title": "Slack AI 30项新功能",
+          "summary": "Salesforce宣布对Slack进行重大AI升级，新增30项功能，涵盖智能回复、会议摘要、自动化工作流，深度集成Einstein AI。",
+          "comment": "企业级AI应用正在从概念走向大规模落地。",
+          "source": "TechCrunch"
+        },
+        {
+          "title": "Robotaxi 拒透露数据",
+          "summary": "在参议员Ed Markey调查中，Aurora、Tesla、Waymo等主要自动驾驶企业均拒绝透露远程人工协助的具体频率。",
+          "comment": "自动驾驶技术的透明度仍是行业痛点。",
+          "source": "TechCrunch"
+        },
+        {
+          "title": "丰田 Woven Capital 换帅",
+          "summary": "丰田旗下风险投资基金Woven Capital任命新的CIO和COO，专注投资太空、网络安全和自动驾驶领域。",
+          "comment": "传统车企在智能出行领域的转型持续加码。",
+          "source": "TechCrunch"
+        },
+        {
+          "title": "Anthropic 消息不断",
+          "summary": "本周Anthropic连续出现多条新闻，包括产品更新和战略动向，作为Claude开发商的每一步都牵动行业神经。",
+          "comment": "Anthropic的战略布局值得持续关注。",
+          "source": "TechCrunch"
+        }
+      ]
+    },
+    {
+      "title": "📧 SubStack",
+      "items": [
+        {
+          "title": "Claude Code 源码泄露",
+          "summary": "LatentSpace报道：Claude Code意外开源为开发者社区提供了深入理解其架构的机会，揭示了代码理解和工具使用方面的技术细节。",
+          "comment": "AI安全与开源的边界值得深思，企业需加强代码保护。",
+          "source": "LatentSpace"
+        },
+        {
+          "title": "NVIDIA 构建AI操作系统",
+          "summary": "The Sequence分析指出，NVIDIA正从芯片向软件生态延伸，构建覆盖AI开发全流程的软件栈，被认为是事实上的AI操作系统。",
+          "comment": "从硬件到软件，NVIDIA的生态护城河持续加深。",
+          "source": "TheSequence"
+        },
+        {
+          "title": "世界模型构建技术",
+          "summary": "The Sequence Knowledge专题深入分析新一代世界模型的构建技术，涵盖空间推理、时间建模、因果推断等核心技术。",
+          "comment": "世界模型研究是通向AGI的必经之路。",
+          "source": "TheSequence"
+        },
+        {
+          "title": "上周AI要闻回顾",
+          "summary": "The Sequence Radar汇总上周AI领域要闻，重点关注模型压缩技术突破和创新语音模型进展，AI技术正在多个维度同时突破。",
+          "comment": "AI技术多点突破，行业进入快速发展期。",
+          "source": "TheSequence"
+        },
+        {
+          "title": "科技行业最后四类岗位",
+          "summary": "LatentSpace探讨了一个有趣的思维模型：科技行业未来可能只剩下四类岗位，引发对AI时代就业形态的思考。",
+          "comment": "AI对就业的影响值得深入探讨。",
+          "source": "LatentSpace"
+        }
+      ]
+    }
+  ]
+}

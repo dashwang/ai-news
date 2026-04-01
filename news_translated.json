@@ -1,0 +1,252 @@
+[
+  {
+    "id": "79016f72-7356-4755-b930-6289987cbfb9",
+    "source": "HackerNews",
+    "title": "Claude Code Unpacked : A visual guide",
+    "title_zh": "Claude Code 深度解析：可视化指南",
+    "url": "https://ccunpacked.dev/",
+    "summary": "A visual guide to understanding Claude Code's architecture and capabilities.",
+    "summary_zh": "一份理解 Claude Code 架构和能力的可视化指南",
+    "timestamp": "2026-04-01T15:47:08.664525"
+  },
+  {
+    "id": "c95b2b9b-b429-4c6d-9650-0a5136ecbbb1",
+    "source": "HackerNews",
+    "title": "CERN levels up with new superconducting karts",
+    "title_zh": "CERN 升级超级电容器卡丁车",
+    "url": "https://home.cern/news/news/engineering/cern-levels-new-superconducting-karts",
+    "summary": "CERN has developed new superconducting karts for particle physics demonstrations.",
+    "summary_zh": "CERN 开发了新型超级电容器卡丁车用于粒子物理演示",
+    "timestamp": "2026-04-01T15:47:08.664544"
+  },
+  {
+    "id": "1d47cfb6-8c17-4026-8d21-9f31135e74c9",
+    "source": "HackerNews",
+    "title": "Neanderthals survived on a knife's edge for 350k years",
+    "title_zh": "尼安德特人边缘生存35万年",
+    "url": "https://www.science.org/content/article/neanderthals-survived-knife-s-edge-350-000-years",
+    "summary": "New research reveals Neanderthals lived on the edge of extinction for hundreds of thousands of years.",
+    "summary_zh": "新研究揭示尼安德特人在灭绝边缘生存了数十万年",
+    "timestamp": "2026-04-01T15:47:08.664553"
+  },
+  {
+    "id": "ceb132a0-e567-43ad-9c16-b8b15e9ccd95",
+    "source": "HackerNews",
+    "title": "Mad Bugs: Vim vs. Emacs vs. Claude",
+    "title_zh": "Mad Bugs：Vim vs Emacs vs Claude",
+    "url": "https://blog.calif.io/p/mad-bugs-vim-vs-emacs-vs-claude",
+    "summary": "Comparing the quirks and bugs of three iconic developer tools.",
+    "summary_zh": "比较三个标志性开发者工具的奇闻轶事和 bug",
+    "timestamp": "2026-04-01T15:47:08.664561"
+  },
+  {
+    "id": "81971a76-cb59-40a0-9aca-e4c5b1118606",
+    "source": "HackerNews",
+    "title": "Bring Back MiniDV with This Raspberry Pi FireWire Hat",
+    "title_zh": "树莓派 FireWire Hat 让 MiniDV 重获新生",
+    "url": "https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/",
+    "summary": "A DIY project brings back MiniDV tape functionality using Raspberry Pi.",
+    "summary_zh": "一个 DIY 项目使用树莓派让 MiniDV 磁带功能重获新生",
+    "timestamp": "2026-04-01T15:47:08.664568"
+  },
+  {
+    "id": "d2dede9a-797c-41dc-b53e-f5f0d1ba15be",
+    "source": "HackerNews",
+    "title": "Show HN: CLI to order groceries via reverse-engineered REWE API (Haskell)",
+    "title_zh": "Show HN：通过逆向工程 REWE API 用 CLI 订购杂货（Haskell）",
+    "url": "https://github.com/yannick-cw/korb",
+    "summary": "A Haskell CLI tool to order groceries by reverse-engineering the REWE API.",
+    "summary_zh": "一个通过逆向工程 REWE API 订购杂货的 Haskell 命令行工具",
+    "timestamp": "2026-04-01T15:47:08.664575"
+  },
+  {
+    "id": "8bdcc17e-7640-403e-a9af-52ff32e2eafb",
+    "source": "HackerNews",
+    "title": "TinyLoRA – Learning to Reason in 13 Parameters",
+    "title_zh": "TinyLoRA：仅用13个参数学会推理",
+    "url": "https://arxiv.org/abs/2602.04118",
+    "summary": "A paper on teaching large language models to reason with minimal parameters.",
+    "summary_zh": "一篇关于用最少量参数教会大型语言模型推理的论文",
+    "timestamp": "2026-04-01T15:47:08.664582"
+  },
+  {
+    "id": "ed78dab6-ef86-4052-a5ce-3dfabd3e85a3",
+    "source": "HackerNews",
+    "title": "Show HN: 1-Bit Bonsai, the First Commercially Viable 1-Bit LLMs",
+    "title_zh": "Show HN：1-Bit Bonsai，首个商业可行的1位大语言模型",
+    "url": "https://prismml.com/",
+    "summary": "The first commercially viable 1-bit large language model.",
+    "summary_zh": "首个商业可行的1位大语言模型",
+    "timestamp": "2026-04-01T15:47:08.664588"
+  },
+  {
+    "id": "8a9e7c8e-3f50-44a8-9826-e13191888253",
+    "source": "HackerNews",
+    "title": "TruffleRuby",
+    "title_zh": "TruffleRuby",
+    "url": "https://chrisseaton.com/truffleruby/",
+    "summary": "A high-performance Ruby implementation using Truffle and GraalVM.",
+    "summary_zh": "使用 Truffle 和 GraalVM 的高性能 Ruby 实现",
+    "timestamp": "2026-04-01T15:47:08.664595"
+  },
+  {
+    "id": "b49f8896-b0bf-4a7f-893c-3f2b008d1ed7",
+    "source": "HackerNews",
+    "title": "A dot a day keeps the clutter away",
+    "title_zh": "每日一点，远离杂乱",
+    "url": "https://scottlawsonbc.com/post/dot-system",
+    "summary": "A minimalist productivity system using simple daily dots.",
+    "summary_zh": "一个使用简单每日圆点的极简生产力系统",
+    "timestamp": "2026-04-01T15:47:08.664601"
+  },
+  {
+    "id": "481b5ac8-40d7-4e07-8b8d-86eb4afc9460",
+    "source": "TechCrunch",
+    "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project",
+    "title_zh": "Mercor 遭网络攻击，与开源 LiteLLM 项目漏洞有关",
+    "url": "https://techcrunch.com/2026/03/31/mercor-says-it-was-hit-by-cyberattack-tied-to-compromise-of-open-source-litellm-project/",
+    "summary": "The AI recruiting startup confirmed a security incident after an extortion hacking crew took credit for stealing data from the company's systems.",
+    "summary_zh": "这家 AI 招聘初创公司确认安全事件，一个勒索黑客团队声称从其系统窃取了数据",
+    "timestamp": "2026-04-01T15:47:09.339188"
+  },
+  {
+    "id": "f99aec9d-0b6b-4f85-b590-b3ca390c25b9",
+    "source": "TechCrunch",
+    "title": "Toyota's Woven Capital appoints new CIO and COO in push for finding the 'future of mobility'",
+    "title_zh": "丰田 Woven Capital 任命新 CIO 和 COO，发力探索移动出行未来",
+    "url": "https://techcrunch.com/2026/03/31/toyotas-woven-capital-appoints-new-cio-and-coo-in-push-for-finding-the-future-of-mobility/",
+    "summary": "Woven Capital is the growth-stage venture capital arm of Toyota, focused on backing founders building in space, cybersecurity, and autonomous driving.",
+    "summary_zh": "Woven Capital 是丰田旗下成长期风投部门，专注于投资太空、网络安全和自动驾驶领域的创业者",
+    "timestamp": "2026-04-01T15:47:09.339200"
+  },
+  {
+    "id": "b139a6b4-8121-44a6-a5f4-9e1b43a7985b",
+    "source": "TechCrunch",
+    "title": "Anthropic is having a month",
+    "title_zh": "Anthropic 最近消息不断",
+    "url": "https://techcrunch.com/2026/03/31/anthropic-is-having-a-month/",
+    "summary": "A human really borks things at Anthropic for the second time this week.",
+    "summary_zh": "本周第二次有人在 Anthropic 搞砸了事情",
+    "timestamp": "2026-04-01T15:47:09.339204"
+  },
+  {
+    "id": "d8fbabb6-eb05-4351-b0dc-5c299c46227f",
+    "source": "TechCrunch",
+    "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features",
+    "title_zh": "Salesforce 推出 AI 增强版 Slack，新增30个功能",
+    "url": "https://techcrunch.com/2026/03/31/salesforce-announces-an-ai-heavy-makeover-for-slack-with-30-new-features/",
+    "summary": "Slack just got a whole lot more useful.",
+    "summary_zh": "Slack 变得更有用了",
+    "timestamp": "2026-04-01T15:47:09.339208"
+  },
+  {
+    "id": "fdde0e9b-dac8-4ae2-b631-c66101638a17",
+    "source": "TechCrunch",
+    "title": "Robotaxi companies refuse to say how often their AVs need remote help",
+    "title_zh": "Robotaxi 公司拒绝透露自动驾驶汽车需要远程协助的频率",
+    "url": "https://techcrunch.com/2026/03/31/robotaxi-companies-refuse-to-say-how-often-their-avs-need-remote-help/",
+    "summary": "Aurora, May Mobility, Motional, Nuro, Tesla, Waymo, and Zoox all refused to cough up a number during Senator Ed Markey's recent investigation.",
+    "summary_zh": "Aurora、May Mobility、Motional、Nuro、Tesla、Waymo 和 Zoox 在最近参议员 Ed Markey 的调查中均拒绝透露具体数字",
+    "timestamp": "2026-04-01T15:47:09.339212"
+  },
+  {
+    "id": "a5443609-5baa-42af-aa06-2a4288e93080",
+    "source": "ProductHunt",
+    "title": "Prospecting by Clarify",
+    "title_zh": "Prospecting by Clarify",
+    "url": "https://www.producthunt.com/products/clarify-6",
+    "summary": "Source leads, send outbound, grow pipeline. All in your CRM.",
+    "summary_zh": "获取潜在客户、发送外展、增长管道。全部在你的 CRM 中完成",
+    "timestamp": "2026-04-01T15:47:10.141910"
+  },
+  {
+    "id": "4d25837a-62a6-4704-a592-9e9fa04ae41a",
+    "source": "ProductHunt",
+    "title": "Keplars",
+    "title_zh": "Keplars",
+    "url": "https://www.producthunt.com/products/keplars",
+    "summary": "Email Infrastructure for Modern Product Teams",
+    "summary_zh": "现代产品团队的邮件基础设施",
+    "timestamp": "2026-04-01T15:47:10.141921"
+  },
+  {
+    "id": "3cdebc1f-b3ae-471d-9e80-31b856ab25a6",
+    "source": "ProductHunt",
+    "title": "VoiceZeroAI",
+    "title_zh": "VoiceZeroAI",
+    "url": "https://www.producthunt.com/products/voicezeroai-2",
+    "summary": "AI voice feedback that catches complaints before bad reviews",
+    "summary_zh": "AI 语音反馈，在差评出现前捕捉客户投诉",
+    "timestamp": "2026-04-01T15:47:10.141925"
+  },
+  {
+    "id": "8481acad-3150-4783-a3db-834b1058d3c3",
+    "source": "ProductHunt",
+    "title": "CapyCursor",
+    "title_zh": "CapyCursor",
+    "url": "https://www.producthunt.com/products/capycursor",
+    "summary": "Cursor highlight, screen draw, zoom & spotlight",
+    "summary_zh": "光标高亮、屏幕绘画、缩放和聚光灯",
+    "timestamp": "2026-04-01T15:47:10.141929"
+  },
+  {
+    "id": "00fac4e7-f37f-4243-a11f-cd9accabbcc9",
+    "source": "ProductHunt",
+    "title": "Google Veo 3.1 Lite",
+    "title_zh": "Google Veo 3.1 Lite",
+    "url": "https://www.producthunt.com/products/google-pay-2",
+    "summary": "Google's most cost-effective video generation model",
+    "summary_zh": "Google 最具成本效益的视频生成模型",
+    "timestamp": "2026-04-01T15:47:10.141933"
+  },
+  {
+    "id": "d529be03-e28a-4873-b93a-3b9500cbd8ef",
+    "source": "TheSequence",
+    "title": "The Sequence Knowledge #833: How to Build a World Model",
+    "title_zh": "The Sequence 知识 #833：如何构建世界模型",
+    "url": "https://thesequence.substack.com/p/the-sequence-knowledge-833-how-to",
+    "summary": "Inside the techniques that powers the latest generation of world models.",
+    "summary_zh": "深入了解驱动新一代世界模型的技术",
+    "timestamp": "2026-04-01T15:47:10.648470"
+  },
+  {
+    "id": "15ae60c3-4afb-4b72-8b6a-9dafe2149eec",
+    "source": "TheSequence",
+    "title": "The Sequence Radar #832: Last Week in AI: Compression, Voice, and Why It All Matters",
+    "title_zh": "The Sequence 雷达 #832：上周 AI 要闻：压缩、语音及其重要性",
+    "url": "https://thesequence.substack.com/p/the-sequence-radar-832-last-week",
+    "summary": "New algorithms and innovative voice models",
+    "summary_zh": "新算法和创新语音模型",
+    "timestamp": "2026-04-01T15:47:10.648488"
+  },
+  {
+    "id": "4b7e2636-c654-43c3-9145-a32c5e4d33e6",
+    "source": "TheSequence",
+    "title": "The Sequence Opinion #831: NVIDIA Is Quietly Building the Operating System of AI",
+    "title_zh": "The Sequence 观点 #831：NVIDIA 正在悄悄构建 AI 操作系统",
+    "url": "https://thesequence.substack.com/p/the-sequence-opinion-831-nvidia-is",
+    "summary": "From Atoms to Agents",
+    "summary_zh": "从原子到智能体",
+    "timestamp": "2026-04-01T15:47:10.648498"
+  },
+  {
+    "id": "1dddef91-37a8-41f1-bb20-7a79ad2953f3",
+    "source": "LatentSpace",
+    "title": "[AINews] The Claude Code Source Leak",
+    "title_zh": "[AI 要闻] Claude Code 源码泄露事件",
+    "url": "https://www.latent.space/p/ainews-the-claude-code-source-leak",
+    "summary": "The accidental \"open sourcing\" of Claude Code brings a ton of insights.",
+    "summary_zh": "意外\"开源\"的 Claude Code 带来了大量深刻见解",
+    "timestamp": "2026-04-01T15:47:12.020155"
+  },
+  {
+    "id": "5c8e7dd1-2c56-4386-85df-d02f1d4fe853",
+    "source": "LatentSpace",
+    "title": "[AINews] The Last 4 Jobs in Tech",
+    "title_zh": "[AI 要闻] 科技行业的最后四个岗位",
+    "url": "https://www.latent.space/p/ainews-the-last-4-jobs-in-tech",
+    "summary": "A quiet day lets us examine an interesting mental model",
+    "summary_zh": "平静的一天让我们审视一个有趣的思维模型",
+    "timestamp": "2026-04-01T15:47:12.020167"
+  }
+]

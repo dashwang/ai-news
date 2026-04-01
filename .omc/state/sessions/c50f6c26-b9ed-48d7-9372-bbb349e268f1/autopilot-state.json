@@ -1,0 +1,8 @@
+{
+  "active": true,
+  "started_at": "2026-03-30T08:37:20.548Z",
+  "original_prompt": "autopilot: build a REST API for managing tasks",
+  "session_id": "c50f6c26-b9ed-48d7-9372-bbb349e268f1",
+  "reinforcement_count": 20,
+  "last_checked_at": "2026-03-30T08:39:27.175Z"
+}

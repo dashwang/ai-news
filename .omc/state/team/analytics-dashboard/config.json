@@ -1,0 +1,27 @@
+{
+  "teamName": "analytics-dashboard",
+  "workerCount": 2,
+  "agentTypes": [
+    "claude",
+    "codex"
+  ],
+  "tasks": [
+    {
+      "subject": "Implement Analytics Backend",
+      "description": "Design and implement the analytics database layer with query functions. Create SQL queries for news volume trends, source distribution, top influencers, trending topics, and read time distribution. Add optimization for frequently accessed analytics data. Make sure the backend exposes JSON APIs for frontend consumption."
+    },
+    {
+      "subject": "Build Analytics Frontend",
+      "description": "Design and build a modern analytics dashboard UI with responsive charts. Implement KPI cards showing total news, daily trends, source breakdown. Add interactive charts for trending topics, influencer analysis, and time-based volume trends. Use React or Vue.js with chart libraries."
+    },
+    {
+      "subject": "Write Tests for Analytics",
+      "description": "Create comprehensive tests for analytics backend functions, including edge cases. Write integration tests for the analytics dashboard frontend and API endpoints. Ensure tests cover all analytics queries and data aggregation logic."
+    },
+    {
+      "subject": "Configure Analytics Deployment",
+      "description": "Set up environment configuration for analytics dashboard in Railway deployment. Configure database queries to cache frequently accessed analytics data. Add proper logging and monitoring for analytics APIs. Ensure deployment works alongside existing news fetching system."
+    }
+  ],
+  "cwd": "/Users/jeff/Projects/llms/agent/ai-news"
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "6cd9a0f3-89c2-4a37-9d8a-81412ba1ec8c",
+    "source": "HackerNews",
+    "title": "Claude Code Unpacked : A visual guide",
+    "url": "https://ccunpacked.dev/",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47597085\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684212"
+  },
+  {
+    "id": "647ce955-60ec-4b4b-bdf0-48f470591369",
+    "source": "HackerNews",
+    "title": "CERN levels up with new superconducting karts",
+    "url": "https://home.cern/news/news/engineering/cern-levels-new-superconducting-karts",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47597935\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684233"
+  },
+  {
+    "id": "18e980e7-a092-41e4-bb58-2d92c5f2d353",
+    "source": "HackerNews",
+    "title": "Neanderthals survived on a knife's edge for 350k years",
+    "url": "https://www.science.org/content/article/neanderthals-survived-knife-s-edge-350-000-years",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47595572\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684247"
+  },
+  {
+    "id": "e7086874-cdff-486d-9d17-b6c9dae4b8d3",
+    "source": "HackerNews",
+    "title": "Show HN: CLI to order groceries via reverse-engineered REWE API (Haskell)",
+    "url": "https://github.com/yannick-cw/korb",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47571183\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684257"
+  },
+  {
+    "id": "21f78a8c-f4a6-4184-b4f5-31ba733e4181",
+    "source": "HackerNews",
+    "title": "Bring Back MiniDV with This Raspberry Pi FireWire Hat",
+    "url": "https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47558101\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684267"
+  },
+  {
+    "id": "ec4f2fc1-e42a-447d-bd58-7990694d1f39",
+    "source": "HackerNews",
+    "title": "TinyLoRA – Learning to Reason in 13 Parameters",
+    "url": "https://arxiv.org/abs/2602.04118",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47541733\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684276"
+  },
+  {
+    "id": "0ad02fa2-c1f3-4313-9300-c8108254adec",
+    "source": "HackerNews",
+    "title": "A dot a day keeps the clutter away",
+    "url": "https://scottlawsonbc.com/post/dot-system",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47593556\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684285"
+  },
+  {
+    "id": "93348b13-e6f5-45bd-ac64-65b3258ccd30",
+    "source": "HackerNews",
+    "title": "Show HN: 1-Bit Bonsai, the First Commercially Viable 1-Bit LLMs",
+    "url": "https://prismml.com/",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47593422\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684294"
+  },
+  {
+    "id": "69bd5fa7-65d5-46a6-a1bb-16f05f8919c7",
+    "source": "HackerNews",
+    "title": "TruffleRuby",
+    "url": "https://chrisseaton.com/truffleruby/",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47557171\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684302"
+  },
+  {
+    "id": "f9c7176b-605f-42a4-ae0b-ee8c1483894a",
+    "source": "HackerNews",
+    "title": "MiniStack (replacement for LocalStack)",
+    "url": "https://ministack.org/",
+    "summary": "<a href=\"https://news.ycombinator.com/item?id=47593285\">Comments</a>",
+    "timestamp": "2026-04-01T16:30:26.684311"
+  },
+  {
+    "id": "2b8032ba-f629-4ab0-ba8c-15d5b233ac84",
+    "source": "TechCrunch",
+    "title": "Mercor says it was hit by cyberattack tied to compromise of open-source LiteLLM project",
+    "url": "https://techcrunch.com/2026/03/31/mercor-says-it-was-hit-by-cyberattack-tied-to-compromise-of-open-source-litellm-project/",
+    "summary": "The AI recruiting startup confirmed a security incident after an extortion hacking crew took credit for stealing data from the company's systems.",
+    "timestamp": "2026-04-01T16:30:27.257649"
+  },
+  {
+    "id": "8f9ef16c-f053-429b-bb76-173391522350",
+    "source": "TechCrunch",
+    "title": "Toyota’s Woven Capital appoints new CIO and COO in push for finding the ‘future of mobility’",
+    "url": "https://techcrunch.com/2026/03/31/toyotas-woven-capital-appoints-new-cio-and-coo-in-push-for-finding-the-future-of-mobility/",
+    "summary": "Woven Capital is the growth-stage venture capital arm of Toyota, focused on backing founders building in space, cybersecurity, and autonomous driving.",
+    "timestamp": "2026-04-01T16:30:27.257669"
+  },
+  {
+    "id": "a218c672-2b24-43fb-9df4-3a88cc2beb56",
+    "source": "TechCrunch",
+    "title": "Anthropic is having a month",
+    "url": "https://techcrunch.com/2026/03/31/anthropic-is-having-a-month/",
+    "summary": "A human really borks things at Anthropic for the second time this week.",
+    "timestamp": "2026-04-01T16:30:27.257680"
+  },
+  {
+    "id": "90fc71e6-420e-4e56-9efe-8a340d077b39",
+    "source": "TechCrunch",
+    "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features",
+    "url": "https://techcrunch.com/2026/03/31/salesforce-announces-an-ai-heavy-makeover-for-slack-with-30-new-features/",
+    "summary": "Slack just got a whole lot more useful.",
+    "timestamp": "2026-04-01T16:30:27.257689"
+  },
+  {
+    "id": "086f2927-73eb-48ec-8767-4a8d43347566",
+    "source": "TechCrunch",
+    "title": "Robotaxi companies refuse to say how often their AVs need remote help",
+    "url": "https://techcrunch.com/2026/03/31/robotaxi-companies-refuse-to-say-how-often-their-avs-need-remote-help/",
+    "summary": "Aurora, May Mobility, Motional, Nuro, Tesla, Waymo, and Zoox all refused to cough up a number during Senator Ed Markey's recent investigation.",
+    "timestamp": "2026-04-01T16:30:27.257699"
+  },
+  {
+    "id": "e62f01dc-b431-418a-899c-57cfe35f18a5",
+    "source": "ProductHunt",
+    "title": "Prospecting by Clarify",
+    "url": "https://www.producthunt.com/products/clarify-6",
+    "summary": "<p>\n            Source leads, send outbound, grow pipeline. All in your CRM.\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/clarify-6?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1110884?app_id=339\">Link</a>\n          </p>",
+    "timestamp": "2026-04-01T16:30:28.151079"
+  },
+  {
+    "id": "75e415a5-52a4-4765-92b4-409146d7b80c",
+    "source": "ProductHunt",
+    "title": "Wispli",
+    "url": "https://www.producthunt.com/products/wispli",
+    "summary": "<p>\n             AI voice-to-text productivity app with multilingual support\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/wispli?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1086952?app_id=339\">Link</a>\n          </p>",
+    "timestamp": "2026-04-01T16:30:28.151094"
+  },
+  {
+    "id": "93444a0b-0260-4833-a0eb-7d40c293dc00",
+    "source": "ProductHunt",
+    "title": "Radial",
+    "url": "https://www.producthunt.com/products/radial",
+    "summary": "<p>\n            Everything at your cursor in a single gesture\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/radial?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1112713?app_id=339\">Link</a>\n          </p>",
+    "timestamp": "2026-04-01T16:30:28.151100"
+  },
+  {
+    "id": "bcdb844e-1065-430a-b049-68600dd3fbe9",
+    "source": "ProductHunt",
+    "title": "Stiinks.co",
+    "url": "https://www.producthunt.com/products/liinks",
+    "summary": "<p>\n            Link-in-bio, but worse.\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/liinks?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1106204?app_id=339\">Link</a>\n          </p>",
+    "timestamp": "2026-04-01T16:30:28.151106"
+  },
+  {
+    "id": "e9af20bb-3341-4acb-b461-02ee2d35da10",
+    "source": "ProductHunt",
+    "title": "Rent AI Key",
+    "url": "https://www.producthunt.com/products/rent-ai-key",
+    "summary": "<p>\n            Rent real keyboard keys that redirect to your link\n          </p>\n          <p>\n            <a href=\"https://www.producthunt.com/products/rent-ai-key?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1112278?app_id=339\">Link</a>\n          </p>",
+    "timestamp": "2026-04-01T16:30:28.151111"
+  },
+  {
+    "id": "10088838-b8ab-461a-8b64-c91b32d1ee43",
+    "source": "TheSequence",
+    "title": "The Sequence Knowledge #833: How to Build a World Model",
+    "url": "https://thesequence.substack.com/p/the-sequence-knowledge-833-how-to",
+    "summary": "Inside the techniques that powers the latest generation of world models.",
+    "timestamp": "2026-04-01T16:30:28.568990"
+  },
+  {
+    "id": "e8b1fc59-92a8-4e9b-a4bf-07030f2b0747",
+    "source": "TheSequence",
+    "title": "The Sequence Radar #832: Last Week in AI: Compression, Voice, and Why It All Matters",
+    "url": "https://thesequence.substack.com/p/the-sequence-radar-832-last-week",
+    "summary": "New algorithms and innovative voice models",
+    "timestamp": "2026-04-01T16:30:28.569003"
+  },
+  {
+    "id": "6cedfdb6-989e-4151-b41c-3362239f82bd",
+    "source": "TheSequence",
+    "title": "The Sequence Opinion #831: NVIDIA Is Quietly Building the Operating System of AI",
+    "url": "https://thesequence.substack.com/p/the-sequence-opinion-831-nvidia-is",
+    "summary": "From Atoms to Agents",
+    "timestamp": "2026-04-01T16:30:28.569008"
+  },
+  {
+    "id": "acfae093-2b95-44a8-b07d-cc25a4b558ff",
+    "source": "LatentSpace",
+    "title": "[AINews] The Claude Code Source Leak",
+    "url": "https://www.latent.space/p/ainews-the-claude-code-source-leak",
+    "summary": "The accidental \"open sourcing\" of Claude Code brings a ton of insights.",
+    "timestamp": "2026-04-01T16:30:29.508609"
+  },
+  {
+    "id": "1f3cbfbd-d753-40cd-9288-fa495ea3b08e",
+    "source": "LatentSpace",
+    "title": "[AINews] The Last 4 Jobs in Tech",
+    "url": "https://www.latent.space/p/ainews-the-last-4-jobs-in-tech",
+    "summary": "a quiet day lets us examine an interesting mental model",
+    "timestamp": "2026-04-01T16:30:29.508621"
+  }
+]

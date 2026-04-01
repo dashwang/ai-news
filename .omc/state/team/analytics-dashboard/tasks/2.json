@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Build Analytics Frontend",
+  "description": "Design and build a modern analytics dashboard UI with responsive charts. Implement KPI cards showing total news, daily trends, source breakdown. Add interactive charts for trending topics, influencer analysis, and time-based volume trends. Use React or Vue.js with chart libraries.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T13:55:13.899Z"
+}

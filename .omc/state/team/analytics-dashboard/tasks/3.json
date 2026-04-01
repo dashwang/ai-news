@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "subject": "Write Tests for Analytics",
+  "description": "Create comprehensive tests for analytics backend functions, including edge cases. Write integration tests for the analytics dashboard frontend and API endpoints. Ensure tests cover all analytics queries and data aggregation logic.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T13:55:13.899Z"
+}

@@ -1,0 +1,7 @@
+{
+  "tool_name": "Glob",
+  "tool_input_preview": "{\"pattern\":\"**/*.py\",\"path\":\"/Users/jeff/Projects/llms/agent/ai-news\"}",
+  "error": "spawn /opt/homebrew/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/arm64-darwin/rg EACCES",
+  "timestamp": "2026-04-01T07:11:21.628Z",
+  "retry_count": 1
+}

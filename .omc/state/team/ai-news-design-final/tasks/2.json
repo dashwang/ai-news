@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Architect: Write full technical design document",
+  "description": "Write the full technical design to docs/TECH-DESIGN-automated-pipeline.md covering: Architecture Overview, Module Decomposition, Data Flow, Database Design, Error Handling Strategy, Configuration Management, Migration Plan, Tech Decisions. Write in English referencing actual file names. Create docs/ directory if needed.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T13:46:28.753Z"
+}

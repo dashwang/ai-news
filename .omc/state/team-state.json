@@ -1,0 +1,17 @@
+{
+  "active": true,
+  "current_phase": "team-plan",
+  "agent_count": 3,
+  "agent_types": "executor",
+  "fix_loop_count": 0,
+  "max_fix_loops": 3,
+  "linked_ralph": false,
+  "stage_history": "team-plan",
+  "task": "Refactor AI news system architecture and code quality",
+  "_meta": {
+    "mode": "team",
+    "sessionId": null,
+    "updatedAt": "2026-04-01T07:17:32.960Z",
+    "updatedBy": "state_write_tool"
+  }
+}

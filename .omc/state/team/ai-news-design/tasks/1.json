@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "PM: Write PRD for Automated AI News Pipeline",
+  "description": "You are a Product Manager. Write a detailed PRD (Product Requirements Document) for the ai-news project.\n\n## Context\nThis is an automated AI news aggregation system that collects English AI/tech news from 14 RSS sources + Twitter, stores in SQLite, translates to Chinese via LLM, and publishes to WeChat and Feishu. Brand: 'Veray AI / 科技日报'.\n\n## Current Pain Points\n1. No automated translation pipeline - translation requires manual LLM invocation\n2. fetch_news.py, translate, and publish_wechat.py are disconnected scripts\n3. Railway cron only runs fetch but does NOT trigger translation or publishing\n4. No error handling, retry logic, or monitoring\n5. Duplicate code across fetch_news.py, app.py, ai-news-publisher.py\n6. No tests, no logging framework\n7. SQLite on Railway ephemeral filesystem = DB resets on deploy\n\n## Your Task\nWrite a PRD saved to `docs/PRD-automated-pipeline.md` covering:\n1. **Problem Statement** - why current manual workflow is broken\n2. **User Stories** - who benefits and how\n3. **Functional Requirements** - what the pipeline must do (fetch→translate→publish as one automated flow)\n4. **Non-Functional Requirements** - reliability, monitoring, error recovery, performance\n5. **Success Metrics** - how we measure if this works\n6. **Scope / Out of Scope** - what's included in v1 vs future\n7. **Risks & Mitigations**\n\nWrite in English. Be specific and reference actual file names from the codebase. Create the docs/ directory if needed.\n\nIMPORTANT: Before writing, present your plan outline and wait for approval. Use the plan mode / EnterPlanMode tool to get approval before implementing.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T11:56:08.902Z"
+}

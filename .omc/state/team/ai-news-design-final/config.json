@@ -1,0 +1,19 @@
+{
+  "teamName": "ai-news-design-final",
+  "workerCount": 2,
+  "agentTypes": [
+    "claude",
+    "claude"
+  ],
+  "tasks": [
+    {
+      "subject": "PM: Write full PRD document",
+      "description": "Write the full PRD to docs/PRD-automated-pipeline.md covering: Problem Statement, User Stories, Functional Requirements, Non-Functional Requirements, Success Metrics, Scope/Out of Scope, Risks & Mitigations. Write in English referencing actual file names from the codebase. Create docs/ directory if needed."
+    },
+    {
+      "subject": "Architect: Write full technical design document",
+      "description": "Write the full technical design to docs/TECH-DESIGN-automated-pipeline.md covering: Architecture Overview, Module Decomposition, Data Flow, Database Design, Error Handling Strategy, Configuration Management, Migration Plan, Tech Decisions. Write in English referencing actual file names. Create docs/ directory if needed."
+    }
+  ],
+  "cwd": "/Users/jeff/Projects/llms/agent/ai-news"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "Implement Analytics Backend",
+  "description": "Design and implement the analytics database layer with query functions. Create SQL queries for news volume trends, source distribution, top influencers, trending topics, and read time distribution. Add optimization for frequently accessed analytics data. Make sure the backend exposes JSON APIs for frontend consumption.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T13:55:13.897Z"
+}

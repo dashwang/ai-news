@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "subject": "PM: Write full PRD document",
+  "description": "Approve the PM plan outline and write the full PRD to docs/PRD-automated-pipeline.md covering: Problem Statement, User Stories, Functional Requirements, Non-Functional Requirements, Success Metrics, Scope/Out of Scope, Risks & Mitigations. Write in English referencing actual file names from the codebase. Create docs/ directory if needed.",
+  "status": "pending",
+  "owner": null,
+  "result": null,
+  "createdAt": "2026-03-30T13:46:23.215Z"
+}

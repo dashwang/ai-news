@@ -1,0 +1,270 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775024428956,
+  "projectRoot": "/Users/jeff/Projects/llms/agent/ai-news",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "requirements.txt"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "pip",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "tests"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "SleepReminderApp": {
+      "path": "SleepReminderApp",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1775024428933,
+      "keyFiles": [
+        "HealthManager.swift",
+        "Info.plist",
+        "SleepReminder.entitlements",
+        "SleepReminderApp.swift",
+        "project.yml"
+      ]
+    },
+    "__pycache__": {
+      "path": "__pycache__",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1775024428933,
+      "keyFiles": [
+        "app.cpython-312.pyc",
+        "fetch_news.cpython-312.pyc",
+        "publish_wechat.cpython-312.pyc"
+      ]
+    },
+    "ai-news": {
+      "path": "ai-news",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1775024428933,
+      "keyFiles": [
+        "publish_wechat.py",
+        "twitter_scraper.py"
+      ]
+    },
+    "data": {
+      "path": "data",
+      "purpose": "Data files",
+      "fileCount": 1,
+      "lastAccessed": 1775024428934,
+      "keyFiles": [
+        "news.db"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 2,
+      "lastAccessed": 1775024428934,
+      "keyFiles": [
+        "PRD-automated-pipeline.md",
+        "TECH-DESIGN-automated-pipeline.md"
+      ]
+    },
+    "frontend": {
+      "path": "frontend",
+      "purpose": null,
+      "fileCount": 9,
+      "lastAccessed": 1775024428934,
+      "keyFiles": [
+        "README.md",
+        "eslint.config.js",
+        "index.html",
+        "package.json",
+        "tsconfig.app.json"
+      ]
+    },
+    "images": {
+      "path": "images",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1775024428934,
+      "keyFiles": [
+        "qrcode.png"
+      ]
+    },
+    "logos": {
+      "path": "logos",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1775024428934,
+      "keyFiles": [
+        "techcrunch.png"
+      ]
+    },
+    "skills": {
+      "path": "skills",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775024428935,
+      "keyFiles": []
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 3,
+      "lastAccessed": 1775024428935,
+      "keyFiles": [
+        "__init__.py",
+        "test_database.py",
+        "test_fetcher.py"
+      ]
+    },
+    "frontend/public": {
+      "path": "frontend/public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1775024428935,
+      "keyFiles": [
+        "favicon.svg",
+        "icons.svg"
+      ]
+    },
+    "frontend/src": {
+      "path": "frontend/src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1775024428936,
+      "keyFiles": [
+        "App.css",
+        "App.tsx",
+        "index.css"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "requirements.txt",
+      "accessCount": 3,
+      "lastAccessed": 1775025235873,
+      "type": "file"
+    },
+    {
+      "path": "fetch_news.py",
+      "accessCount": 3,
+      "lastAccessed": 1775027481043,
+      "type": "file"
+    },
+    {
+      "path": "app.py",
+      "accessCount": 3,
+      "lastAccessed": 1775027481299,
+      "type": "file"
+    },
+    {
+      "path": "publish_wechat.py",
+      "accessCount": 3,
+      "lastAccessed": 1775027481598,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 2,
+      "lastAccessed": 1775025236289,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 2,
+      "lastAccessed": 1775025377222,
+      "type": "file"
+    },
+    {
+      "path": "main.py",
+      "accessCount": 2,
+      "lastAccessed": 1775027471303,
+      "type": "file"
+    },
+    {
+      "path": "railway.json",
+      "accessCount": 1,
+      "lastAccessed": 1775024839505,
+      "type": "file"
+    },
+    {
+      "path": "ai-news/twitter_scraper.py",
+      "accessCount": 1,
+      "lastAccessed": 1775024865609,
+      "type": "file"
+    },
+    {
+      "path": "ai-news/.env.example",
+      "accessCount": 1,
+      "lastAccessed": 1775024877381,
+      "type": "file"
+    },
+    {
+      "path": "pytest.ini",
+      "accessCount": 1,
+      "lastAccessed": 1775025172904,
+      "type": "file"
+    },
+    {
+      "path": "translate_news.py",
+      "accessCount": 1,
+      "lastAccessed": 1775025306345,
+      "type": "file"
+    },
+    {
+      "path": "skills/ai-news-publisher/publish_local.py",
+      "accessCount": 1,
+      "lastAccessed": 1775025376660,
+      "type": "file"
+    },
+    {
+      "path": "agent_era_ai_guide.md",
+      "accessCount": 1,
+      "lastAccessed": 1775025774963,
+      "type": "file"
+    },
+    {
+      "path": "AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1775025775568,
+      "type": "file"
+    },
+    {
+      "path": ".openclaw/workspace-state.json",
+      "accessCount": 1,
+      "lastAccessed": 1775025799032,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
