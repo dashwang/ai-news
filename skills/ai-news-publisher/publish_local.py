@@ -11,9 +11,40 @@
 7. 无emoji
 8. 自动配图
 9. SubStack整合为一个模块
+10. 全自动实时翻译
 """
 import requests, json, datetime, os, sqlite3, io, tempfile
 from PIL import Image
+
+# Free translation API (MyMemory)
+def translate_to_zh(text):
+    """使用免费翻译API将英文翻译为中文"""
+    if not text or not text.strip():
+        return text
+    
+    # 如果文本已经是中文（包含中文字符），直接返回
+    if any('\u4e00' <= c <= '\u9fff' for c in text):
+        return text
+    
+    try:
+        # 使用 MyMemory 免费翻译 API
+        url = "https://api.mymemory.translated.net/get"
+        params = {
+            'q': text,
+            'langpair': 'en|zh-CN'
+        }
+        response = requests.get(url, params=params, timeout=10)
+        result = response.json()
+        
+        if result.get('responseStatus') == 200:
+            translated = result.get('responseData', {}).get('translatedText', '')
+            if translated:
+                return translated
+    except Exception as e:
+        print(f"翻译API调用失败: {e}")
+    
+    # API失败时fallback到简单处理
+    return f"【AI快讯】{text[:40]}..."
 
 WECHAT_APP_ID = os.environ.get('WECHAT_APP_ID', 'wxa87b65ba78d3c822')
 WECHAT_APP_SECRET = os.environ.get('WECHAT_APP_SECRET', 'ac6a029c2b4ef7c1b89fbaeeaace3931')
@@ -147,8 +178,8 @@ def translate_title(en_title):
         if key.lower() in clean_title.lower():
             return zh
     
-    # 默认翻译
-    return clean_title[:35] + '...' if len(clean_title) > 35 else clean_title
+    # 使用实时翻译
+    return translate_to_zh(clean_title)
 
 def get_content(en_title):
     """翻译内容为中文，清理emoji"""
@@ -212,8 +243,8 @@ def get_content(en_title):
         if key.lower() in clean_title.lower():
             return content
     
-    # 默认生成中文摘要
-    return f'{clean_title}。这个消息值得关注，业界正在密切关注其后续发展，建议持续关注相关动态。'[:200] + '...'
+    # 使用实时翻译摘要
+    return translate_to_zh(clean_title)
 
 def upload_qrcode(token):
     r = requests.get(QRCODE_URL, timeout=10)
@@ -242,12 +273,12 @@ def get_news():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'TheSequence', 
+    sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'TheSequence', 'Superhuman', 'SemiAnalysis', 'TechMonitor', 'MarkTechPost', 'AnalyticsVidhya', 'OpenAIBlog', 'GoogleAI', 'MicrosoftAI', 'NVIDIA',  
               'LatentSpace', 'ExponentialView', 'LexFridman', 'LennysNewsletter',
               'LastWeekinAI', 'OneUsefulThing']
     news_data = {}
     for source in sources:
-        cur.execute('SELECT * FROM news WHERE source=? ORDER BY score DESC, date DESC LIMIT 5', (source,))
+        cur.execute('SELECT * FROM news WHERE source=? ORDER BY score DESC, date DESC LIMIT 8', (source,))
         rows = cur.fetchall()
         if rows:
             filtered = [r for r in rows if r['title'] not in history]
@@ -324,11 +355,11 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
   <strong style="font-size: 16px; color: {cfg['color']};">{label}</strong>
 </p>'''
         
-        for item in items[:5]:
+        for item in items[:8]:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             img_url = get_topic_image(item['title'])
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">{title}</strong></p>
+            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;"><b>{title}</b></strong></p>
 <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;"><img src="{img_url}" style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px;" alt="cover">{content}</p>
 <p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
     
@@ -337,11 +368,11 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
         html += '''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
   <strong style="font-size: 16px; color: #f57c00;">SubStack 精选</strong>
 </p>'''
-        for item in substack_items[:5]:
+        for item in substack_items[:8]:
             title = translate_title(item['title'])
             content = get_content(item['title'])
             img_url = get_topic_image(item['title'])
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">{title}</strong></p>
+            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;"><b>{title}</b></strong></p>
 <p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;"><img src="{img_url}" style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px;" alt="cover">{content}</p>
 <p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
     
