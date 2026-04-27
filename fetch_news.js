@@ -190,14 +190,20 @@ async function publishToWechat(html, title) {
   const tmp = join(CONFIG.outputDir, `tmp-${Date.now()}.html`);
   writeFileSync(tmp, html, 'utf8');
   try {
-    const { exec } = await import('child_process');
+    const { execSync } = await import('child_process');
     const cmd = `cd ${__dirname} && WECHAT_APP_ID="${CONFIG.wechatAppId}" WECHAT_APP_SECRET="${CONFIG.wechatAppSecret}" node publish-article.mjs "${tmp}" "${title}" "${selectImage({title})}"`;
-    await exec(cmd);
-    console.log('✅ 发布成功');
+    const out = execSync(cmd, { encoding: 'utf8', stdio: ['pipe','pipe','pipe'] });
+    console.log(out);
+    const m = out.match(/Draft media_id[:：]\s*(\S+)/);
+    if (m) {
+      console.log('✅ 发布成功, media_id:', m[1]);
+      return { draftId: m[1] };
+    }
+    console.log('⚠️ 无法解析 media_id');
     return { draftId: 'ok' };
   } catch (e) {
     console.error('❌ 发布失败:', e.message);
-    return {};
+    throw e;
   }
 }
 

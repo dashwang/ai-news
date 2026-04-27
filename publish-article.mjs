@@ -53,7 +53,7 @@ async function uploadImage(token, imageUrl) {
   const file = createWriteStream(imgPath);
   const resp = await new Promise((resolve, reject) => {
     https.get(imageUrl, res => {
-      if (res.statusCode !== 200) reject(new Error(`Download HTTP ${res.statusCode}`));
+      if (res.statusCode !== 200) reject(new Error(`HTTP ${res.statusCode}`));
       else resolve(res);
     }).on('error', reject);
   });
@@ -65,44 +65,54 @@ async function uploadImage(token, imageUrl) {
 
   const form = new FormData();
   form.append('media', readFileSync(imgPath), { filename: 'cover.jpg', contentType: 'image/jpeg' });
-
   const length = await new Promise((resolve, reject) => {
     form.getLength((err, len) => err ? reject(err) : resolve(len));
   });
 
-  const uploadUrl = `https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`;
-  const { body: respBody, statusCode } = await new Promise((resolve, reject) => {
+  // 使用永久素材接口
+  const uploadUrl = `https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=${token}&type=image`;
+  const { body: respBody } = await new Promise((resolve, reject) => {
     const req = https.request(uploadUrl, {
       method: 'POST',
       headers: Object.assign({}, form.getHeaders(), { 'Content-Length': length })
     }, res => {
       let d = '';
       res.on('data', c => d += c);
-      res.on('end', () => resolve({ body: d, statusCode: res.statusCode }));
+      res.on('end', () => resolve({ body: d }));
     });
     req.on('error', reject);
     form.pipe(req);
   });
   unlinkSync(imgPath);
-  console.log(`Upload HTTP ${statusCode}: ${respBody.substring(0,100)}`);
   const d = JSON.parse(respBody);
   if (d.media_id) return d.media_id;
   throw new Error(`Upload failed: ${d.errmsg}`);
 }
 
+function extractFirstLink(html) {
+  const match = html.match(/href="([^"]+?)"/i);
+  return match ? match[1] : 'https://news.ycombinator.com';
+}
+
 async function createDraft(token, html, title, mediaId) {
-  const payload = {
+  const sourceUrl = extractFirstLink(html);
+  const article = {
     title: title.substring(0,30),
+    author: 'AI News',
     content: html,
+    digest: '北美AI圈日报 · 每日25条AI热点精选',
     thumb_media_id: mediaId,
-    show_cover_pic: 1
+    show_cover_pic: 1,
+    content_source_url: sourceUrl
   };
+  const payload = { articles: [article] };
   const data = JSON.stringify(payload);
-  console.log(`Draft payload: titleLen=${payload.title.length}, contentLen=${payload.content.length}, totalBytes=${Buffer.byteLength(data)}`);
+  console.log(`Draft: titleLen=${article.title.length}, contentLen=${article.content.length}, source=${sourceUrl.substring(0,40)}`);
+
   const { body: respBody, statusCode } = await new Promise((resolve, reject) => {
     const req = https.request(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) }
+      headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(data) }
     }, res => {
       let d = '';
       res.on('data', c => d += c);
@@ -112,16 +122,17 @@ async function createDraft(token, html, title, mediaId) {
     req.write(data);
     req.end();
   });
-  console.log(`Draft HTTP ${statusCode}: ${respBody.substring(0,200)}`);
+  console.log(`HTTP ${statusCode}: ${respBody.substring(0,150)}`);
   const d = JSON.parse(respBody);
+  if (d.media_id) return d.media_id;
   if (d.errcode === 0) return d.media_id;
-  throw new Error(`Draft error ${d.errcode}: ${d.errmsg}`);
+  throw new Error(`Draft error ${d.errcode || 'unknown'}: ${d.errmsg || 'no media_id'} (HTTP ${statusCode})`);
 }
 
 async function main() {
   console.log('== WeChat Publisher ==');
   const html = readFileSync(htmlFile, 'utf8');
-  console.log(`HTML: ${htmlFile}, size: ${html.length} chars`);
+  console.log(`HTML: ${htmlFile}, size: ${html.length}`);
   console.log(`Title: ${title}`);
 
   const token = await getToken();
