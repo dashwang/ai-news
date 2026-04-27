@@ -1,0 +1,210 @@
+{
+  "date": "2026-04-27",
+  "news": [
+    {
+      "source": "HackerNews",
+      "title": "Show HN: AISA – Conversational AI Skills Assessment Based on the LLM Interaction",
+      "url": "https://aisa.to",
+      "summary": "",
+      "score": 1,
+      "title_zh": "Show HN: AISA – Conversational AI Skills Assessment Based on the LLM Interaction",
+      "summary_zh": "本文报道了Show HN: AISA – Conversational AI Skills Assessment Based on the LLM Interaction，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The New Linux Kernel AI Bot Uncovering Bugs Is a Local LLM on Framework Desktop",
+      "url": "https://www.phoronix.com/news/Clanker-T1000-AMD-Ryzen-AI-Max",
+      "summary": "",
+      "score": 15,
+      "title_zh": "The New Linux Kernel AI Bot Uncovering Bugs Is a Local LLM on Framework Desktop",
+      "summary_zh": "本文报道了The New Linux Kernel AI Bot Uncovering Bugs Is a Local LLM on Framework Desktop，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Build an AI to Detect Scammers/Gurus",
+      "url": "https://www.falsoai.com/",
+      "summary": "",
+      "score": 2,
+      "title_zh": "Show HN: Build an AI to Detect Scammers/Gurus",
+      "summary_zh": "本文报道了Show HN: Build an AI to Detect Scammers/Gurus，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Prediction market analysis app layering LLMs with data APIs",
+      "url": "https://apps.apple.com/us/app/over-under-market-intelligence/id6761954121",
+      "summary": "",
+      "score": 2,
+      "title_zh": "Show HN: Prediction market analysis app layering LLMs with data APIs",
+      "summary_zh": "本文报道了Show HN: Prediction market analysis app layering LLMs with data APIs，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I made GAI to have LLM agents in Go without heavy frameworks",
+      "url": "https://github.com/lace-ai/gai",
+      "summary": "",
+      "score": 2,
+      "title_zh": "Show HN: I made GAI to have LLM agents in Go without heavy frameworks",
+      "summary_zh": "本文报道了Show HN: I made GAI to have LLM agents in Go without heavy frameworks，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "China blocks Meta’s $2B Manus deal after months-long probe",
+      "url": "https://techcrunch.com/2026/04/27/china-vetoes-metas-2b-manus-deal-after-months-long-probe/",
+      "summary": "",
+      "title_zh": "China blocks Meta’s $2B Manus deal after months-long probe",
+      "summary_zh": "本文报道了China blocks Meta’s $2B Manus deal after months-long probe，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "OpenAI could be making a phone with AI agents replacing apps",
+      "url": "https://techcrunch.com/2026/04/27/openai-could-be-making-a-phone-with-ai-agents-replacing-apps/",
+      "summary": "",
+      "title_zh": "OpenAI could be making a phone with AI agents replacing apps",
+      "summary_zh": "本文报道了OpenAI could be making a phone with AI agents replacing apps，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Meta inks deal for solar power at night, beamed from space",
+      "url": "https://techcrunch.com/2026/04/27/meta-inks-deal-for-solar-power-at-night-beamed-from-space/",
+      "summary": "",
+      "title_zh": "Meta inks deal for solar power at night, beamed from space",
+      "summary_zh": "本文报道了Meta inks deal for solar power at night, beamed from space，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "To buy this Bay Area home, you’ll need Anthropic equity",
+      "url": "https://techcrunch.com/2026/04/26/to-buy-this-bay-area-home-youll-need-anthropic-equity/",
+      "summary": "",
+      "title_zh": "To buy this Bay Area home, you’ll need Anthropic equity",
+      "summary_zh": "本文报道了To buy this Bay Area home, you’ll need Anthropic equity，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Anthropic created a test marketplace for agent-on-agent commerce",
+      "url": "https://techcrunch.com/2026/04/25/anthropic-created-a-test-marketplace-for-agent-on-agent-commerce/",
+      "summary": "",
+      "title_zh": "Anthropic created a test marketplace for agent-on-agent commerce",
+      "summary_zh": "本文报道了Anthropic created a test marketplace for agent-on-agent commerce，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] DeepSeek V4 Pro (1.6T-A49B) and Flash (284B-A13B), Base and Instruct — runnable on Huawei Ascend chips",
+      "url": "https://www.latent.space/p/ainews-deepseek-v4-pro-16t-a49b-and",
+      "summary": "",
+      "title_zh": "[AINews] DeepSeek V4 Pro (1.6T-A49B) and Flash (284B-A13B), Base and Instruct — runnable on Huawei Ascend chips",
+      "summary_zh": "本文报道了[AINews] DeepSeek V4 Pro (1.6T-A49B) and Flash (284B-A13B), Base and Instruct — runnable on Huawei Ascend chips，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] GPT 5.5 and OpenAI Codex Superapp",
+      "url": "https://www.latent.space/p/ainews-gpt-55-and-openai-codex-superapp",
+      "summary": "",
+      "title_zh": "[AINews] GPT 5.5 and OpenAI Codex Superapp",
+      "summary_zh": "本文报道了[AINews] GPT 5.5 and OpenAI Codex Superapp，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "AIE Europe Debrief + Agent Labs Thesis: Unsupervised Learning x Latent Space Crossover Special (2026)",
+      "url": "https://www.latent.space/p/unsupervised-learning-2026",
+      "summary": "",
+      "title_zh": "AIE Europe Debrief + Agent Labs Thesis: Unsupervised Learning x Latent Space Crossover Special (2026)",
+      "summary_zh": "本文报道了AIE Europe Debrief + Agent Labs Thesis: Unsupervised Learning x Latent Space Crossover Special (2026)，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] Tasteful Tokenmaxxing",
+      "url": "https://www.latent.space/p/ainews-tasteful-tokenmaxxing",
+      "summary": "",
+      "title_zh": "[AINews] Tasteful Tokenmaxxing",
+      "summary_zh": "本文报道了[AINews] Tasteful Tokenmaxxing，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "Shopify’s AI Phase Transition: 2026 Usage Explosion, Unlimited Opus-4.6 Token Budget, Tangle, Tangent, SimGym — with Mikhail Parakhin, Shopify CTO",
+      "url": "https://www.latent.space/p/shopify",
+      "summary": "",
+      "title_zh": "Shopify’s AI Phase Transition: 2026 Usage Explosion, Unlimited Opus-4.6 Token Budget, Tangle, Tangent, SimGym — with Mikhail Parakhin, Shopify CTO",
+      "summary_zh": "本文报道了Shopify’s AI Phase Transition: 2026 Usage Explosion, Unlimited Opus-4.6 Token Budget, Tangle, Tangent, SimGym — with Mikhail Parakhin, Shopify CTO，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "OpenAI and Microsoft rewrite their deal: no more exclusivity, no more AGI clause",
+      "url": "https://the-decoder.com/openai-and-microsoft-rewrite-their-deal-no-more-exclusivity-no-more-agi-clause/",
+      "summary": "",
+      "title_zh": "OpenAI and Microsoft rewrite their deal: no more exclusivity, no more AGI clause",
+      "summary_zh": "本文报道了OpenAI and Microsoft rewrite their deal: no more exclusivity, no more AGI clause，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Sam Altman outlines five principles that double as justification for OpenAI&#039;s business decisions",
+      "url": "https://the-decoder.com/sam-altman-outlines-five-principles-that-double-as-justification-for-openais-business-decisions/",
+      "summary": "",
+      "title_zh": "Sam Altman outlines five principles that double as justification for OpenAI&#039;s business decisions",
+      "summary_zh": "本文报道了Sam Altman outlines five principles that double as justification for OpenAI&#039;s business decisions，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Meta wants to power AI data centers with solar energy from space",
+      "url": "https://the-decoder.com/meta-wants-to-power-ai-data-centers-with-solar-energy-from-space/",
+      "summary": "",
+      "title_zh": "Meta wants to power AI data centers with solar energy from space",
+      "summary_zh": "本文报道了Meta wants to power AI data centers with solar energy from space，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "China blocks Meta&#039;s $2 billion acquisition of AI startup Manus",
+      "url": "https://the-decoder.com/china-blocks-metas-2-billion-acquisition-of-ai-startup-manus/",
+      "summary": "",
+      "title_zh": "China blocks Meta&#039;s $2 billion acquisition of AI startup Manus",
+      "summary_zh": "本文报道了China blocks Meta&#039;s $2 billion acquisition of AI startup Manus，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "The company with a monopoly on AI&#039;s most critical machine is racing to build more",
+      "url": "https://the-decoder.com/the-company-with-a-monopoly-on-ais-most-critical-machine-is-racing-to-build-more/",
+      "summary": "",
+      "title_zh": "The company with a monopoly on AI&#039;s most critical machine is racing to build more",
+      "summary_zh": "本文报道了The company with a monopoly on AI&#039;s most critical machine is racing to build more，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Rebuilding the data stack for AI",
+      "url": "https://www.technologyreview.com/2026/04/27/1136322/rebuilding-the-data-stack-for-ai/",
+      "summary": "",
+      "title_zh": "Rebuilding the data stack for AI",
+      "summary_zh": "本文报道了Rebuilding the data stack for AI，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "The Download: DeepSeek’s latest AI breakthrough, and the race to build world models",
+      "url": "https://www.technologyreview.com/2026/04/27/1136438/the-download-deepseek-v4-ai-world-models/",
+      "summary": "",
+      "title_zh": "The Download: DeepSeek’s latest AI breakthrough, and the race to build world models",
+      "summary_zh": "本文报道了The Download: DeepSeek’s latest AI breakthrough, and the race to build world models，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Three reasons why DeepSeek’s new model matters",
+      "url": "https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/",
+      "summary": "",
+      "title_zh": "Three reasons why DeepSeek’s new model matters",
+      "summary_zh": "本文报道了Three reasons why DeepSeek’s new model matters，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "The Download: supercharged scams and studying AI healthcare",
+      "url": "https://www.technologyreview.com/2026/04/24/1136400/the-download-supercharged-scams-questionable-ai-healthcare/",
+      "summary": "",
+      "title_zh": "The Download: supercharged scams and studying AI healthcare",
+      "summary_zh": "本文报道了The Download: supercharged scams and studying AI healthcare，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Health-care AI is here. We don’t know if it actually helps patients.",
+      "url": "https://www.technologyreview.com/2026/04/24/1136352/health-care-ai-dont-know-actually-helps-patients/",
+      "summary": "",
+      "title_zh": "Health-care AI is here. We don’t know if it actually helps patients.",
+      "summary_zh": "本文报道了Health-care AI is here. We don’t know if it actually helps patients.，涉及MITTechReview等平台讨论。"
+    }
+  ]
+}
