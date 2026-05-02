@@ -1,0 +1,32 @@
+---
+name: ai-news
+description: AI News Publisher - fetch, translate (using KiloClaw's LLM), and publish to WeChat
+version: 1.0.0
+author: KiloClaw
+license: MIT
+homepage: https://github.com/dashwang/ai-news
+
+# OpenClaw Agent Skill Manifest
+agents:
+  - name: publisher
+    description: Main agent that fetches news, translates using LLM, and publishes
+    capabilities:
+      - llm.chat
+      - http.get
+      - fs.read
+      - fs.write
+
+# OpenClaw CLI integration
+commands:
+  - name: run
+    description: Fetch AI news, translate with LLM, publish to WeChat
+    usage: openclaw agent run ai-news [--publish] [--limit=15]
+    handler: agent.run
+
+# Skill files
+main: agent.js
+config:
+  limit: 15
+  wechat:
+    appId: env:WECHAT_APP_ID
+    appSecret: env:WECHAT_APP_SECRET
