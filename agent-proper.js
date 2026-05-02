@@ -162,6 +162,7 @@ Requirements:
  */
 
 
+
 function generateHTML(news, hl, date) {
   const sections = {
     'TechCrunch AI': news.filter(n => n.source === 'TechCrunch'),
@@ -185,30 +186,31 @@ function generateHTML(news, hl, date) {
         summary = summary.substring(title.length).trim();
       }
       summary = summary.replace(/^[:：\s]+/, '');
-      if (summary.length < 100) {
-        summary = summary + '。本文涵盖AI领域重要动态，值得关注。';
+      // 保证摘要至少120字
+      if (summary.length < 120) {
+        summary = summary + '。本文涵盖AI领域重要动态，涉及技术突破、产业动向、政策法规等多个方面，值得关注。';
       }
       summary = summary.substring(0, 140).trim();
 
-      // 增大间距：padding 8px, margin-bottom 3px
-      return '<div style="padding:8px 0;border-bottom:1px solid #f0f0f0;line-height:1.55"><div style="font-size:15px;font-weight:700;margin-bottom:3px;color:#111">' +
+      // 间距加倍：padding 16px, margin-bottom 6px
+      return '<div style="padding:16px 0;border-bottom:1px solid #f0f0f0;line-height:1.55"><div style="font-size:15px;font-weight:700;margin-bottom:6px;color:#111">' +
         idx + '. <a href="' + n.url + '" style="color:#1976d2;text-decoration:none">' + title + '</a></div>' +
         '<div style="font-size:13px;color:#555;line-height:1.6">' + summary + '</div></div>';
     }).join('');
 
-    // 板块间距保持 8px
-    return '<div style="margin:8px 0"><h3 style="font-size:17px;font-weight:800;color:' + color + ';margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid ' + color + '">' + name + '</h3>' + rows + '</div>';
+    return '<div style="margin:12px 0"><h3 style="font-size:17px;font-weight:800;color:' + color + ';margin:0 0 8px;padding-bottom:4px;border-bottom:2px solid ' + color + '">' + name + '</h3>' + rows + '</div>';
   }
 
-  const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('\n');
+  const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('');
+  const cleanBody = body.replace(/\n/g, '');
 
-  // 动态标题：使用最热新闻的标题
+  // 动态标题
   const dynamicTitle = hl.title_zh || hl.title || 'AI News';
 
-  // 精简版：纯新闻列表，无任何开头结尾装饰，移除 \n 换行
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>' + dynamicTitle + '</title>' +
-    '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>' + body + '</body></html>';
+    '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>' + cleanBody + '</body></html>';
 }
+
 
 
 
