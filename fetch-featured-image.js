@@ -12,17 +12,20 @@ const dataDir = join(__dirname, 'data');
 const cacheDir = join(dataDir, 'images');
 mkdirSync(cacheDir, { recursive: true });
 
-const config = {
-  pexels: {
-    enabled: !!process.env.WECHAT_PEXELS_API_KEY,
-    apiKey: process.env.WECHAT_PEXELS_API_KEY || '',
-    perPage: 5
-  },
-  cache: {
-    dir: cacheDir,
-    ttlDays: 30
-  }
-};
+// 每次调用时读取环境变量（避免缓存）
+function getConfig() {
+  return {
+    pexels: {
+      enabled: !!process.env.WECHAT_PEXELS_API_KEY,
+      apiKey: process.env.WECHAT_PEXELS_API_KEY || '',
+      perPage: 5
+    },
+    cache: {
+      dir: cacheDir,
+      ttlDays: 30
+    }
+  };
+}
 
 /**
  * 提取并优化关键词
@@ -123,6 +126,7 @@ function extractKeywords(title) {
  * Level 1: Pexels 搜索
  */
 async function searchPexels(query) {
+  const config = getConfig();
   if (!config.pexels.enabled) return null;
 
   try {
@@ -136,11 +140,13 @@ async function searchPexels(query) {
       if (data.photos && data.photos.length > 0) {
         const photo = data.photos[0];
         return {
-          url: photo.src.medium,
+          url: photo.src.large || photo.src.medium,
           full: photo.src.large2x,
           photographer: photo.photographer,
           source: 'pexels',
-          id: photo.id
+          id: photo.id,
+          width: photo.width,
+          height: photo.height
         };
       }
     }
@@ -186,6 +192,7 @@ export async function fetchFeaturedImage(title) {
   console.log('   Query:', keywords.query);
 
   // Level 1: Pexels
+  const config = getConfig();
   if (config.pexels.enabled) {
     const result = await searchPexels(keywords.query);
     if (result) {
