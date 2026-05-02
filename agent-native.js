@@ -231,8 +231,8 @@ function fallbackSummary(titleZh, source) {
 
 
 
+
 function generateHTML(news, hl, date) {
-  // 计算各板块，每个最多取5条（按score排序）
   const techCrunch = news.filter(n => n.source === 'TechCrunch').sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 5);
   const hackerNews = news.filter(n => n.source === 'HackerNews').sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 5);
   const substack = news.filter(n => n.source === 'LatentSpace' || n.source === 'TheDecoder' || n.source === 'MITTechReview')
@@ -250,31 +250,16 @@ function generateHTML(news, hl, date) {
     'Substack': '#9c27b0'
   };
 
-  // 智能截断摘要：优先按句号/问号/感叹号断开，不断句
   function smartTruncate(text, minLen, maxLen) {
     if (text.length <= maxLen) return text;
-
-    // 先尝试在标点处截断
-    const cut1 = text.substring(0, maxLen);
-    const lastPeriod = cut1.lastIndexOf('。');
-    const lastQuestion = cut1.lastIndexOf('？');
-    const lastExclamation = cut1.lastIndexOf('！');
-    const lastPunct = Math.max(lastPeriod, lastQuestion, lastExclamation);
-
-    if (lastPunct > minLen) {
-      return text.substring(0, lastPunct + 1);
+    const cut = text.substring(0, maxLen);
+    const puncts = ['。', '？', '！', '；', '，'];
+    let bestPos = -1;
+    for (const p of puncts) {
+      const pos = cut.lastIndexOf(p);
+      if (pos > minLen && pos > bestPos) bestPos = pos;
     }
-
-    // 如果没有合适标点，尝试在关键词后截断
-    const keywords = ['，', '；', '：', '、'];
-    for (const kw of keywords) {
-      const pos = cut1.lastIndexOf(kw);
-      if (pos > minLen) {
-        return text.substring(0, pos + 1);
-      }
-    }
-
-    // 最后才硬截断，但尝试在词边界
+    if (bestPos !== -1) return text.substring(0, bestPos + 1);
     return text.substring(0, maxLen);
   }
 
@@ -284,39 +269,32 @@ function generateHTML(news, hl, date) {
     const rows = items.map((n, idx) => {
       let summary = (n.summary_zh || '');
       const title = n.title_zh || n.title || '';
-      if (summary.startsWith(title)) {
-        summary = summary.substring(title.length).trim();
-      }
+      if (summary.startsWith(title)) summary = summary.substring(title.length).trim();
       summary = summary.replace(/^[:：\s]+/, '');
 
-      // 智能截断：目标 100-105 字，不断句
       if (summary.length > 105) {
         summary = smartTruncate(summary, 100, 105);
       } else if (summary.length < 100) {
-        summary = summary + '。本文涵盖AI领域重要动态，值得关注。';
+        if (!summary.endsWith('。')) summary += '。';
       }
       summary = summary.trim();
 
-      // 间距加大：padding 20px, margin-bottom 8px
       return '<div style="padding:20px 0;border-bottom:1px solid #f0f0f0;line-height:1.55"><div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#111">' +
         (idx + 1) + '. <a href="' + n.url + '" style="color:#1976d2;text-decoration:none">' + title + '</a></div>' +
         '<div style="font-size:13px;color:#555;line-height:1.6">' + summary + '</div></div>';
     }).join('');
 
-    // 板块间距加大：margin 16px, 标题下间距 10px
     return '<div style="margin:16px 0"><h3 style="font-size:17px;font-weight:800;color:' + color + ';margin:0 0 10px;padding-bottom:4px;border-bottom:2px solid ' + color + '">' + name + '</h3>' + rows + '</div>';
   }
 
-  const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('');
+  const body = Object.entries(sections).map(([name, items]) => fmtSection(name, items)).filter(Boolean).join('');
   const cleanBody = body.replace(/\n/g, '');
-
-  // 动态标题
   const dynamicTitle = hl.title_zh || hl.title || 'AI News';
 
-  // 极简HTML
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>' + dynamicTitle + '</title>' +
     '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>' + cleanBody + '</body></html>';
 }
+
 
 
 
