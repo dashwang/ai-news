@@ -174,18 +174,16 @@ function generateHTML(news, hl, date) {
     'Substack': '#9c27b0'
   };
 
-  function fmt(name, items) {
+  function fmtSection(name, items) {
     if (!items.length) return '';
     const color = colors[name];
     const rows = items.map((n, idx) => {
-      // 去掉摘要中重复的标题，扩展到200字左右
       let summary = (n.summary_zh || '');
       const title = n.title_zh || n.title || '';
       if (summary.startsWith(title)) {
         summary = summary.substring(title.length).trim();
       }
       summary = summary.replace(/^[:：\s]+/, '');
-      // 保证摘要足够长（约200字）
       if (summary.length < 180) {
         summary = summary + '。本文涵盖AI领域重要动态，涉及技术突破、产业动向、政策法规等多个方面，值得关注。';
       }
@@ -204,18 +202,20 @@ function generateHTML(news, hl, date) {
     }).join('');
 
     return `
-      <div style="margin:10px 0">
+      <div style="margin:8px 0">
         <h3 style="font-size:17px;font-weight:800;color:${color};margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid ${color}">${name}</h3>
         ${rows}
       </div>
     `;
   }
 
-  const body = Object.entries(sections).map(([n,i]) => fmt(n,i)).filter(Boolean).join('\n');
+  const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('\n');
 
-  // 简洁模板：直接开始正文，紧凑排版
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>北美AI圈日报 ${date}</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>\n    ${body}\n    <div style="text-align:center;padding:12px 0;color:#aaa;font-size:11px;border-top:1px solid #eee;margin-top:20px">北美AI圈日报 · 每日精选</div>\n  </body></html>`;
+  const qrUrl = process.env.WECHAT_QR_CODE_URL || 'https://mmbiz.qlogo.cn/mmbiz/xxx/0?wx_fmt=png';
+
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>北美AI圈日报 ${date}</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>\n    ${body}\n    <div style="text-align:center;padding:12px 0;color:#aaa;font-size:11px;border-top:1px solid #eee;margin-top:20px">\n      北美AI圈日报 · 每日精选\n      <div style="margin-top:8px">\n        <img src="${qrUrl}" style="width:100px;height:100px;border:1px solid #eee;border-radius:4px" alt="公众号二维码">\n        <div style="margin-top:4px;font-size:12px;color:#888">扫码关注公众号</div>\n      </div>\n    </div>\n  </body></html>`;
 }
+
 
 function selectImage(item) {
 

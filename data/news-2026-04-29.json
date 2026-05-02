@@ -1,0 +1,61 @@
+{
+  "date": "2026-04-29",
+  "news": [
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Django-Modern-Rest",
+      "url": "https://github.com/wemake-services/django-modern-rest",
+      "summary": "",
+      "score": 5
+    },
+    {
+      "source": "HackerNews",
+      "title": "MarCognity-AI – epistemic layer for LLMs, runs locally, no API",
+      "url": "https://github.com/elly99-AI/MarCognity-AI",
+      "summary": "",
+      "score": 1
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: AI tools index with free LLM latency and cost calculators",
+      "url": "https://www.openaitoolshub.org",
+      "summary": "",
+      "score": 1
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Google Cloud surpasses $20B but says growth was capacity-constrained",
+      "url": "https://techcrunch.com/2026/04/29/google-cloud-surpasses-20b-but-says-growth-was-capacity-constrained/",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Google gains 25M subscriptions in Q1, driven by YouTube and Google One",
+      "url": "https://techcrunch.com/2026/04/29/google-gains-25m-subscriptions-in-q1-driven-by-youtube-and-google-one/",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Google Photos uses AI to make the iconic closet from &#8216;Clueless&#8217; a reality",
+      "url": "https://techcrunch.com/2026/04/29/google-photos-uses-ai-to-make-the-iconic-closet-from-clueless-a-reality/",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "Substack",
+      "title": "Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment",
+      "url": "https://importai.substack.com/p/import-ai-453-breaking-ai-agents",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "Substack",
+      "title": "Import AI 451: Political superintelligence; Google's society of minds, and a robot drummer",
+      "url": "https://importai.substack.com/p/import-ai-451-political-superintelligence",
+      "summary": "",
+      "score": 0
+    }
+  ]
+}

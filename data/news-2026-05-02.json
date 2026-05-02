@@ -1,0 +1,210 @@
+{
+  "date": "2026-05-02",
+  "news": [
+    {
+      "source": "HackerNews",
+      "title": "LLMs Don't Understand BGP. Here's What It Takes to Change That",
+      "url": "https://www.supertrace.ai/blog/llms-dont-understand-bgp",
+      "summary": "",
+      "score": 4,
+      "title_zh": "LLMs Don't Understand BGP. Here's What It Takes to Change That",
+      "summary_zh": "本文报道了LLMs Don't Understand BGP. Here's What It Takes to Change That，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Raspberry Pi 5 gets LLM smarts with AI HAT+ 2",
+      "url": "https://www.theregister.com/2026/01/15/pi_5_ai_hat_2/",
+      "summary": "",
+      "score": 1,
+      "title_zh": "Raspberry Pi 5 gets LLM smarts with AI HAT+ 2",
+      "summary_zh": "本文报道了Raspberry Pi 5 gets LLM smarts with AI HAT+ 2，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: How do you feel about AI assisted blogging?",
+      "url": "https://news.ycombinator.com/item?id=47974256",
+      "summary": "",
+      "score": 5,
+      "title_zh": "Ask HN: How do you feel about AI assisted blogging?",
+      "summary_zh": "本文报道了Ask HN: How do you feel about AI assisted blogging?，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: Where is my UX after all those billions spent on LLM codegen?",
+      "url": "https://news.ycombinator.com/item?id=47978130",
+      "summary": "",
+      "score": 3,
+      "title_zh": "Ask HN: Where is my UX after all those billions spent on LLM codegen?",
+      "summary_zh": "本文报道了Ask HN: Where is my UX after all those billions spent on LLM codegen?，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "LLM-eval-kit: Distributed LLM evaluation framework (v0.3.0)",
+      "url": "https://github.com/benmeryem-tech/llm-eval-kit",
+      "summary": "",
+      "score": 1,
+      "title_zh": "LLM-eval-kit: Distributed LLM evaluation framework (v0.3.0)",
+      "summary_zh": "本文报道了LLM-eval-kit: Distributed LLM evaluation framework (v0.3.0)，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Replit&#8217;s Amjad Masad on the Cursor deal, fighting Apple, and why he&#8217;d rather not sell",
+      "url": "https://techcrunch.com/2026/05/01/replits-amjad-masad-on-the-cursor-deal-fighting-apple-and-why-hed-rather-not-sell/",
+      "summary": "",
+      "title_zh": "Replit&#8217;s Amjad Masad on the Cursor deal, fighting Apple, and why he&#8217;d rather not sell",
+      "summary_zh": "本文报道了Replit&#8217;s Amjad Masad on the Cursor deal, fighting Apple, and why he&#8217;d rather not sell，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Meta buys robotics startup to bolster its humanoid AI ambitions",
+      "url": "https://techcrunch.com/2026/05/01/meta-buys-robotics-startup-to-bolster-its-humanoid-ai-ambitions/",
+      "summary": "",
+      "title_zh": "Meta buys robotics startup to bolster its humanoid AI ambitions",
+      "summary_zh": "本文报道了Meta buys robotics startup to bolster its humanoid AI ambitions，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.",
+      "url": "https://techcrunch.com/podcast/did-you-know-you-cant-steal-a-charity-dont-worry-elon-musk-will-remind-you/",
+      "summary": "",
+      "title_zh": "Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.",
+      "summary_zh": "本文报道了Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Pentagon inks deals with Nvidia, Microsoft, and AWS to deploy AI on classified networks",
+      "url": "https://techcrunch.com/2026/05/01/pentagon-inks-deals-with-nvidia-microsoft-and-aws-to-deploy-ai-on-classified-networks/",
+      "summary": "",
+      "title_zh": "Pentagon inks deals with Nvidia, Microsoft, and AWS to deploy AI on classified networks",
+      "summary_zh": "本文报道了Pentagon inks deals with Nvidia, Microsoft, and AWS to deploy AI on classified networks，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Musk v. Altman is just getting started",
+      "url": "https://techcrunch.com/video/musk-v-altman-is-just-getting-started/",
+      "summary": "",
+      "title_zh": "Musk v. Altman is just getting started",
+      "summary_zh": "本文报道了Musk v. Altman is just getting started，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work",
+      "url": "https://www.latent.space/p/ainews-agents-for-everything-else",
+      "summary": "",
+      "title_zh": "[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work",
+      "summary_zh": "本文报道了[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] The Inference Inflection",
+      "url": "https://www.latent.space/p/ainews-the-inference-inflection",
+      "summary": "",
+      "title_zh": "[AINews] The Inference Inflection",
+      "summary_zh": "本文报道了[AINews] The Inference Inflection，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] not much happened today",
+      "url": "https://www.latent.space/p/ainews-not-much-happened-today",
+      "summary": "",
+      "title_zh": "[AINews] not much happened today",
+      "summary_zh": "本文报道了[AINews] not much happened today，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] ImageGen is on the Path to AGI",
+      "url": "https://www.latent.space/p/ainews-imagegen-is-on-the-path-to",
+      "summary": "",
+      "title_zh": "[AINews] ImageGen is on the Path to AGI",
+      "summary_zh": "本文报道了[AINews] ImageGen is on the Path to AGI，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "Physical AI that Moves the World — Qasar Younis & Peter Ludwig, Applied Intuition",
+      "url": "https://www.latent.space/p/appliedintuition",
+      "summary": "",
+      "title_zh": "Physical AI that Moves the World — Qasar Younis & Peter Ludwig, Applied Intuition",
+      "summary_zh": "本文报道了Physical AI that Moves the World — Qasar Younis & Peter Ludwig, Applied Intuition，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Eight tech giants sign Pentagon deals to build an &quot;AI-first fighting force&quot; across classified networks",
+      "url": "https://the-decoder.com/eight-tech-giants-sign-pentagon-deals-to-build-an-ai-first-fighting-force-across-classified-networks/",
+      "summary": "",
+      "title_zh": "Eight tech giants sign Pentagon deals to build an &quot;AI-first fighting force&quot; across classified networks",
+      "summary_zh": "本文报道了Eight tech giants sign Pentagon deals to build an &quot;AI-first fighting force&quot; across classified networks，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "First Chinese AI startups are reportedly ditching offshore structures to register directly in China",
+      "url": "https://the-decoder.com/first-chinese-ai-startups-are-reportedly-ditching-offshore-structures-to-register-directly-in-china/",
+      "summary": "",
+      "title_zh": "First Chinese AI startups are reportedly ditching offshore structures to register directly in China",
+      "summary_zh": "本文报道了First Chinese AI startups are reportedly ditching offshore structures to register directly in China，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Big tech&#039;s AI spending balloons to $725 billion this year",
+      "url": "https://the-decoder.com/big-techs-ai-spending-balloons-to-725-billion-this-year/",
+      "summary": "",
+      "title_zh": "Big tech&#039;s AI spending balloons to $725 billion this year",
+      "summary_zh": "本文报道了Big tech&#039;s AI spending balloons to $725 billion this year，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI training",
+      "url": "https://the-decoder.com/chatgpts-goblin-obsession-may-be-hilarious-but-it-points-to-a-deeper-problem-in-ai-training/",
+      "summary": "",
+      "title_zh": "ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI training",
+      "summary_zh": "本文报道了ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI training，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Microsoft puts an AI legal agent inside Word for contract review",
+      "url": "https://the-decoder.com/microsoft-puts-an-ai-legal-agent-inside-word-for-contract-review/",
+      "summary": "",
+      "title_zh": "Microsoft puts an AI legal agent inside Word for contract review",
+      "summary_zh": "本文报道了Microsoft puts an AI legal agent inside Word for contract review，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models",
+      "url": "https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/",
+      "summary": "",
+      "title_zh": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models",
+      "summary_zh": "本文报道了Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Cyber-Insecurity in the AI Era",
+      "url": "https://www.technologyreview.com/2026/05/01/1136779/cyber-insecurity-in-the-ai-era/",
+      "summary": "",
+      "title_zh": "Cyber-Insecurity in the AI Era",
+      "summary_zh": "本文报道了Cyber-Insecurity in the AI Era，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Operationalizing AI for Scale and Sovereignty",
+      "url": "https://www.technologyreview.com/2026/05/01/1136772/operationalizing-ai-for-scale-and-sovereignty/",
+      "summary": "",
+      "title_zh": "Operationalizing AI for Scale and Sovereignty",
+      "summary_zh": "本文报道了Operationalizing AI for Scale and Sovereignty，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "The Download: a new Christian phone network, and debugging LLMs",
+      "url": "https://www.technologyreview.com/2026/05/01/1136762/the-download-christian-phone-network-debugging-llms/",
+      "summary": "",
+      "title_zh": "The Download: a new Christian phone network, and debugging LLMs",
+      "summary_zh": "本文报道了The Download: a new Christian phone network, and debugging LLMs，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining",
+      "url": "https://www.technologyreview.com/2026/05/01/1136734/inexpensive-seafloor-hopping-submersibles-could-stoke-deep-sea-science-and-mining/",
+      "summary": "",
+      "title_zh": "Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining",
+      "summary_zh": "本文报道了Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining，涉及MITTechReview等平台讨论。"
+    }
+  ]
+}

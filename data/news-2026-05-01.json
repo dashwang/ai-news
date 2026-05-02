@@ -1,0 +1,210 @@
+{
+  "date": "2026-05-01",
+  "news": [
+    {
+      "source": "HackerNews",
+      "title": "LLMs Don't Understand BGP. Here's What It Takes to Change That",
+      "url": "https://www.supertrace.ai/blog/llms-dont-understand-bgp",
+      "summary": "",
+      "score": 3,
+      "title_zh": "大语言模型不懂BGP：改变这一现状需要什么",
+      "summary_zh": "本文报道了LLMs Don't Understand BGP. Here's What It Takes to Change That，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: In the age of AI do we need to learn how to code?",
+      "url": "https://news.ycombinator.com/item?id=47971273",
+      "summary": "",
+      "score": 2,
+      "title_zh": "Ask HN：AI时代我们还需要学编程吗？",
+      "summary_zh": "Hacker News社区讨论：AI编程助手日益强大的今天，基础编程技能是否还必要？观点分歧明显——一方认为AI会大幅降低门槛，另一方坚持底层原理仍然重要。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: How do you feel about AI assisted blogging?",
+      "url": "https://news.ycombinator.com/item?id=47974256",
+      "summary": "",
+      "score": 5,
+      "title_zh": "Ask HN：你对AI辅助写作怎么看？",
+      "summary_zh": "HN用户热议AI辅助博客写作的利弊。有人强调原创价值，有人拥抱效率。讨论集中在创作主权与工具边界，以及AI是否会稀释内容质量和人类独特性。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: Where is my UX after all those billions spent on LLM codegen?",
+      "url": "https://news.ycombinator.com/item?id=47978130",
+      "summary": "",
+      "score": 3,
+      "title_zh": "Ask HN：花了大把钱做LLM代码生成，我的UX在哪？",
+      "summary_zh": "开发者在HN上吐槽：企业在LLM代码生成上投入巨资，但实际UX提升有限。问题包括：AI代码复杂难懂、IDE集成度低、实际效率提升不明显，质疑投资回报率。"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: LLM-Powered News –> Event Map, Timeline, and Analysis",
+      "url": "https://conflictintelligence.ai/",
+      "summary": "",
+      "score": 2,
+      "title_zh": "Show HN：基于LLM的新闻事件图谱与时间线分析",
+      "summary_zh": "本文报道了Show HN: LLM-Powered News –> Event Map, Timeline, and Analysis，涉及HackerNews等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Meta buys robotics startup to bolster its humanoid AI ambitions",
+      "url": "https://techcrunch.com/2026/05/01/meta-buys-robotics-startup-to-bolster-its-humanoid-ai-ambitions/",
+      "summary": "",
+      "title_zh": "Meta收购机器人初创公司，强化人形AI野心",
+      "summary_zh": "Meta通过收购一家机器人初创公司加速其人形AI研发。这一举动展现了Meta在AI硬件与具身智能领域的野心，旨在打造更先进的物理AI交互系统。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.",
+      "url": "https://techcrunch.com/podcast/did-you-know-you-cant-steal-a-charity-dont-worry-elon-musk-will-remind-you/",
+      "summary": "",
+      "title_zh": "Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.",
+      "summary_zh": "本文报道了Did you know you can&#8217;t steal a charity? Don&#8217;t worry. Elon Musk will remind you.，涉及TechCrunch等平台讨论。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Pentagon inks deals with Nvidia, Microsoft, and AWS to deploy AI on classified networks",
+      "url": "https://techcrunch.com/2026/05/01/pentagon-inks-deals-with-nvidia-microsoft-and-aws-to-deploy-ai-on-classified-networks/",
+      "summary": "",
+      "title_zh": "五角大楼与英伟达、微软、AWS签约，在机密网络部署AI",
+      "summary_zh": "美国国防部与多家顶级AI公司达成协议，将在机密网络部署先进AI系统。这是军方AI化的重要里程碑，涉及国家安全级别应用，可能改变未来战争形态。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Musk v. Altman is just getting started",
+      "url": "https://techcrunch.com/video/musk-v-altman-is-just-getting-started/",
+      "summary": "",
+      "title_zh": "马斯克诉阿尔特曼大战才刚刚开始",
+      "summary_zh": "马斯克与OpenAI CEO阿尔特曼的法律纠纷刚刚拉开帷幕。Musk在法庭上称被欺骗，警告AI可能带来灭绝风险，同时承认xAI曾蒸馏OpenAI模型，案件持续引发关注。"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "ChatGPT Images 2.0 is a hit in India, but not a big winner elsewhere, yet",
+      "url": "https://techcrunch.com/2026/04/30/chatgpt-images-2-0-is-a-hit-in-india-but-not-a-big-winner-elsewhere-yet/",
+      "summary": "",
+      "title_zh": "ChatGPT Images 2.0印度大获成功，其他市场尚待观察",
+      "summary_zh": "OpenAI的图像生成新功能在印度市场表现突出，用户adoption率高。但在欧美等其他主要市场反响平平，可能与文化差异和竞争格局有关，其全球表现仍有待观察。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work",
+      "url": "https://www.latent.space/p/ainews-agents-for-everything-else",
+      "summary": "",
+      "title_zh": "[AINews] Agent everywhere：Codex管知识工作，Claude管创意工作",
+      "summary_zh": "本文报道了[AINews] Agents for Everything Else: Codex for Knowledge Work, Claude for Creative Work，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] The Inference Inflection",
+      "url": "https://www.latent.space/p/ainews-the-inference-inflection",
+      "summary": "",
+      "title_zh": "[AINews] 推理拐点已至",
+      "summary_zh": "本文报道了[AINews] The Inference Inflection，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] not much happened today",
+      "url": "https://www.latent.space/p/ainews-not-much-happened-today",
+      "summary": "",
+      "title_zh": "[AINews] 今日无事发生",
+      "summary_zh": "本文报道了[AINews] not much happened today，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "[AINews] ImageGen is on the Path to AGI",
+      "url": "https://www.latent.space/p/ainews-imagegen-is-on-the-path-to",
+      "summary": "",
+      "title_zh": "[AINews] 图像生成正在通往AGI的路上",
+      "summary_zh": "本文报道了[AINews] ImageGen is on the Path to AGI，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "LatentSpace",
+      "title": "Physical AI that Moves the World — Qasar Younis & Peter Ludwig, Applied Intuition",
+      "url": "https://www.latent.space/p/appliedintuition",
+      "summary": "",
+      "title_zh": "改变世界的物理AI—Applied Intuition联合创始人专访",
+      "summary_zh": "本文报道了Physical AI that Moves the World — Qasar Younis & Peter Ludwig, Applied Intuition，涉及LatentSpace等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Eight tech giants sign Pentagon deals to build an &quot;AI-first fighting force&quot; across classified networks",
+      "url": "https://the-decoder.com/eight-tech-giants-sign-pentagon-deals-to-build-an-ai-first-fighting-force-across-classified-networks/",
+      "summary": "",
+      "title_zh": "Eight tech giants sign 五角大楼 deals to build an &quot;AI-first fighting force&quot; across classified networks",
+      "summary_zh": "本文报道了Eight tech giants sign Pentagon deals to build an &quot;AI-first fighting force&quot; across classified networks，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "First Chinese AI startups are reportedly ditching offshore structures to register directly in China",
+      "url": "https://the-decoder.com/first-chinese-ai-startups-are-reportedly-ditching-offshore-structures-to-register-directly-in-china/",
+      "summary": "",
+      "title_zh": "首批中国AI初创公司据报放弃离岸架构直接在中国注册",
+      "summary_zh": "本文报道了First Chinese AI startups are reportedly ditching offshore structures to register directly in China，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Big tech&#039;s AI spending balloons to $725 billion this year",
+      "url": "https://the-decoder.com/big-techs-ai-spending-balloons-to-725-billion-this-year/",
+      "summary": "",
+      "title_zh": "Big tech&#039;s AI 支出 飙升至 $725 billion this year",
+      "summary_zh": "本文报道了Big tech&#039;s AI spending balloons to $725 billion this year，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI training",
+      "url": "https://the-decoder.com/chatgpts-goblin-obsession-may-be-hilarious-but-it-points-to-a-deeper-problem-in-ai-training/",
+      "summary": "",
+      "title_zh": "ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI trAIning",
+      "summary_zh": "本文报道了ChatGPT&#039;s goblin obsession may be hilarious, but it points to a deeper problem in AI training，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "TheDecoder",
+      "title": "Microsoft puts an AI legal agent inside Word for contract review",
+      "url": "https://the-decoder.com/microsoft-puts-an-ai-legal-agent-inside-word-for-contract-review/",
+      "summary": "",
+      "title_zh": "微软在Word中内置AI法律Agent用于合同审查",
+      "summary_zh": "本文报道了Microsoft puts an AI legal agent inside Word for contract review，涉及TheDecoder等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models",
+      "url": "https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/",
+      "summary": "",
+      "title_zh": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models",
+      "summary_zh": "本文报道了Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Cyber-Insecurity in the AI Era",
+      "url": "https://www.technologyreview.com/2026/05/01/1136779/cyber-insecurity-in-the-ai-era/",
+      "summary": "",
+      "title_zh": "AI时代的网络安全危机",
+      "summary_zh": "本文报道了Cyber-Insecurity in the AI Era，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Operationalizing AI for Scale and Sovereignty",
+      "url": "https://www.technologyreview.com/2026/05/01/1136772/operationalizing-ai-for-scale-and-sovereignty/",
+      "summary": "",
+      "title_zh": "AI规模化与主权的实现路径",
+      "summary_zh": "本文报道了Operationalizing AI for Scale and Sovereignty，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "The Download: a new Christian phone network, and debugging LLMs",
+      "url": "https://www.technologyreview.com/2026/05/01/1136762/the-download-christian-phone-network-debugging-llms/",
+      "summary": "",
+      "title_zh": "今日Download：基督教手机网络与LLM调试",
+      "summary_zh": "本文报道了The Download: a new Christian phone network, and debugging LLMs，涉及MITTechReview等平台讨论。"
+    },
+    {
+      "source": "MITTechReview",
+      "title": "Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining",
+      "url": "https://www.technologyreview.com/2026/05/01/1136734/inexpensive-seafloor-hopping-submersibles-could-stoke-deep-sea-science-and-mining/",
+      "summary": "",
+      "title_zh": "廉价深海跳跃潜水器可能刺激深海科学与采矿",
+      "summary_zh": "本文报道了Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining，涉及MITTechReview等平台讨论。"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "date": "2026-04-30",
+  "news": [
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Spec27 – Spec-driven validation for AI agents",
+      "url": "https://www.spec27.ai/launch",
+      "summary": "",
+      "score": 13
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: Anyone using AI agents for active learning sprints? Here's my setup",
+      "url": "https://news.ycombinator.com/item?id=47959169",
+      "summary": "",
+      "score": 4
+    },
+    {
+      "source": "HackerNews",
+      "title": "LFM2-24B-A2B: Scaling Up the LFM2 Architecture",
+      "url": "https://www.liquid.ai/blog/lfm2-24b-a2b",
+      "summary": "",
+      "score": 2
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Npx LLM-safe-haven – harden your AI coding agent in 60 seconds",
+      "url": "https://github.com/pleasedodisturb/llm-safe-haven",
+      "summary": "",
+      "score": 1
+    },
+    {
+      "source": "HackerNews",
+      "title": "I over-engineered my simple AI backend: distillation, router, embedding etc.",
+      "url": "https://sisyphusconsulting.org/case-studies/2026/04/01/scaling-llms-at-the-edge/",
+      "summary": "",
+      "score": 1
+    },
+    {
+      "source": "Substack",
+      "title": "Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment",
+      "url": "https://importai.substack.com/p/import-ai-453-breaking-ai-agents",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "Substack",
+      "title": "Import AI 451: Political superintelligence; Google's society of minds, and a robot drummer",
+      "url": "https://importai.substack.com/p/import-ai-451-political-superintelligence",
+      "summary": "",
+      "score": 0
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Apple was surprised by AI-driven demand for Macs",
+      "url": "https://techcrunch.com/2026/04/30/apple-was-surprised-by-ai-driven-demand-for-macs/",
+      "summary": "",
+      "score": 0
+    }
+  ]
+}
