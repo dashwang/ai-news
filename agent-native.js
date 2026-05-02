@@ -9,6 +9,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { fetchFeaturedImage } from './fetch-featured-image.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(__dirname, 'data');
@@ -304,14 +305,24 @@ function generateHTML(news, hl, date) {
 
 
 /**
- * Select cover image
+ * Select cover image using Pexels search with fallback
  */
-function selectImage(item) {
-  const t = (item.title_zh || item.title || '').toLowerCase();
-  if (t.includes('robot') || t.includes('agent') || t.includes('智能体') || t.includes('robotics')) {
-    return 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&h=383&fit=crop&q=80';
+async function selectImage(hl) {
+  const title = hl.title_zh || hl.title || 'AI News';
+
+  try {
+    // 尝试获取动态配图
+    const imageInfo = await fetchFeaturedImage(title);
+    return imageInfo.url;
+  } catch (err) {
+    console.error('❌ Image fetch failed:', err.message);
+    // 回退到基于规则的简单选择
+    const t = title.toLowerCase();
+    if (t.includes('robot') || t.includes('agent') || t.includes('智能体') || t.includes('robotics')) {
+      return 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&h=383&fit=crop&q=80';
+    }
+    return 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=383&fit=crop&q=80';
   }
-  return 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=383&fit=crop&q=80';
 }
 
 /**
@@ -327,7 +338,7 @@ async function publish(agent, news, hl, date, htmlFile) {
       const result = await agent.tools.publishWechat({
         htmlFile,
         title: hl.title_zh,
-        coverUrl: selectImage(hl)
+        coverUrl: await selectImage(hl)
       });
       console.log('✅ Published via agent tool:', result.draftId);
       return result;
@@ -338,7 +349,7 @@ async function publish(agent, news, hl, date, htmlFile) {
 
   // Method 2: Fallback to child_process
   console.log('   Using child_process fallback...');
-  const cmd = `WECHAT_APP_ID="${process.env.WECHAT_APP_ID}" WECHAT_APP_SECRET="${process.env.WECHAT_APP_SECRET}" node ${join(__dirname, 'publish-article.mjs')} "${htmlFile}" "${hl.title_zh}" "${selectImage(hl)}"`;
+  const cmd = `WECHAT_APP_ID="${process.env.WECHAT_APP_ID}" WECHAT_APP_SECRET="${process.env.WECHAT_APP_SECRET}" node ${join(__dirname, 'publish-article.mjs')} "${htmlFile}" "${hl.title_zh}" ${await selectImage(hl)}`;
 
   try {
     const out = execSync(cmd, { encoding: 'utf8', timeout: 30000 });

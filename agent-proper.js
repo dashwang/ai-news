@@ -1,114 +1,123 @@
 #!/usr/bin/env node
 /**
- * AI News Publisher - Proper Agent Skill
- * 作为真正的Agent Skill运行，可以直接使用 agent.llm
+ * AI News Publisher - Native Agent Skill (V3 - Fixed)
  *
- * 使用方式：
- *   openclaw agent run ai-news-publisher --date=2026-05-01 --publish
+ * Properly uses agent.llm and agent.tools for publishing
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(__dirname, 'data');
+mkdirSync(dataDir, { recursive: true });
 
-// 这个函数会被OpenClaw注入agent上下文后调用
+/**
+ * Main entry point
+ */
 export async function run(agent, args = {}) {
-  console.log(`🤖 AI News Publisher (Agent Context)`);
+  console.log(`🤖 AI News Publisher (Native Agent Skill)`);
   console.log(`   Model: ${agent?.model?.name || 'unknown'}`);
 
   const date = args.date || new Date().toISOString().split('T')[0];
   const shouldPublish = args.publish || false;
+  const limit = args.limit || 15;
 
-  console.log(`📚 Loading news for ${date}...`);
+  console.log(`📅 Date: ${date}`);
+  console.log(`📊 Limit: ${limit}`);
 
+  // Step 1: Ensure news exists
   const newsFile = join(dataDir, `news-${date}.json`);
   if (!existsSync(newsFile)) {
-    // 尝试昨天
     const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
     const yesterdayFile = join(dataDir, `news-${yesterday}.json`);
     if (existsSync(yesterdayFile)) {
-      console.log(`   Using ${yesterday} news`);
-      loadAndTranslate(yesterdayFile, agent);
+      console.log(`📰 Using yesterday's news (${yesterday})`);
+      await processNews(yesterdayFile, agent, limit, shouldPublish, date);
     } else {
       console.error(`❌ No news file found for ${date} or ${yesterday}`);
-      console.log('💡 Run fetch first: node fetch_news.js');
-      return { error: 'missing-news' };
+      console.log('💡 Fetch first: node fetch_news.js');
+      return { error: 'no-news' };
     }
   } else {
-    loadAndTranslate(newsFile, agent);
-  }
-
-  async function loadAndTranslate(file, agent) {
-    const data = JSON.parse(readFileSync(file, 'utf8'));
-    const news = data.news.slice(0, args.limit || 15);
-    console.log(`✅ Loaded ${news.length} stories`);
-
-    // Sort by score
-    news.sort((a,b) => (b.score||0) - (a.score||0));
-
-    // Translate using agent.llm
-    console.log('🔄 Translating with agent.llm...');
-    for (let i = 0; i < news.length; i++) {
-      const item = news[i];
-
-      if (!item.title_zh || item.title_zh === item.title) {
-        item.title_zh = await translateTitle(agent, item.title, item.source);
-      }
-
-      if (!item.summary_zh || item.summary_zh.length < 30) {
-        item.summary_zh = await translateSummary(agent, item.title, item.title_zh, item.source);
-      }
-
-      if ((i+1) % 3 === 0) console.log(`   Translated ${i+1}/${news.length}`);
-    }
-
-    console.log('✅ Translation complete');
-
-    // Save back
-    writeFileSync(file, JSON.stringify({ date: date.split('T')[0], news }, null, 2));
-
-    // Generate HTML
-    const hl = news[0];
-    const html = generateHTML(news, hl, date);
-    const htmlFile = join(dataDir, `wechat-html-${date}.html`);
-    writeFileSync(htmlFile, html, 'utf8');
-    console.log(`📄 HTML: ${htmlFile} (${html.length} chars)`);
-
-    // Publish if requested
-    if (shouldPublish) {
-      console.log('📤 Publishing to WeChat...');
-      // Call publish script (it's standalone)
-      const { execSync } = await import('child_process');
-      const cmd = `WECHAT_APP_ID="${process.env.WECHAT_APP_ID}" WECHAT_APP_SECRET="${process.env.WECHAT_APP_SECRET}" node ${join(__dirname, 'publish-article.mjs')} "${htmlFile}" "${hl.title_zh}" "${selectImage(hl)}"`;
-      try {
-        const out = execSync(cmd, { encoding: 'utf8', timeout: 30000 });
-        console.log(out);
-        const m = out.match(/Draft media_id[:：]\s*(\S+)/);
-        if (m) {
-          console.log('✅ Draft created:', m[1]);
-          return { success: true, draftId: m[1] };
-        }
-      } catch (e) {
-        console.error('❌ Publish error:', e.message);
-      }
-    }
-
-    return { success: true, count: news.length, headline: hl.title_zh };
+    await processNews(newsFile, agent, limit, shouldPublish, date);
   }
 }
 
 /**
- * 使用 agent.llm 翻译标题
+ * Process news file: translate, generate HTML, optionally publish
+ */
+async function processNews(newsFile, agent, limit, shouldPublish, date) {
+  const { news: allNews } = JSON.parse(readFileSync(newsFile, 'utf8'));
+  console.log(`✅ Loaded ${allNews.length} raw stories`);
+
+  // Sort and limit
+  const sorted = allNews.sort((a, b) => (b.score || 0) - (a.score || 0));
+  const news = sorted.slice(0, limit);
+  console.log(`📊 Selected top ${news.length}`);
+
+  // Translate using agent.llm
+  console.log('🔄 Translating with agent.llm...');
+  for (let i = 0; i < news.length; i++) {
+    const item = news[i];
+
+    if (!item.title_zh || item.title_zh === item.title) {
+      item.title_zh = await translateTitle(agent, item.title, item.source);
+    }
+
+    if (!item.summary_zh || item.summary_zh.length < 30) {
+      item.summary_zh = await translateSummary(agent, item.title, item.title_zh, item.source);
+    }
+
+    if ((i + 1) % 3 === 0) console.log(`   Translated ${i + 1}/${news.length}`);
+  }
+
+  console.log('✅ Translation complete');
+
+  // Save translated news
+  writeFileSync(newsFile, JSON.stringify({ date, news: allNews }, null, 2));
+
+  // Show preview
+  console.log('\n📝 Preview (first 3):');
+  news.slice(0, 3).forEach((n, idx) => {
+    console.log(`\n[${idx + 1}] ${n.title}`);
+    console.log(`    → ${n.title_zh}`);
+    console.log(`    📝 ${n.summary_zh.substring(0, 80)}...`);
+  });
+
+  // Generate HTML
+  const hl = news[0];
+  const html = generateHTML(news, hl, date);
+  const htmlFile = join(dataDir, `wechat-html-${date}.html`);
+  writeFileSync(htmlFile, html, 'utf8');
+  console.log(`\n📄 HTML: ${htmlFile} (${html.length} chars)`);
+
+  // Publish if requested
+  if (shouldPublish) {
+    return await publish(agent, news, hl, date, htmlFile);
+  }
+
+  return { success: true, count: news.length, headline: hl.title_zh };
+}
+
+/**
+ * Translate title using agent.llm
  */
 async function translateTitle(agent, title, source) {
-  const prompt = `You are a tech news translator. Translate this English title to Chinese (within 15 characters). Keep it punchy and accurate.
+  const prompt = `你是一位专业的科技新闻翻译。请将以下英文标题翻译成简洁有力的中文标题（不超过15字）。
 
-English: "${title}"
+英文标题："${title}"
+来源：${source}
 
-Chinese (just the title, no quotes):`;
+要求：
+- 准确传达核心信息
+- 符合中文新闻标题风格
+- 简洁有力
+- 只输出中文标题，不要任何解释
+
+直接输出：`;
 
   try {
     const result = await agent.llm.chat({
@@ -116,31 +125,40 @@ Chinese (just the title, no quotes):`;
       temperature: 0.3,
       max_tokens: 50
     });
-    let zh = result.content?.trim() || result.text?.trim() || '';
-    // Clean
-    zh = zh.replace(/^["「『"(.+)["」』"]$/, '$1');
-    return zh.length > 2 ? zh : simpleTitleTranslate(title);
+
+    let zh = (result.content || result.text || '').trim();
+    // Remove quotes and prefixes
+    zh = zh.replace(/^["『「]|[》」']$/g, '').trim();
+    zh = zh.split('\n')[0].trim();
+
+    if (zh.length > 2 && zh.length < 50) {
+      console.log(`  ✓ "${title.substring(0, 30)}" → "${zh}"`);
+      return zh;
+    }
   } catch (e) {
-    console.error('  ⚠️ LLM translate failed:', e.message);
-    return simpleTitleTranslate(title);
+    console.error('  ⚠️ LLM error:', e.message);
   }
+
+  return fallbackTitle(title);
 }
 
 /**
- * 使用 agent.llm 生成摘要
+ * Translate summary using agent.llm
  */
 async function translateSummary(agent, title, titleZh, source) {
-  const prompt = `Write a 120-150 Chinese summary for this tech news.
+  const prompt = `请为以下科技新闻生成一段120-150字的中文摘要。
 
-English title: ${title}
-Chinese title: ${titleZh}
-Source: ${source}
+英文标题：${title}
+中文标题：${titleZh}
+来源：${source}
 
-Requirements:
-- Accurate core points
-- Natural Chinese
-- No "本文报道" opening
-- Just the summary text:`;
+要求：
+1. 准确概括新闻核心内容
+2. 语言自然流畅，符合中文新闻风格
+3. 不要以"本文报道"或"据悉"开头
+4. 直接输出摘要内容，不要前缀
+
+摘要：`;
 
   try {
     const result = await agent.llm.chat({
@@ -148,17 +166,64 @@ Requirements:
       temperature: 0.4,
       max_tokens: 300
     });
-    let summary = result.content?.trim() || result.text?.trim() || '';
-    summary = summary.replace(/^["「『"(.+)["」』"]$/s, '$1');
-    return summary.length > 20 ? summary : simpleSummary(titleZh, source);
+
+    let summary = (result.content || result.text || '').trim();
+    summary = summary.replace(/^["『「]|[》』"]$/g, '').trim();
+    summary = summary.split('\n').filter(l => l.trim().length > 0)[0] || summary;
+
+    if (summary.length > 50) {
+      console.log(`  ✓ Summary: ${summary.substring(0, 50)}...`);
+      return summary;
+    }
   } catch (e) {
-    console.error('  ⚠️ LLM summary failed:', e.message);
-    return simpleSummary(titleZh, source);
+    console.error('  ⚠️ LLM error:', e.message);
   }
+
+  return fallbackSummary(titleZh, source);
 }
 
 /**
- * 生成HTML
+ * Fallback title translation
+ */
+function fallbackTitle(title) {
+  const dict = {
+    'AI': 'AI', 'LLM': '大语言模型', 'OpenAI': 'OpenAI',
+    'Google': '谷歌', 'Microsoft': '微软', 'Amazon': '亚马逊', 'Meta': 'Meta',
+    'Nvidia': '英伟达', 'Pentagon': '五角大楼', 'NSA': 'NSA',
+    'robot': '机器人', 'humanoid': '人形', 'agent': '智能体', 'robotics': '机器人技术',
+    'acquisition': '收购', 'acquire': '收购', 'buyout': '收购',
+    'Musk v. Altman': '马斯克诉阿尔特曼', 'Elon Musk': '马斯克',
+    'ChatGPT': 'ChatGPT', 'GPT': 'GPT',
+    'Ask HN:': 'Ask HN：', 'Show HN:': 'Show HN：',
+    '[AINews]': '[AINews]',
+    'TechCrunch': 'TechCrunch', 'Hacker News': 'Hacker News',
+    'MIT Tech Review': 'MIT Tech Review'
+  };
+
+  let zh = title;
+  for (const [en, cn] of Object.entries(dict)) {
+    zh = zh.replace(new RegExp(en, 'gi'), cn);
+  }
+  return zh.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Fallback summary
+ */
+function fallbackSummary(titleZh, source) {
+  const srcMap = {
+    'HackerNews': 'Hacker News技术社区',
+    'TechCrunch': 'TechCrunch科技媒体',
+    'LatentSpace': 'Latent SpaceAI媒体',
+    'TheDecoder': 'TheDecoder科技媒体',
+    'MITTechReview': 'MIT Technology Review'
+  };
+  const srcName = srcMap[source] || source;
+  return `关于「${titleZh}」的报道。${srcName}发布了这一消息，涉及AI领域的重要动态。`;
+}
+
+/**
+ * Generate WeChat HTML
  */
 
 
@@ -238,64 +303,59 @@ function generateHTML(news, hl, date) {
 
 
 
-function selectImage(item) {
-
+/**
+ * Select cover image
+ */
 function selectImage(item) {
   const t = (item.title_zh || item.title || '').toLowerCase();
-  if (t.includes('robot') || t.includes('agent') || t.includes('智能体')) {
+  if (t.includes('robot') || t.includes('agent') || t.includes('智能体') || t.includes('robotics')) {
     return 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=900&h=383&fit=crop&q=80';
   }
   return 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&h=383&fit=crop&q=80';
 }
 
-function simpleTitleTranslate(title) {
-  const d = {
-    'AI': 'AI', 'LLM': '大语言模型', 'Google': '谷歌', 'Microsoft': '微软',
-    'Meta': 'Meta', 'Nvidia': '英伟达', 'Pentagon': '五角大楼',
-    'robot': '机器人', 'humanoid': '人形', 'acquisition': '收购',
-    'Musk v. Altman': '马斯克诉阿尔特曼', 'ChatGPT': 'ChatGPT',
-    'Ask HN:': 'Ask HN：', 'Show HN:': 'Show HN：'
-  };
-  let zh = title;
-  for (const [k, v] of Object.entries(d)) zh = zh.replace(new RegExp(k, 'g'), v);
-  return zh;
-}
+/**
+ * Publish to WeChat using agent tool
+ * Called when --publish flag is set
+ */
+async function publish(agent, news, hl, date, htmlFile) {
+  console.log('📤 Publishing to WeChat...');
 
-function simpleSummary(titleZh, source) {
-  return `本文报道了「${titleZh}」，来自${source}。该新闻涉及AI领域最新动态，值得关注。`;
-}
-
-// 如果直接运行（而非通过openclaw agent），则模拟agent上下文
-if (import.meta.url === `file://${process.argv[1]}`) {
-  // 作为独立脚本运行（兼容旧模式）
-  const args = {};
-  for (let i = 2; i < process.argv.length; i++) {
-    const arg = process.argv[i];
-    if (arg === '--publish') args.publish = true;
-    if (arg.startsWith('--date=')) args.date = arg.slice(7);
-    if (arg.startsWith('--limit=')) args.limit = parseInt(arg.slice(8));
+  // Method 1: Use agent tool if available (preferred)
+  if (agent?.tools?.publishWechat) {
+    try {
+      const result = await agent.tools.publishWechat({
+        htmlFile,
+        title: hl.title_zh,
+        coverUrl: await selectImage(hl)
+      });
+      console.log('✅ Published via agent tool:', result.draftId);
+      return result;
+    } catch (e) {
+      console.error('  ⚠️ Tool publish failed:', e.message);
+    }
   }
 
-  // 创建模拟agent（使用kilo CLI fallback）
-  const mockAgent = {
-    model: { name: 'kilo-fallback' },
-    llm: {
-      chat: async ({ messages }) => {
-        const prompt = messages[0]?.content || '';
-        try {
-          const result = execSync(`echo "${prompt.substring(0, 200)}" | kilo`, {
-            encoding: 'utf8', timeout: 20000, stdio: ['pipe','pipe','pipe']
-          });
-          return { content: result.trim() };
-        } catch(e) {
-          return { content: simpleTitleTranslate(prompt) };
-        }
-      }
-    }
-  };
+  // Method 2: Fallback to child_process
+  console.log('   Using child_process fallback...');
+  const cmd = `WECHAT_APP_ID="${process.env.WECHAT_APP_ID}" WECHAT_APP_SECRET="${process.env.WECHAT_APP_SECRET}" node ${join(__dirname, 'publish-article.mjs')} "${htmlFile}" "${hl.title_zh}" ${await selectImage(hl)}`;
 
-  run(mockAgent, args).then(() => process.exit(0)).catch(e => {
-    console.error(e);
-    process.exit(1);
-  });
+  try {
+    const out = execSync(cmd, { encoding: 'utf8', timeout: 30000 });
+    const m = out.match(/Draft media_id[:：]\s*(\S+)/);
+    if (m) {
+      console.log('✅ Draft created:', m[1]);
+      return { success: true, draftId: m[1], count: news.length, headline: hl.title_zh };
+    }
+  } catch (e) {
+    console.error('❌ Publish error:', e.message);
+    return { success: false, error: e.message };
+  }
+}
+
+// Standalone mode (not used in production)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  console.log('⚠️  This skill should be run via: openclaw agent run ai-news-publisher');
+  console.log('   Not as standalone node script.');
+  process.exit(1);
 }
