@@ -1,10 +1,64 @@
 {
   "published": [
     {
-      "date": "2026-04-27",
-      "title": "The New Linux Kernel AI Bot Uncovering Bugs Is a Local LLM on Framework Desktop",
-      "draftId": "rU9uuMjCA4SOhGtWuHLjGmpDjpy_0dNlS2E04kHjRtvtnwXxe2eD6YxOYVkyOYv2",
+      "date": "2026-05-01",
+      "title": "Ask HN: How do you feel about AI assisted blogging?",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGprmAC0CxGw6lHkyDqjGdbtCOh8HZTBsxyA_DncYfdt1",
       "count": 25
+    },
+    {
+      "date": "2026-05-02",
+      "title": "Ask HN：你怎么看待AI辅助写博客？",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGjMijtQW4bdeUvjyTfwPbGo_W-7WBHK-mBVBVlbDfXzP",
+      "count": 16,
+      "sourceFile": "wechat-html-2026-05-02-translated.html"
+    },
+    {
+      "date": "2026-05-02-clean",
+      "title": "Ask HN：你怎么看待AI辅助写博客？",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGoOQa8Y40QBlWBjXO3oLkfpDSIcl_9Cl48Z4U3JW2nl_",
+      "count": 16,
+      "sourceFile": "wechat-html-2026-05-02-clean.html"
+    },
+    {
+      "date": "2026-05-02-nodup",
+      "title": "Ask HN：你怎么看待AI辅助写博客？",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGizzo-fn9mt7CplVVpF4V-MTltsCVkupD8okl_ufDpSM",
+      "count": 16,
+      "sourceFile": "wechat-html-2026-05-02-nodup.html"
+    },
+    {
+      "date": "2026-05-02-v2",
+      "title": "Ask HN：你怎么看待AI辅助写博客？",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGoKA69hJL99R708kt7Wt1rpu5ZetLowX-khoRmbozM0U",
+      "count": 18,
+      "sourceFile": "wechat-html-2026-05-02-v2.html"
+    },
+    {
+      "date": "2026-05-02-final-A",
+      "title": "北美AI圈日报 2026-05-02",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGnWsKAeuj2bvFqc-4FUhxYmEnxXiU3SfHwCCHWdr2OVQ",
+      "count": 18,
+      "sourceFile": "wechat-html-2026-05-02-clean-v2.html",
+      "note": "A版：无头条、紧凑8px、二维码可见"
+    },
+    {
+      "date": "2026-05-02-final-dynamic",
+      "title": "五角大楼与英伟达、微软、AWS签约，在机密网络部署AI",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGiSmQ_BDRAW1e0ZloeB1aO-MItnU5DCVol62CFJ8t0x6",
+      "count": 18,
+      "sourceFile": "wechat-html-2026-05-02-dynamic.html",
+      "note": "测试版：动态标题 + 纯新闻"
+    },
+    {
+      "date": "2026-05-02-official",
+      "title": "五角大楼与英伟达、微软、AWS签约，在机密网络部署AI",
+      "draftId": "rU9uuMjCA4SOhGtWuHLjGmHAo5wmJFcA0EQtJ81rNWbUObM6hD8ZEF2G9fPuC6lu",
+      "count": 18,
+      "sourceFile": "wechat-html-2026-05-02-official.html",
+      "note": "正式版：动态标题、纯新闻、140字摘要、无装饰",
+      "branch": "kilo-v5-stable",
+      "commit": "af77e46"
     }
   ]
 }
