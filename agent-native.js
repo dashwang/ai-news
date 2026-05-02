@@ -228,11 +228,18 @@ function fallbackSummary(titleZh, source) {
 
 
 
+
 function generateHTML(news, hl, date) {
+  // 计算各板块，每个最多取5条（按score排序）
+  const techCrunch = news.filter(n => n.source === 'TechCrunch').sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 5);
+  const hackerNews = news.filter(n => n.source === 'HackerNews').sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 5);
+  const substack = news.filter(n => n.source === 'LatentSpace' || n.source === 'TheDecoder' || n.source === 'MITTechReview')
+    .sort((a,b) => (b.score||0) - (a.score||0)).slice(0, 5);
+
   const sections = {
-    'TechCrunch AI': news.filter(n => n.source === 'TechCrunch'),
-    'Hacker News': news.filter(n => n.source === 'HackerNews'),
-    'Substack': news.filter(n => n.source === 'LatentSpace' || n.source === 'TheDecoder' || n.source === 'MITTechReview')
+    'TechCrunch AI': techCrunch,
+    'Hacker News': hackerNews,
+    'Substack': substack
   };
 
   const colors = {
@@ -251,13 +258,11 @@ function generateHTML(news, hl, date) {
         summary = summary.substring(title.length).trim();
       }
       summary = summary.replace(/^[:：\s]+/, '');
-      // 保证摘要至少120字
       if (summary.length < 120) {
         summary = summary + '。本文涵盖AI领域重要动态，涉及技术突破、产业动向、政策法规等多个方面，值得关注。';
       }
       summary = summary.substring(0, 140).trim();
 
-      // 间距加倍：padding 16px, margin-bottom 6px
       return '<div style="padding:16px 0;border-bottom:1px solid #f0f0f0;line-height:1.55"><div style="font-size:15px;font-weight:700;margin-bottom:6px;color:#111">' +
         idx + '. <a href="' + n.url + '" style="color:#1976d2;text-decoration:none">' + title + '</a></div>' +
         '<div style="font-size:13px;color:#555;line-height:1.6">' + summary + '</div></div>';
@@ -269,12 +274,12 @@ function generateHTML(news, hl, date) {
   const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('');
   const cleanBody = body.replace(/\n/g, '');
 
-  // 动态标题
   const dynamicTitle = hl.title_zh || hl.title || 'AI News';
 
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>' + dynamicTitle + '</title>' +
     '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>' + cleanBody + '</body></html>';
 }
+
 
 
 
