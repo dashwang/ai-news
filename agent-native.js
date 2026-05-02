@@ -225,8 +225,8 @@ function fallbackSummary(titleZh, source) {
 /**
  * Generate WeChat HTML
  */
+
 function generateHTML(news, hl, date) {
-  // 新排版：TechCrunch 最上面，然后是 Hacker News，最后是 Substack（整合其他来源）
   const sections = {
     'TechCrunch AI': news.filter(n => n.source === 'TechCrunch'),
     'Hacker News': news.filter(n => n.source === 'HackerNews'),
@@ -249,37 +249,29 @@ function generateHTML(news, hl, date) {
         summary = summary.substring(title.length).trim();
       }
       summary = summary.replace(/^[:：\s]+/, '');
-      if (summary.length < 180) {
-        summary = summary + '。本文涵盖AI领域重要动态，涉及技术突破、产业动向、政策法规等多个方面，值得关注。';
+      if (summary.length < 100) {
+        summary = summary + '。本文涵盖AI领域重要动态，值得关注。';
       }
       summary = summary.substring(0, 140).trim();
 
-      return `
-      <div style="padding:6px 0;border-bottom:1px solid #f0f0f0;line-height:1.55">
-        <div style="font-size:15px;font-weight:700;margin-bottom:2px;color:#111">
-          ${idx + 1}. <a href="${n.url}" style="color:#1976d2;text-decoration:none">${title}</a>
-        </div>
-        <div style="font-size:13px;color:#555;line-height:1.6">
-          ${summary}
-        </div>
-      </div>
-    `;
+      return '<div style="padding:6px 0;border-bottom:1px solid #f0f0f0;line-height:1.55"><div style="font-size:15px;font-weight:700;margin-bottom:2px;color:#111">' +
+        idx + '. <a href="' + n.url + '" style="color:#1976d2;text-decoration:none">' + title + '</a></div>' +
+        '<div style="font-size:13px;color:#555;line-height:1.6">' + summary + '</div></div>';
     }).join('');
 
-    return `
-      <div style="margin:8px 0">
-        <h3 style="font-size:17px;font-weight:800;color:${color};margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid ${color}">${name}</h3>
-        ${rows}
-      </div>
-    `;
+    return '<div style="margin:8px 0"><h3 style="font-size:17px;font-weight:800;color:' + color + ';margin:0 0 6px;padding-bottom:4px;border-bottom:2px solid ' + color + '">' + name + '</h3>' + rows + '</div>';
   }
 
   const body = Object.entries(sections).map(([n, i]) => fmtSection(n, i)).filter(Boolean).join('\n');
 
-  const qrUrl = process.env.WECHAT_QR_CODE_URL || 'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://mp.weixin.qq.com';
+  // 动态标题：使用最热新闻的标题
+  const dynamicTitle = hl.title_zh || hl.title || 'AI News';
 
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>北美AI圈日报 ${date}</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>\n    ${body}\n    <div style="text-align:center;padding:12px 0;color:#aaa;font-size:11px;border-top:1px solid #eee;margin-top:20px">\n      北美AI圈日报 · 每日精选\n      <div style="margin-top:8px">\n        <img src="${qrUrl}" style="width:100px;height:100px;border:1px solid #eee;border-radius:4px" alt="公众号二维码">\n        <div style="margin-top:4px;font-size:12px;color:#888">扫码关注公众号</div>\n      </div>\n    </div>\n  </body></html>`;
+  // 精简版：纯新闻列表，无任何开头结尾装饰
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>' + dynamicTitle + '</title>' +
+    '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.55;color:#333;margin:0;padding:10px;background:#fff}a{color:#1976d2;text-decoration:none}img{max-width:100%;border-radius:4px}</style></head><body>\n    ' + body + '\n  </body></html>';
 }
+
 
 
 /**
