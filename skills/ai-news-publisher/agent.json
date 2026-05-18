@@ -1,0 +1,12 @@
+{
+  "name": "ai-news-publisher",
+  "description": "Fetch AI news, translate using OpenClaw built-in LLM, and publish to WeChat",
+  "version": "2.0.0",
+  "main": "agent-native.js",
+  "commands": {
+    "run": {
+      "description": "Fetch, translate and publish AI news",
+      "usage": "openclaw agent run ai-news-publisher [--date=YYYY-MM-DD] [--publish] [--limit=15]"
+    }
+  }
+}
