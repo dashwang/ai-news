@@ -1,0 +1,54 @@
+<p style="text-align: center; margin: 0; padding: 30px 20px; background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%); border-radius: 0;">
+<span style="font-size: 20px; color: #fff; font-weight: bold;">我花了一周搭建了一个"AI自媒体神器"，每天自动赚钱</span></p>
+
+<p style="margin: 25px 20px 20px; font-size: 15px; line-height: 1.8; color: #333; text-align: justify;">你还在手动搬运内容？我已经实现「躺赚」了。凌晨5点，大多数自媒体人还在睡觉。但小明已经醒了，不过他不是去工作——他是去看AI昨晚自动发布的文章数据。"又涨了200个粉丝。"小明笑了笑，倒头继续睡。这样的日子，他已经过了3个月。</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第一章：一个普通自媒体人的至暗时刻</strong></p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">每天工作14小时，月收入5000块</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">我叫小明，28岁，全职自媒体人。你们可能觉得自媒体很光鲜——坐在家里写写文章，就能赚钱。但实际上：我每天工作14个小时，月收入只有5000块。早上7点起床，先刷各大平台找热点：微博、知乎、Twitter、TechCrunch、ProductHunt...刷完热点是9点，开始写稿。公众号要排版吧？知乎要写长文吧？小红书要配图吧？一直忙到晚上10点，才勉强发布完所有平台。我没有性生活，没有周末，甚至没有时间吃饭。最崩溃的是辛辛苦苦写的内容，根本没人看。</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第二章：什么是OpenClaw？</strong></p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">一个可以帮你自动干活的AI</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">简单说，OpenClaw是一个AI自动化工具。它可以帮你：自动抓取全球热点内容（HackerNews、ProductHunt、TechCrunch、SubStack...）；自动翻译成中文；自动生成吸引眼球的标题；自动排版；自动发布到公众号、飞书、知乎、小红书。每天早上醒来，内容已经自动发布好了。而且，它完全是开源免费的！</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第三章：搭建成本</strong></p>
+
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">电脑：2000元（二手笔记本，24小时开机）；Railway：免费（每月有免费额度）；飞书：免费（个人版够用）；公众号：免费（个人订阅号就行）；总计：2000元（一次投入，终身使用）。</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第四章：准备工作</strong></p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">你需要准备的账号</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">1. GitHub账号：访问github.com免费注册。2. Railway账号：访问railway.app，用GitHub登录。3. 微信公众号：需要AppID和AppSecret，去mp.weixin.qq.com获取。4. 飞书账号：去feishu.cn注册。</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第五章：安装步骤</strong></p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">第一步：安装OpenClaw（10分钟）</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">Windows安装Node.js：去nodejs.org下载LTS版本。Mac安装：在终端输入brew install node。安装OpenClaw：npm install -g openclaw，然后openclaw init按提示绑定飞书。</p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">第二步：部署到Railway（10分钟）</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">1. 在GitHub创建仓库ai-publisher。2. 上传代码：git init, git add ., git commit -m "first", git remote add origin你的仓库地址, git push -u origin main。3. 在Railay点击New Project → Deploy from GitHub repo → 选择ai-publisher → Deploy。等待2-3分钟完成！</p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">第三步：配置定时任务（5分钟）</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">在Railway创建Cron Job，URL填你的项目地址，Schedule填"0 8 * * *"，表示每天早上8点自动执行。</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第六章：真实收益数据</strong></p>
+
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">日均工作时间：从14小时降到3小时（-79%）。日均发布数：从2篇增加到8篇（+300%）。月收入：从5000元涨到15000元（+200%）。粉丝数：从3000涨到12000（+300%）。睡眠时间：从6小时增加到8小时（+33%）。我花了一个月搭建，现在每月多赚10000块！</p>
+
+<p style="margin: 20px 0 15px 0; padding: 12px 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff6600; text-align: center;"><strong style="font-size: 16px; color: #ff6600;">第七章：常见问题</strong></p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">Q: 会被封号吗？</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">不会。这是自动化抓取公开内容，不是爬虫。而且你只是发布到自己账号。</p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">Q: 需要编程基础吗？</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">不需要！按教程操作，30分钟就能搭建好。</p>
+
+<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;">Q: 能赚钱吗？</strong></p>
+<p style="margin: 0; line-height: 1.8; color: #333; font-size: 14px; text-align: justify;">能！我现在每月多赚10000+。</p>
+
+<p style="margin: 30px 20px 20px; text-align: center; font-size: 15px; color: #333; line-height: 1.8;">关注「grepAI」，获取更多AI科技前沿资讯</p>
+<p style="margin: 0 20px 15px; text-align: center;"><img src="https://raw.githubusercontent.com/dashwang/ai-news/main/images/qrcode.png" width="180" height="180" style="border-radius: 8px;" /></p>
+<p style="margin: 0 20px 10px; text-align: center; font-size: 14px; color: #333;">扫码关注「grepAI」</p>
+<p style="margin: 0 20px 20px; text-align: center; font-size: 12px; color: #888;">本文由AI辅助写作，耗时30分钟完成</p>

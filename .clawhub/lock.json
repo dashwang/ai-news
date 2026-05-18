@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skills": {
+    "self-improving-agent": {
+      "version": "3.0.1",
+      "installedAt": 1773287901809
+    },
+    "skill-vetter": {
+      "version": "1.0.0",
+      "installedAt": 1773288530725
+    },
+    "notebooklm-prompts": {
+      "version": "1.0.0",
+      "installedAt": 1773288618504
+    },
+    "tiangong-notebooklm-cli": {
+      "version": "0.1.1",
+      "installedAt": 1773288662495
+    }
+  }
+}

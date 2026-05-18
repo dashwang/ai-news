@@ -1,6 +1,6 @@
 ---
 name: ai-news-publisher
-description: 北美AI科技新闻抓取、编排与微信公众号发布完整工作流。包含去重、动态标题、热内容置顶、配图匹配等核心功能。
+description: AI科技新闻抓取与微信公众号排版。不含自动发布能力，需手动复制到公众号后台。
 triggers:
   - 命令: fetch news
   - 命令: 抓取AI新闻
@@ -17,11 +17,16 @@ triggers:
 
 ## 核心功能
 
-1. **多源抓取** - HackerNews、ProductHunt、TechCrunch、SubStack
-2. **智能去重** - 对比历史发布记录，避免重复
-3. **动态热点选择** - 根据当日热点选择最具话题性的内容置顶
-4. **热内容置顶** - 标题对应的文章放全文最前
-5. **配图匹配** - 根据文章主题选择相关图片，而非随机
+1. **多源抓取** - 使用 `web_fetch` 直接抓取（建议 HackerNews、TechCrunch RSS）
+2. **智能热点选择** - 根据 points/comments 数选择置顶内容
+3. **配图匹配** - 根据文章主题选择相关图片（Unsplash）
+4. **公众号排版** - 生成可直接复制的排版内容
+
+## ⚠️ 不含功能
+
+- ~~外部 API 抓取~~（已移除，服务不稳定）
+- ~~自动发布到微信公众号~~（无 API 能力）
+- ~~去重~~（需手动）
 
 ## 排版规范（2026年3月28日最新版）
 
@@ -81,14 +86,58 @@ triggers:
 - [ ] 虚线分割
 - [ ] 公众号名称grepAI + 二维码180px
 
-## 快速开始
+## 快速开始（2026年4月更新）
+
+### 抓取新闻（使用内置 web_fetch）
+
+由于外部 API 服务不稳定，改为直接用 `web_fetch` 抓取：
 
 ```bash
-# 抓取并发布AI新闻
-curl "https://ai-news-production-2735.up.railway.app/api/fetch"
+# 抓取 HackerNews
+web_fetch("https://news.ycombinator.com/")
+
+# 抓取 TechCrunch AI
+web_fetch("https://techcrunch.com/feed/")
 ```
+
+### 手动抓取流程
+
+1. 用 `web_fetch` 从以下来源抓取：
+   - HackerNews: `https://news.ycombinator.com/`
+   - TechCrunch: `https://techcrunch.com/category/artificial-intelligence/feed/`
+   
+2. 提取 AI 相关新闻，翻译标题和摘要
+
+3. 按排版规范编排内容
+
+4. 手动复制到公众号后台发布
+
+### ⚠️ 已知限制
+
+- ❌ 无微信公众号 API 自动发布能力
+- ❌ ProductHunt 有反爬保护（403）
+- ✅ 建议手动复制发布或配置第三方工具
 
 ## 相关文章
 
 - [viral-article-writing](./viral-article-writing) - 爆款公众号文章写作指南
 - [wechat-article-critic](./wechat-article-critic) - 公众号文章评审标准
+
+## 安全建议
+
+🔐 **不要在聊天中明文发送 credentials**  
+如需配置 API keys，请使用：
+```bash
+openclaw configure --section web
+```
+或设置 Gateway 环境变量
+
+---
+
+## 更新日志
+
+### 2026-04-01
+- 移除挂掉的外部 API（Railway / Fly）
+- 改用内置 `web_fetch` 直接抓取
+- 明确标注：无自动发布能力
+- 增加安全建议（credentials 处理）

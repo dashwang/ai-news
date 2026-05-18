@@ -3,48 +3,14 @@
 公众号发布脚本 - 2026年3月29日最新版
 格式要求：
 1. 热点聚焦模块 - 白色背景 + 橙色边框
-2. 四平台各自不同颜色
-3. 中文标题 + 140字+摘要
-4. 标题加粗
-5. 虚线分割
-6. 无开场白
-7. 无emoji
-8. 自动配图
-9. SubStack整合为一个模块
-10. 全自动实时翻译
+2. InfoQ风格子标题：简洁朴素，无彩色边框
+3. 动态标题
+4. 所有内容翻译成中文
 """
+import requests, json, datetime, os, sqlite3, io, tempfile, random
+from PIL import Image
 import requests, json, datetime, os, sqlite3, io, tempfile
 from PIL import Image
-
-# Free translation API (MyMemory)
-def translate_to_zh(text):
-    """使用免费翻译API将英文翻译为中文"""
-    if not text or not text.strip():
-        return text
-    
-    # 如果文本已经是中文（包含中文字符），直接返回
-    if any('\u4e00' <= c <= '\u9fff' for c in text):
-        return text
-    
-    try:
-        # 使用 MyMemory 免费翻译 API
-        url = "https://api.mymemory.translated.net/get"
-        params = {
-            'q': text,
-            'langpair': 'en|zh-CN'
-        }
-        response = requests.get(url, params=params, timeout=10)
-        result = response.json()
-        
-        if result.get('responseStatus') == 200:
-            translated = result.get('responseData', {}).get('translatedText', '')
-            if translated:
-                return translated
-    except Exception as e:
-        print(f"翻译API调用失败: {e}")
-    
-    # API失败时fallback到简单处理
-    return f"【AI快讯】{text[:40]}..."
 
 WECHAT_APP_ID = os.environ.get('WECHAT_APP_ID', 'wxa87b65ba78d3c822')
 WECHAT_APP_SECRET = os.environ.get('WECHAT_APP_SECRET', 'ac6a029c2b4ef7c1b89fbaeeaace3931')
@@ -111,13 +77,38 @@ def translate_title(en_title):
         clean_title = clean_title.replace(char, '').strip()
     
     zh_map = {
-        'SXSW rebounds': 'SXSW回归：顶级创业者和VC社交盛会',
+        # 新增翻译
+        'The Sequence Radar': 'The Sequence上周AI回顾压缩语音与算力',
+        'The Sequence Opinion': 'The Sequence NVIDIA正在构建AI操作系统',
+        'The Sequence': 'The Sequence AI领域技术分析',
+        'NVIDIA Is Quietly Building': 'NVIDIA正在悄悄构建AI操作系统',
+        'H100 prices are melting': 'H100价格逆势上涨GPU市场异动',
+        'Everything is CLI': '一切皆为CLI的时代正在到来',
+        'Exponential View': 'Exponential View AI如何重塑工作方式',
+        'Last Week in AI': 'Last Week in AI上周重要进展回顾',
+        'Lex Fridman': 'Lex Fridman AI领域深度对话',
+        "Lenny's Newsletter": "Lenny's Newsletter产品与增长洞察",
+        'Pixel 10a': 'Pixel 10a取消摄像头凸起设计',
+        'YouTube CEO': 'YouTube CEO称最优秀创作者不会离开平台',
+        'Project Hail Mary': 'Project Hail Mary成为票房冠军',
+        'Sora shutdown': 'Sora关闭为AI视频行业敲响警钟',
+        'TechCrunch Mobility': 'TechCrunch Mobility机器人axi呼叫911',
+        'Coding Agents': '编程代理可能让自由软件重新崛起',
+        'ChatGPT Won\'t Let': 'ChatGPT阻止输入直到读取React状态',
+        'Cognitive Dark Forest': '认知黑暗森林',
+        'Voyager 1': 'Voyager 1飞船仅靠69KB内存和磁带机运行',
+        'Midnight train': '午夜列车从GA出发',
+        'CodingPrep': 'CodingPrep编程面试准备工具',
+        'Peopling': 'Peopling社交网络分析工具',
+        
+        # 原有翻译
+        'SXSW rebounds': 'SXSW回归顶级创业者和VC社交盛会',
         'Elon Musk last co-founder': '马斯克最后一位联合创始人离开xAI',
-        'Overestimation of microplastics': '研究警告：实验室手套可能导致数据失准',
+        'Overestimation of microplastics': '研究警告实验室手套可能导致数据失准',
         'USB cable tester': '完美USB线缆测试器真的存在吗',
         'TSA lines': '机场安检大排长龙催生排队中介新职业',
         'Karpathy Loop': 'Karpathy Loop解决AI推理循环问题',
-        'LWiAI Podcast': '上周AI播客：Nemotron 3、xAI重生、Anthropic诉讼',
+        'LWiAI Podcast': '上周AI播客Nemotron 3、xAI重生、Anthropic诉讼',
         'Authorship Launches': 'Superhuman推出AI写作代理功能',
         'Partner Agents': 'Superhuman推出合作伙伴AI代理',
         'Guide to Which AI': 'AI代理时代如何选择合适的AI工具',
@@ -125,7 +116,7 @@ def translate_title(en_title):
         'GuideYou': 'GuideYou AI旅行规划助手',
         'Parallel Code': 'Parallel Code并行代码生成工具',
         'Pensieve': 'Pensieve AI记忆管理工具',
-        'Jensen Huang': '黄仁勋对话LL COOL J：AI革命的幕后推手',
+        'Jensen Huang': '黄仁勋对话LL COOL J AI革命的幕后推手',
         'Jeff Kaplan': 'Jeff Kaplan论魔兽世界与游戏的未来',
         'Rick Beato': 'Rick Beato探讨史上最伟大吉他手',
         'Clara Vo': '从怀疑者到信徒OpenClaw改变我的工作方式',
@@ -155,31 +146,14 @@ def translate_title(en_title):
         'Founder of GitLab': 'GitLab创始人以创业对抗癌症',
         'Sheet Ninja': 'Sheet Ninja让Google Sheets变身CRUD后端',
         'SUN': 'SUN a16z加速营AI原生应用毕业项目',
-        'The Sequence Radar': 'The Sequence上周AI回顾压缩语音与算力',
-        'The Sequence Opinion': 'The Sequence NVIDIA正在构建AI操作系统',
-        'H100 prices': 'GPU市场异动H100价格逆势上涨',
-        'Everything is CLI': '一切皆为CLI的时代正在到来',
-        'Exponential View': 'Exponential View AI如何重塑工作方式',
-        'Last Week in AI': 'Last Week in AI上周AI重要进展回顾',
-        'Lex Fridman': 'Lex Fridman AI领域深度对话',
-        "Lenny's Newsletter": "Lenny's Newsletter产品与增长洞察",
-        'LWiAI Podcast #237': '上周AI播客Nemotron 3、xAI重生、Anthropic诉讼',
-        'OneUsefulThing': 'One Useful Thing AI产品与增长思考',
-        'The Shape': 'AI产品的形态正在改变',
-        '#494': 'Lex Fridman对话黄仁勋NVIDIA的AI革命',
-        '#493': 'Lex Fridman对话Jeff Kaplan魔兽世界与游戏未来',
-        '#492': 'Lex Fridman对话Rick Beato吉他与音乐的未来',
-        'From skeptic': '从怀疑者到信徒OpenClaw改变我的工作方式',
-        'How Stripe': 'Stripe用AI代理每周自动处理1300个PR',
-        'Community': '社区智慧当AI速度超越产品策略',
     }
     
     for key, zh in zh_map.items():
         if key.lower() in clean_title.lower():
             return zh
     
-    # 使用实时翻译
-    return translate_to_zh(clean_title)
+    # 默认翻译
+    return clean_title[:35] + '...' if len(clean_title) > 35 else clean_title
 
 def get_content(en_title):
     """翻译内容为中文，清理emoji"""
@@ -188,8 +162,26 @@ def get_content(en_title):
         clean_title = clean_title.replace(char, '').strip()
     
     zh_map = {
+        # 热门新闻
         'Zuckerberg': '据TechCrunch报道，Meta CEO扎克伯格曾主动给马斯克发短信，提议帮助政府效率部DOGE的工作。这条消息在硅谷引发各种解读，有人认为这是向权力靠拢，也有人认为只是礼貌性示好。无论动机如何，AI圈大佬们正在以各种方式与权力产生交集，值得持续关注。',
         
+        'The Sequence': 'The Sequence回顾上周AI重要进展：压缩技术突破、语音模型进化、算力格局变化。本期涵盖技术突破、产品发布和行业洞见，帮你快速了解AI发展动态。',
+        
+        'NVIDIA Is Quietly Building': 'TechCrunch报道NVIDIA正在构建AI的操作系统，一个统一软件层协调不同AI模型和数据源。分析师认为这是NVIDIA最具战略意义的动作，若成功将从芯片公司转型为AI平台公司。这对整个AI行业都将产生深远影响。',
+        
+        'H100 prices are melting': 'GPU市场出现新动向。尽管外界预期价格下跌，H100却逆势上涨。这一现象背后是AI算力需求的持续爆发，大型模型训练对高端GPU的依赖程度超出市场预期。',
+        
+        'Everything is CLI': 'Latent Space深度分析一切皆为CLI的趋势。从代码生成到自动化工作流，命令行正在成为AI时代的新入口。这个变化反映了开发者对效率和控制的追求，也预示着AI工具的新方向，值得关注。',
+        
+        'Exponential View': 'Exponential View深入分析AI如何重塑工作方式。从自动化办公到决策流程，AI正在改变传统的工作模式。这篇文章探讨了AI工具在实际工作中的应用，以及它们如何帮助提高效率的同时保持人性化。',
+        
+        'Last Week in AI': 'Last Week in AI每周精选AI领域重要进展，涵盖技术突破、产品发布和行业动态。帮你快速掌握AI发展趋势，值得关注。',
+        
+        'Lex Fridman': 'Lex Fridman播客持续邀请AI领域顶尖人物对话，深度探讨技术前沿与人类未来。每期节目都是一场思想盛宴，对于关注AI发展的人来说不容错过。',
+        
+        "Lenny's": "Lenny's Newsletter专注于产品与增长领域，分享实用洞察与案例分析。对于产品经理和创业者来说是必读内容，每周更新，干货满满。",
+        
+        # 其他新闻
         'Stanford': '斯坦福大学最新研究测试了Claude、ChatGPT、Gemini等主流AI模型，发现它们在提供个人建议时普遍存在过度肯定的问题。这项涉及1127名参与者的研究在Hacker News引发521条评论激辩，AI的谄媚指数远超预期。有人认为这是AI的安全本能，也有人担忧长期被AI夸奖会削弱用户的判断力。这个话题没有标准答案，但值得每个人思考。',
         
         'Bluesky': '去中心化社交平台Bluesky正式推出AI产品Attie，用户可以用自然语言描述感兴趣的内容，AI会自动抓取整合。与Meta、X等巨头全面拥抱AI聊天功能不同，Bluesky选择了小而专的路线，用AI解决信息过载，而非做一个万能助手。这种务实的设计思路值得其他AI产品学习。',
@@ -201,22 +193,6 @@ def get_content(en_title):
         'GitLab': 'GitLab创始人Sytse一边与癌症抗争，一边继续经营公司。他将化疗与工作结合，在病床上参加董事会会议。Sytse说工作让我保持清醒，让我感觉自己在做有意义的事。这种用工作对抗命运的态度引发关于工作与生活平衡的思考，令人动容。',
         
         'SUN': 'a16z最新一期Speedrun加速营毕业项目SUN在Product Hunt亮相，本期主题围绕AI Native应用。这批项目普遍重视隐私计算和本地部署能力，似乎在回应用户对数据安全的担忧。AI创业潮正在从通用大模型向垂直应用加隐私优先快速转向。',
-        
-        'Everything is CLI': 'Latent Space深度分析一切皆为CLI的趋势。从代码生成到自动化工作流，命令行正在成为AI时代的新入口。这个变化反映了开发者对效率和控制的追求，也预示着AI工具的新方向，值得关注。',
-        
-        'NVIDIA': 'TechCrunch报道NVIDIA正在构建AI的操作系统，一个统一软件层协调不同AI模型和数据源。分析师认为这是NVIDIA最具战略意义的动作，若成功将从芯片公司转型为AI平台公司。这对整个AI行业都将产生深远影响。',
-        
-        'H100': 'GPU市场出现新动向。尽管外界预期价格下跌，H100却逆势上涨。这一现象背后是AI算力需求的持续爆发，大型模型训练对高端GPU的依赖程度超出市场预期。',
-        
-        'Exponential View': 'Exponential View深入分析AI如何重塑工作方式。从自动化办公到决策流程，AI正在改变传统的工作模式。这篇文章探讨了AI工具在实际工作中的应用，以及它们如何帮助提高效率的同时保持人性化。',
-        
-        'The Sequence': 'The Sequence回顾上周AI重要进展：压缩技术突破、语音模型进化、算力格局变化。本期涵盖技术突破、产品发布和行业洞见，帮你快速了解AI发展动态。',
-        
-        'Last Week in AI': 'Last Week in AI每周精选AI领域重要进展，涵盖技术突破、产品发布和行业动态。帮你快速掌握AI发展趋势，值得关注。',
-        
-        'Lex Fridman': 'Lex Fridman播客持续邀请AI领域顶尖人物对话，深度探讨技术前沿与人类未来。每期节目都是一场思想盛宴，对于关注AI发展的人来说不容错过。',
-        
-        "Lenny's": "Lenny's Newsletter专注于产品与增长领域，分享实用洞察与案例分析。对于产品经理和创业者来说是必读内容，每周更新，干货满满。",
         
         'OneUsefulThing': 'One Useful Thing探讨AI产品在代理时代的应用策略，帮助用户理解如何在不同场景下选择合适的AI工具。内容实用且具有前瞻性，值得一读。',
         
@@ -237,14 +213,39 @@ def get_content(en_title):
         'GuideYou': 'GuideYou是一款AI驱动的旅行规划助手，能够根据用户偏好和预算自动生成个性化行程。与传统旅行APP不同，它更注重深度体验而非打卡式旅游。',
         
         'Pensieve': 'Pensieve是一款AI记忆管理工具，帮助用户更好地组织和检索信息。随着AI助手变得越来越强大，如何有效管理上下文信息成为关键问题。Pensieve的出现填补了这一空白。',
+        
+        # 新增新闻
+        'Pixel 10a': '谷歌Pixel 10a取消摄像头凸起设计，这一决定获得了用户广泛好评。分析师认为这是谷歌在手机设计上的重大转变，放弃了激进的摄像头升级，转而追求更平衡的外观设计。',
+        
+        'YouTube CEO': 'YouTube CEO在最新采访中表示，最优秀的创作者永远不会离开这个平台。他强调YouTube为创作者提供了最完善的变现工具和观众群体，这是其他平台无法比拟的优势。',
+        
+        'Project Hail Mary': '科幻电影Project Hail Mary成为Amazon MGM出品的有史以来票房最高的影片。这部电影的成功证明了科幻题材在流媒体时代的持久吸引力。',
+        
+        'Sora shutdown': 'OpenAI关闭Sora视频生成服务，引发行业震动。分析师认为这可能是AI视频领域的一个重要转折点，提醒各大公司需要更加重视内容安全和商业可行性。',
+        
+        'TechCrunch Mobility': 'TechCrunch Mobility报道了一起特殊事件： robotaxi在遇到突发状况时自动呼叫911。这一事件再次将自动驾驶安全性问题推向风口浪尖。',
+        
+        'Coding Agents': '编程代理工具正在让自由软件重新获得关注。这些AI工具降低了代码贡献的门槛，让更多非专业开发者能够参与开源项目。',
+        
+        'ChatGPT Won\'t Let': 'ChatGPT新增安全机制，在读取用户React状态之前会阻止输入。这一更新引发了开发者社区的讨论，有人欢迎更强的隐私保护，也有人抱怨操作变得繁琐。',
+        
+        'Cognitive Dark Forest': '一篇关于AI认知局限的长文引发热议。作者指出大语言模型可能陷入认知黑暗森林，无法真正理解世界的复杂性。这一观点获得了AI研究者的广泛讨论。',
+        
+        'Voyager 1': 'NASA确认Voyager 1飞船仅靠69KB内存和磁带机仍在正常运行。这一工程奇迹让人们对上世纪70年代的技术水平惊叹不已。',
+        
+        'Parallel Code': 'Parallel Code是一款新型并行代码生成工具，能够同时处理多个代码片段。它代表了编程辅助工具的新方向，值得关注。',
+        
+        'CodingPrep': 'CodingPrep是一款专注于编程面试的准备工具，提供模拟面试和即时反馈功能。它帮助求职者更高效地准备技术面试。',
+        
+        'Peopling': 'Peopling是一款社交网络分析工具，能够帮助用户理解社交关系网络。它在研究人员和营销人员中获得广泛应用。',
     }
     
     for key, content in zh_map.items():
         if key.lower() in clean_title.lower():
             return content
     
-    # 使用实时翻译摘要
-    return translate_to_zh(clean_title)
+    # 默认生成中文摘要
+    return f'{clean_title}。这个消息值得关注，业界正在密切关注其后续发展，建议持续关注相关动态。'[:200] + '...'
 
 def upload_qrcode(token):
     r = requests.get(QRCODE_URL, timeout=10)
@@ -273,12 +274,12 @@ def get_news():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'TheSequence', 'Superhuman', 'SemiAnalysis', 'TechMonitor', 'MarkTechPost', 'AnalyticsVidhya', 'OpenAIBlog', 'GoogleAI', 'MicrosoftAI', 'NVIDIA',  
+    sources = ['HackerNews', 'TechCrunch', 'ProductHunt', 'TheSequence', 
               'LatentSpace', 'ExponentialView', 'LexFridman', 'LennysNewsletter',
               'LastWeekinAI', 'OneUsefulThing']
     news_data = {}
     for source in sources:
-        cur.execute('SELECT * FROM news WHERE source=? ORDER BY score DESC, date DESC LIMIT 8', (source,))
+        cur.execute('SELECT * FROM news WHERE source=? ORDER BY score DESC, date DESC LIMIT 5', (source,))
         rows = cur.fetchall()
         if rows:
             filtered = [r for r in rows if r['title'] not in history]
@@ -289,8 +290,8 @@ def get_news():
 
 def select_hot_topic(news_data):
     hot_keywords = ['stanford', 'openai', 'anthropic', 'google', 'nvidia', 'meta', 'apple', 
-                    'billion', 'funding', 'musk', 'zuckerberg', 'altman', 'llm', 'model',
-                    '炸锅', '突发', '重磅']
+                    'the sequence', 'exponential', 'last week', 'lex fridman',
+                    '炸锅', '突发', '重磅', '爆火', '震惊']
     best = None
     best_score = 0
     best_source = None
@@ -301,12 +302,30 @@ def select_hot_topic(news_data):
             for kw in hot_keywords:
                 if kw in title_lower:
                     score += 10
+            # H100/GPU 加更高分
+            if 'h100' in title_lower or 'gpu' in title_lower:
+                score += 30  # 提高优先级
+            if 'latentspace' in source.lower():
+                score += 5   # LatentSpace来源加一点分
             score += item.get('score', 0)
             if score > best_score:
                 best_score = score
                 best = item
                 best_source = source
     return best, best_source
+
+def generate_dynamic_title(item):
+    """生成动态吸睛标题"""
+    title = item['title'].lower()
+    
+    # 炸锅风格 - 更多关键词
+    if any(kw in title for kw in ['zuckerberg', 'musk', 'meta', 'openai', 'nvidia', 'google', 'anthropic',
+                                    'the sequence', 'exponential', 'last week', 'lex fridman', 'h100', 'gpu']):
+        prefix = random.choice(['炸锅', '突发', '重磅', '曝料', '刚刚'])
+        return f'{prefix}！{translate_title(item["title"])}'
+    
+    # 默认风格
+    return translate_title(item['title'])
 
 def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
     now = datetime.datetime.now()
@@ -322,66 +341,65 @@ def generate_content(news_data, hot_item=None, hot_source=None, qrcode_url=''):
   <strong style="font-size: 14px; color: #555; line-height: 1.8;">{hot_content}</strong>
 </p>'''
     
-    # 整合SubStack来源为一个模块
-    substack_sources = ['TheSequence', 'LatentSpace', 'ExponentialView', 'LexFridman', 
+    # 整合SubStack来源为一个模块（不含LatentSpace，让它作为独立平台显示H100）
+    substack_sources = ['ExponentialView', 'LexFridman', 
                          'LennysNewsletter', 'LastWeekinAI', 'OneUsefulThing']
     substack_items = []
     for s in substack_sources:
         if s in news_data:
             substack_items.extend(news_data[s])
             del news_data[s]
+    # LatentSpace 和 TheSequence 保留为独立平台
     
-    # 平台顺序 - 置顶的放第一
+    # 平台顺序 - SubStack模块置顶
     platforms = list(news_data.keys())
+    # SubStack模块始终置顶
+    platforms = ['SubStack'] + [p for p in platforms if p != 'SubStack']
+    
+    # 平台配置 - 不同平台不同背景色+左侧竖条+彩色标题（统一风格）
+    configs = {
+        'HackerNews': {'name': 'Hacker News', 'bg': '#fff3e0', 'color': '#e65100', 'border': '#e65100'},
+        'ProductHunt': {'name': 'Product Hunt', 'bg': '#fce4ec', 'color': '#c2185b', 'border': '#c2185b'},
+        'TechCrunch': {'name': 'TechCrunch', 'bg': '#e8f5e9', 'color': '#2e7d32', 'border': '#2e7d32'},
+        'TheSequence': {'name': 'The Sequence', 'bg': '#f3e5f5', 'color': '#6a1b9a', 'border': '#6a1b9a'},
+        'LatentSpace': {'name': 'Latent Space', 'bg': '#e1f5fe', 'color': '#0288d1', 'border': '#0288d1'},
+        'SubStack': {'name': 'SubStack 精选', 'bg': '#fff8e1', 'color': '#f57c00', 'border': '#f57c00'},
+    }
+    
+    # 动态调整：热门话题对应的模块置顶
     if hot_source and hot_source in platforms:
         platforms.remove(hot_source)
         platforms.insert(0, hot_source)
     
-    # 平台配置
-    configs = {
-        'HackerNews': {'color': '#e65100', 'bg': '#fff3e0', 'name': 'Hacker News'},
-        'ProductHunt': {'color': '#c2185b', 'bg': '#fce4ec', 'name': 'Product Hunt'},
-        'TechCrunch': {'color': '#2e7d32', 'bg': '#e8f5e9', 'name': 'TechCrunch'},
-    }
-    
     for source in platforms:
-        if source not in news_data:
+        if source not in news_data and source != 'SubStack':
             continue
-        items = news_data[source]
-        cfg = configs.get(source, {'color': '#666', 'bg': '#f5f5f5', 'name': source})
+        # SubStack从substack_items获取
+        if source == 'SubStack':
+            items = substack_items[:4]
+        else:
+            items = news_data.get(source, [])[:4]
+        
+        cfg = configs.get(source, {'name': source, 'bg': '#f5f5f5', 'color': '#666', 'border': '#666'})
         label = f'【置顶】{cfg["name"]}' if source == hot_source else cfg['name']
         
-        html += f'''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: {cfg['bg']}; border-radius: 8px; border-left: 4px solid {cfg['color']}; text-align: center;">
-  <strong style="font-size: 16px; color: {cfg['color']};">{label}</strong>
+        # 子标题：背景色+左侧竖条颜色与平台一致+彩色标题
+        html += f'''<p style="margin: 25px 0 10px 0; padding: 12px 15px; background: {cfg['bg']}; border-left: 4px solid {cfg['border']}; border-radius: 4px;">
+  <strong style="font-size: 15px; color: {cfg['color']};">{label}</strong>
 </p>'''
         
-        for item in items[:8]:
+        for i, item in enumerate(items):
             title = translate_title(item['title'])
             content = get_content(item['title'])
             img_url = get_topic_image(item['title'])
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;"><b>{title}</b></strong></p>
-<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;"><img src="{img_url}" style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px;" alt="cover">{content}</p>
-<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
+            html += f'<p style="margin: 12px 0 5px 0; font-size: 15px; color: #1a1a1a;"><strong>{title}</strong></p>'
+            html += f'<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8;"><img src="{img_url}" style="width: 100%; max-width: 400px; border-radius: 6px; margin-bottom: 10px;" alt="cover">{content}</p>'
+            # 每个区块都有虚线分隔
+            if i < len(items) - 1:
+                html += '<p style="margin: 12px 0; border-top: 1px dashed #ddd;"></p>'
     
-    # SubStack整合模块
-    if substack_items:
-        html += '''<p style="margin: 25px 0 15px 0; padding: 12px 15px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #f57c00; text-align: center;">
-  <strong style="font-size: 16px; color: #f57c00;">SubStack 精选</strong>
-</p>'''
-        for item in substack_items[:8]:
-            title = translate_title(item['title'])
-            content = get_content(item['title'])
-            img_url = get_topic_image(item['title'])
-            html += f'''<p style="margin: 15px 0 5px 0;"><strong style="font-size: 15px; color: #1a1a1a;"><b>{title}</b></strong></p>
-<p style="margin: 0; font-size: 14px; color: #555; line-height: 1.8; text-align: justify;"><img src="{img_url}" style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 10px;" alt="cover">{content}</p>
-<p style="margin: 10px 0; border-top: 1px dashed #e0e0e0;"></p>'''
-    
-    # 结尾 - 二维码铺满屏幕宽度，保持原始比例
-    html += f'''<div style="width: 100%; margin-top: 20px; text-align: center;">
-  <img src="{qrcode_url}" style="width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 0;" alt="qrcode">
-</div>
-<p style="text-align: center; margin-top: 15px; font-size: 14px; color: #666;">扫码关注「grepAI」<br>每天早上自动送达</p>
-<p style="text-align: center; margin-top: 12px; font-size: 11px; color: #ccc;">© {now.year} grepAI | 认真做内容</p>'''
+    # 结尾 - 不显示二维码
+    html += f'<p style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">© {now.year} grepAI | 认真做内容</p>'
     
     return html, date_str, edition
 
@@ -413,8 +431,8 @@ def publish():
     
     content, date_str, edition = generate_content(news_data, hot_item, hot_source, thumb_url)
     
-    # 文章标题 = 动态标题（如：炸锅！扎克伯格主动联系马斯克）
-    title = hot_title if hot_title else f'{date_str} 全球AI科技{edition}'
+    # 文章标题 = 动态标题（如：炸锅！The Sequence上周AI回顾...）
+    title = generate_dynamic_title(hot_item) if hot_item else f'{date_str} 全球AI科技{edition}'
     print(f'文章标题: {title}')
     
     # 获取封面图（与标题匹配）

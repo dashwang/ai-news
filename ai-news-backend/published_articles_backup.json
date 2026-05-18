@@ -1,0 +1,580 @@
+{
+  "published": [
+    {
+      "title": "IonRouter AI推理加速",
+      "url": "https://www.producthunt.com/products/ionrouter-by-cumulus-labs",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Teract AI声誉教练",
+      "url": "https://www.producthunt.com/products/teract",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Typinator 10文本扩展",
+      "url": "https://www.producthunt.com/products/typinator-10",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "AI演员Tilly Norwood",
+      "url": "https://techcrunch.com/2026/03/11/ai-actor-tilly-norwood-put-out-the-worst-song-ive-ever-heard/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Nuro东京自动驾驶测试",
+      "url": "https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Google Play游戏升级",
+      "url": "https://techcrunch.com/2026/03/11/google-play-is-adding-new-paid-and-pc-games-game-trials-community-posts-and-more/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Ford AI监控安全带",
+      "url": "https://techcrunch.com/2026/03/11/fords-new-ai-assistant-will-help-fleet-owners-know-if-seatbelts-are-being-used/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "inDrive收购Krave Mart",
+      "url": "https://techcrunch.com/2026/03/11/ride-hailing-indrive-acquires-pakistans-kravemart-to-bolster-grocery-delivery/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "GPT-5.4 OS系统论",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "DeepMind D4RT 4D世界模型",
+      "url": "https://thesequence.substack.com/p/the-sequence-knowledge-821-4d-and",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Yann LeCun AMI Labs $11B",
+      "url": "https://www.latent.space/p/ainews-yann-lecuns-ami-labs-launches",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "NVIDIA行星级推理",
+      "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Anthropic vs 五角大楼",
+      "url": "https://lastweekinai.p/last-week-in-ai-337-anthropic-risk",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "管理能力AI超能力",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "3D-Knitting Ultimate Guide",
+      "url": "https://www.oliver-charles.com/pages/3d-knitting",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Avoiding Trigonometry",
+      "url": "https://iquilezles.org/articles/noacos/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "s@ decentralized social",
+      "url": "http://satproto.org/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Returning to Rails 2026",
+      "url": "https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "SBCL Lisp",
+      "url": "https://research.gold.ac.uk/id/eprint/2336/1/sbcl.pdf",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Huddle01 Cloud",
+      "url": "https://www.producthunt.com/products/huddle01-cloud-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "HTML Pub",
+      "url": "https://www.producthunt.com/products/htmlpub",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Clawther",
+      "url": "https://www.producthunt.com/products/clawther",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Runner AI",
+      "url": "https://www.producthunt.com/products/runner-ai-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Prava payments",
+      "url": "https://www.producthunt.com/products/prava-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Startups family business",
+      "url": "https://techcrunch.com/2026/03/12/when-startups-become-a-family-business/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Google AI flash floods",
+      "url": "https://techcrunch.com/2026/03/12/google-is-using-old-news-reports-and-ai-to-predict-flash-floods/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Gestala brain interface $21M",
+      "url": "https://techcrunch.com/2026/03/11/bci-startup-gestala-raises-21-million-for-non-invasive-ultrasound-brain-tech/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "AI actor Tilly Norwood",
+      "url": "https://techcrunch.com/2026/03/11/ai-actor-tilly-norwood-put-out-the-worst-song-ive-ever-heard/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Nuro Tokyo",
+      "url": "https://techcrunch.com/2026/03/11/nuro-is-testing-its-autonomous-vehicle-tech-on-tokyos-streets/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "SaaSmagedon SaaS dead",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "GPT-5.4 OS",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Replit Agent 4",
+      "url": "https://www.latent.space/p/ainews-replit-agent-4-the-knowledge",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Management AI superpower",
+      "url": "https://www.oneusefulthing.org/p/management-as-ai-superpower",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Dolphin Progress Release 2603",
+      "url": "https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "3D-Knitting Ultimate Guide",
+      "url": "https://www.oliver-charles.com/pages/3d-knitting",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Avoiding Trigonometry",
+      "url": "https://iquilezles.org/articles/noacos/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Big Data on Cheapest MacBook",
+      "url": "https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "PaperPod AI Agent sandboxes",
+      "url": "https://www.producthunt.com/products/paperpod",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "TokenZip Share memory for AI",
+      "url": "https://www.producthunt.com/products/tokenzip",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "ELU Turn drop-offs to PRs",
+      "url": "https://www.producthunt.com/products/elu-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Covalent AI for PMs",
+      "url": "https://www.producthunt.com/products/covalent-3",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Email API benchmarks",
+      "url": "https://www.producthunt.com/products/knock-6",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Group14 EV battery factory",
+      "url": "https://techcrunch.com/2026/03/12/group14-opens-factory-to-produce-battery-materials-for-flash-charging-evs/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Google AI predict flash floods",
+      "url": "https://techcrunch.com/2026/03/12/google-is-using-old-news-reports-and-ai-to-predict-flash-floods/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "SaaSmagedon SaaS dead",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "GPT-5.4 OS Systems",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Replit Agent 4 Knowledge Work",
+      "url": "https://www.latent.space/p/ainews-replit-agent-4-the-knowledge",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Big Data on Cheapest MacBook",
+      "url": "https://duckdb.org/2026/03/11/big-data-on-the-cheapest-macbook",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Dolphin Progress Release 2603",
+      "url": "https://dolphin-emu.org/blog/2026/03/12/dolphin-progress-report-release-2603/",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "3D-Knitting Ultimate Guide",
+      "url": "https://www.oliver-charles.com/pages/3d-knitting",
+      "date": "2026-03-12",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Huddle01 Cloud",
+      "url": "https://www.producthunt.com/products/huddle01-cloud-2",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Naoma AI Demo Agent",
+      "url": "https://www.producthunt.com/products/naoma",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Clawcard",
+      "url": "https://www.producthunt.com/products/clawcard",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Timekeepur Labs",
+      "url": "https://www.producthunt.com/products/timekeepur-labs",
+      "date": "2026-03-12",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Google Maps AI immersive",
+      "url": "https://techcrunch.com/2026/03/12/google-maps-is-getting-an-ai-ask-maps-feature-and-upgraded-immersive-navigation/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Group14 EV battery factory",
+      "url": "https://techcrunch.com/2026/03/12/group14-opens-factory-to-produce-battery-materials-for-flash-charging-evs/",
+      "date": "2026-03-12",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "SaaSmagedon SaaS dead",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "GPT-5.4 OS Systems",
+      "url": "https://thesequence.substack.com/p/the-sequence-ai-of-the-week-822-inside",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Replit Agent 4 Knowledge Work",
+      "url": "https://www.latent.space/p/ainews-replit-agent-4-the-knowledge",
+      "date": "2026-03-12",
+      "source": "SubStack"
+    },
+    {
+      "title": "Shall I implement it No",
+      "url": "https://gist.github.com/bretonium/291f4388e2de89a43b25c135b44e41f0",
+      "date": "2026-03-13",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Malus Clean Room as a Service",
+      "url": "https://malus.sh",
+      "date": "2026-03-13",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Bubble Sorted Amen Break",
+      "url": "https://parametricavocado.itch.io/amen-sorting",
+      "date": "2026-03-13",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Reversing memory loss gut-brain",
+      "url": "https://med.stanford.edu/news/all-news/2026/03/gut-brain-cognitive-decline.html",
+      "date": "2026-03-13",
+      "source": "HackerNews"
+    },
+    {
+      "title": "ATMs didn't kill bank teller jobs",
+      "url": "https://davidoks.blog/p/why-the-atm-didnt-kill-bank-teller",
+      "date": "2026-03-13",
+      "source": "HackerNews"
+    },
+    {
+      "title": "Clawther OpenClaw task board",
+      "url": "https://www.producthunt.com/products/clawther",
+      "date": "2026-03-13",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Basement Browser AI browser",
+      "url": "https://www.producthunt.com/products/basement-browser",
+      "date": "2026-03-13",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Outhop Vibe Selling",
+      "url": "https://www.producthunt.com/products/outhop",
+      "date": "2026-03-13",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Retell Watch Once Tell Forever",
+      "url": "https://www.producthunt.com/products/retell-2",
+      "date": "2026-03-13",
+      "source": "ProductHunt"
+    },
+    {
+      "title": "Nvidia GTC 2026 keynote",
+      "url": "https://techcrunch.com/2026/03/12/how-to-watch-jensen-huangs-nvidia-gtc-2026-keynote/",
+      "date": "2026-03-13",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Rox AI 1.2B valuation",
+      "url": "https://techcrunch.com/2026/03/12/sales-automation-startup-rox-ai-hits-1-2b-valuation-sources-say/",
+      "date": "2026-03-13",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Channel Surfer YouTube cable TV",
+      "url": "https://techcrunch.com/2026/03/12/channel-surfer-watch-youtube-retro-cable-tv-guide/",
+      "date": "2026-03-13",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Rivian R2 45000 delayed",
+      "url": "https://techcrunch.com/2026/03/12/why-rivian-is-holding-the-45000-base-model-r2-until-late-2027/",
+      "date": "2026-03-13",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Substack recording studio",
+      "url": "https://techcrunch.com/2026/03/12/substack-launches-a-built-in-recording-studio/",
+      "date": "2026-03-13",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "SaaSmagedon SaaS dead",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-823-saasmagedon",
+      "date": "2026-03-13",
+      "source": "SubStack"
+    },
+    {
+      "title": "Turbopuffer Retrieval After RAG",
+      "url": "https://www.latent.space/p/turbopuffer",
+      "date": "2026-03-13",
+      "source": "SubStack"
+    },
+    {
+      "title": "Radical solar optimism",
+      "url": "https://www.exponentialview.co/p/solar-supercycle",
+      "date": "2026-03-13",
+      "source": "SubStack"
+    },
+    {
+      "title": "Bluesky leans into AI with Attie, an app for building custom feeds",
+      "url": "https://techcrunch.com/2026/03/28/bluesky-leans-into-ai-with-attie-an-app-for-building-custom-feeds/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Mark Zuckerberg texted Elon Musk to offer help with DOGE",
+      "url": "https://techcrunch.com/2026/03/28/mark-zuckerberg-texted-elon-musk-to-offer-help-with-doge/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Stanford study outlines dangers of asking AI chatbots for personal advice",
+      "url": "https://techcrunch.com/2026/03/28/stanford-study-outlines-dangers-of-asking-ai-chatbots-for-personal-advice/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Elon Musk’s last co-founder reportedly leaves xAI",
+      "url": "https://techcrunch.com/2026/03/28/elon-musks-last-co-founder-reportedly-leaves-xai/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "These iPad apps will make you wish you had more free time",
+      "url": "https://techcrunch.com/2026/03/28/best-ipad-apps-for-unleashing-and-exploring-your-creativity/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Overestimation of microplastics potentially caused by scientists' gloves",
+      "url": "https://news.umich.edu/nitrile-and-latex-gloves-may-cause-overestimation-of-microplastics-u-m-study-reveals/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Miasma: A tool to trap AI web scrapers in an endless poison pit",
+      "url": "https://github.com/austin-weeks/miasma",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "The Cloud: The dystopian book that changed Germany (2022)",
+      "url": "https://www.bbc.com/culture/article/20221101-the-cloud-the-nuclear-novel-that-shaped-germany",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Founder of GitLab battles cancer by founding companies",
+      "url": "https://sytse.com/cancer/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Technology: The (nearly) perfect USB cable tester does exist",
+      "url": "https://blog.literarily-starved.com/2026/02/technology-the-nearly-perfect-usb-cable-tester-does-exist/",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "SUN (a16z Speedrun 006)",
+      "url": "https://www.producthunt.com/products/sun-ai",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Dipshot",
+      "url": "https://www.producthunt.com/products/dipshot",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "GuideYou",
+      "url": "https://www.producthunt.com/products/guideyou",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "CodingPrep",
+      "url": "https://www.producthunt.com/products/codingprep",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Clico",
+      "url": "https://www.producthunt.com/products/clico",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "The Sequence Radar #832: Last Week in AI: Compression, Voice, and Why It All Matters",
+      "url": "https://thesequence.substack.com/p/the-sequence-radar-832-last-week",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "The Sequence Opinion #831: NVIDIA Is Quietly Building the Operating System of AI",
+      "url": "https://thesequence.substack.com/p/the-sequence-opinion-831-nvidia-is",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "[AINews] H100 prices are melting *UP*",
+      "url": "https://www.latent.space/p/ainews-h100-prices-are-melting-up",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "[AINews] Everything is CLI",
+      "url": "https://www.latent.space/p/ainews-everything-is-cli",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "🔮 Exponential View #567: How AI is rewiring work",
+      "url": "https://www.exponentialview.co/p/ev-567",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Solving problems with the Karpathy Loop",
+      "url": "https://www.exponentialview.co/p/solving-problems-with-the-karpathy",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Cline Kanban",
+      "url": "https://www.producthunt.com/products/cline-4",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Pensieve",
+      "url": "https://www.producthunt.com/products/pensieve-5",
+      "date": "2026-03-29"
+    },
+    {
+      "title": "Sheet Ninja",
+      "url": "https://www.producthunt.com/products/sheet-ninja-2",
+      "date": "2026-03-29"
+    }
+  ]
+}
